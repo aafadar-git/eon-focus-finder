@@ -328,6 +328,64 @@
     padding:34px 20px;text-align:center;color:var(--muted);font-size:15px;
   }
   footer{margin-top:36px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:13px}
+
+  /* ---------- Ask EON ---------- */
+  .ask-section{margin-top:30px}
+  .ask-section h2{font-size:19px;font-weight:700;margin:0 0 4px;letter-spacing:-.01em}
+  .ask-sub{color:var(--ink-2);font-size:14px;margin:0 0 12px;max-width:78ch}
+  .ask-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .ask-head{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .ask-toggle{display:inline-flex;align-items:center;gap:8px;background:transparent;border:0;color:var(--ink);font:inherit;font-size:14.5px;font-weight:600;cursor:pointer;padding:4px 2px}
+  .ask-toggle .chev{display:inline-block;transition:transform .15s;color:var(--muted);font-size:12px}
+  .ask-toggle[aria-expanded="true"] .chev{transform:rotate(90deg)}
+  .ask-status{font-size:12.5px;color:var(--muted)}
+  .ask-status.ok{color:var(--accent);font-weight:600}
+  .ask-setbtn{margin-left:auto;background:var(--surface);border:1px solid var(--line-strong);color:var(--ink);border-radius:7px;padding:5px 12px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+  .ask-setbtn:hover{border-color:var(--accent);color:var(--accent)}
+  .ask-settings{border-bottom:1px solid var(--line);background:var(--surface-2);padding:14px 16px}
+  .ask-fields{display:flex;flex-wrap:wrap;gap:12px 16px}
+  .ask-field{display:flex;flex-direction:column;gap:5px;flex:1 1 180px;min-width:0}
+  .ask-field label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .ask-field input{font:inherit;font-size:14.5px;color:var(--ink);background:var(--bg);border:1px solid var(--line-strong);border-radius:8px;padding:8px 10px;min-height:38px;width:100%}
+  .ask-field input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+  .ask-note{font-size:13px;color:var(--ink-2);margin:10px 0 0;max-width:78ch}
+  .ask-setbtns{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+  .ask-save{background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent);border-radius:8px;padding:8px 16px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+  .ask-clear{background:transparent;border:1px solid var(--line-strong);color:var(--ink);border-radius:8px;padding:8px 14px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+  .ask-clear:hover{border-color:var(--red);color:var(--red)}
+  .ask-saved{font-size:13px;color:var(--accent);font-weight:600}
+  .ask-msgs{max-height:430px;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+  .ask-msg{max-width:86%;padding:9px 13px;border-radius:12px;font-size:14.5px;line-height:1.5;overflow-wrap:break-word}
+  .ask-msg.user{align-self:flex-end;background:var(--accent);color:var(--accent-ink);border-bottom-right-radius:4px}
+  .ask-msg.assistant{align-self:flex-start;background:var(--surface-2);color:var(--ink);border-bottom-left-radius:4px}
+  .ask-msg.err{background:var(--red-soft)}
+  .ask-msg p{margin:0 0 8px}
+  .ask-msg p:last-child{margin-bottom:0}
+  .ask-msg ul,.ask-msg ol{margin:0 0 8px;padding-left:20px}
+  .ask-msg ul:last-child,.ask-msg ol:last-child{margin-bottom:0}
+  .ask-msg li{margin:2px 0}
+  .ask-msg code{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px}
+  .ask-msg .dots span{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--muted);margin-right:3px;animation:askpulse 1.2s infinite}
+  .ask-msg .dots span:nth-child(2){animation-delay:.15s}
+  .ask-msg .dots span:nth-child(3){animation-delay:.3s;margin-right:8px}
+  @keyframes askpulse{0%,60%,100%{opacity:.25}30%{opacity:1}}
+  @media (prefers-reduced-motion: reduce){.ask-msg .dots span{animation:none;opacity:.6}}
+  .ask-srcs{margin-top:8px;font-size:12px;color:var(--muted)}
+  .ask-srcs .lbl{font-weight:600;margin-right:4px}
+  .src-chip{display:inline-block;background:var(--surface);border:1px solid var(--line-strong);color:var(--ink-2);border-radius:20px;padding:0 8px;margin:2px 2px 0 0;font-size:11.5px;font-weight:600}
+  .ask-chips{display:flex;flex-wrap:wrap;gap:8px;padding:2px 16px 12px}
+  .ask-chip{background:var(--accent-soft);border:1px solid var(--accent);color:var(--ink);border-radius:20px;padding:5px 12px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;text-align:left}
+  .ask-chip:hover{background:var(--accent);color:var(--accent-ink)}
+  .ask-form{display:flex;gap:10px;padding:12px 16px;border-top:1px solid var(--line)}
+  .ask-form input{flex:1 1 auto;min-width:0;font:inherit;font-size:14.5px;color:var(--ink);background:var(--bg);border:1px solid var(--line-strong);border-radius:8px;padding:9px 12px;min-height:40px}
+  .ask-form input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+  .ask-send{flex:0 0 auto;background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent);border-radius:8px;padding:9px 20px;font:inherit;font-size:14.5px;font-weight:600;cursor:pointer}
+  .ask-send:disabled{opacity:.55;cursor:wait}
+  @media (max-width:640px){
+    .ask-msg{max-width:94%}
+    .ask-msgs{max-height:340px}
+    .ask-setbtn{margin-left:0}
+  }
 </style>
 </head>
 <body>
@@ -412,6 +470,54 @@
     <h2>Newly added from your enrichment list — baseline scan pending</h2>
     <p class="pend-sub">These five companies came from your curated enrichment list and were reconciled into the Finder on 2026-10-18. They carry verified enriched facts and researched suggested contacts, but no trigger history yet — so they are not scored and sit outside the ranking above until a baseline scan runs.</p>
     <div class="list" id="pending-list"></div>
+  </section>
+
+  <section class="ask-section" id="ask-eon" aria-label="Ask EON">
+    <h2>Ask EON</h2>
+    <p class="ask-sub">Ask questions about the companies in this Finder — who leads training where, why a company ranks where it does, what changed recently. Answers come only from the records on this page, using your own API key.</p>
+    <div class="ask-card">
+      <div class="ask-head">
+        <button type="button" class="ask-toggle" id="ask-toggle" aria-expanded="true" aria-controls="ask-body"><span class="chev" aria-hidden="true">&#9654;</span> Chat</button>
+        <span class="ask-status" id="ask-status" role="status"></span>
+        <button type="button" class="ask-setbtn" id="ask-settings-btn" aria-expanded="false" aria-controls="ask-settings">API settings</button>
+      </div>
+      <div class="ask-settings" id="ask-settings" hidden>
+        <div class="ask-fields">
+          <div class="ask-field">
+            <label for="ask-key">API key</label>
+            <input type="password" id="ask-key" autocomplete="off" placeholder="Paste your API key" />
+          </div>
+          <div class="ask-field">
+            <label for="ask-base">Base URL</label>
+            <input type="url" id="ask-base" autocomplete="off" spellcheck="false" />
+          </div>
+          <div class="ask-field">
+            <label for="ask-model">Model</label>
+            <input type="text" id="ask-model" autocomplete="off" spellcheck="false" />
+          </div>
+        </div>
+        <p class="ask-note">Your key stays in this browser — it is saved only in this device&rsquo;s local storage and is sent only to the API endpoint you configure above. This page has no server of its own, and no key is built into the page.</p>
+        <div class="ask-setbtns">
+          <button type="button" class="ask-save" id="ask-save">Save settings</button>
+          <button type="button" class="ask-clear" id="ask-clear">Clear key</button>
+          <span class="ask-saved" id="ask-saved" role="status"></span>
+        </div>
+      </div>
+      <div id="ask-body">
+        <div class="ask-msgs" id="ask-msgs" aria-live="polite">
+          <div class="ask-msg assistant"><p>Ask me about the companies in this Finder — who leads training where, why a company ranks where it does, or what has changed recently. I answer only from the records on this page.</p></div>
+        </div>
+        <div class="ask-chips" id="ask-chips">
+          <button type="button" class="ask-chip">Which training leaders do we have in Nigeria?</button>
+          <button type="button" class="ask-chip">Top 5 highest-scored companies and why</button>
+          <button type="button" class="ask-chip">Which tier-1 companies have no verifiable training leader?</button>
+        </div>
+        <form class="ask-form" id="ask-form">
+          <input type="text" id="ask-input" placeholder="Ask about a company, a place, or the ranking&hellip;" autocomplete="off" aria-label="Ask a question about the companies in this Finder" />
+          <button type="submit" class="ask-send" id="ask-send">Send</button>
+        </form>
+      </div>
+    </div>
   </section>
 
   <footer>Scores computed from the 2026-09-17 Wingman export · contact counts from the 2026-10-04 database export · enrichment overlay covering all 788 companies in the portfolio (the 783 scored companies plus 5 reconciled from Companies-Data.xlsx on 2026-10-18 whose baseline scan is still pending), built from the curated enrichment set, the top-100 program, and a full-portfolio enrichment pass on 2026-10-18. Suggested contacts researched 2026-10-18 from public business sources (names + titles only) and retargeted to training / L&amp;D leaders: 148 verified training leaders, 65 weak HR/operations fallbacks where no training leader is publicly named, 574 with no candidate found. Recent updates researched 2026-10-18 from public news sources; each item carries its date and source.</footer>
@@ -795,6 +901,393 @@
   showAllBtn.addEventListener("click", function(){ state.showAll = true; render(); });
 
   render();
+})();
+</script>
+<script>
+(function(){
+  "use strict";
+
+  /* ================= Ask EON =================
+     Bring-your-own-key, read-only Q&A over the embedded dataset above.
+     The API key lives only in this browser's localStorage and is sent
+     only to the endpoint the visitor configures. No key is in the page. */
+
+  var DATA = JSON.parse(document.getElementById("dataset").textContent);
+  var RECORDS = DATA.records || [];
+  var DEFAULT_BASE = "https://api.openai.com/v1";
+  var DEFAULT_MODEL = "gpt-4o-mini";
+  var LS = { key: "askeon.apiKey", base: "askeon.baseUrl", model: "askeon.model" };
+  var MAX_CONTEXT = 12000;
+
+  var SYSTEM_PROMPT = [
+    "You are Ask EON, a read-only question-answering assistant built into the EON Focus Finder page. You answer questions using ONLY the company records supplied with each question.",
+    "",
+    "Rules you must follow:",
+    "1. Answer only from the provided company records. Never invent or guess companies, people, names, job titles, revenues, employee counts, focus scores, or any other fact, and never fall back on general knowledge.",
+    "2. Use this locked vocabulary verbatim where it applies: \"current verified\", \"no current verified value\", \"historical reference\", \"not yet enriched\", \"not available from verified source\".",
+    "3. Contact questions are decision-state-first: for each company, state whether it has a verified training leader, a fallback contact (not the training owner), or no verifiable training leader. Never present a fallback contact as the training owner.",
+    "4. If the answer is not in the provided records, say \"not available from verified source\" and do not fill the gap.",
+    "5. Cite the company name for every factual claim you make.",
+    "6. You are read-only: you cannot add, enrich, edit, or remove companies or contacts. If asked to do so, say so plainly.",
+    "7. Keep answers concise. Use short lists where they help. Answer in plain language."
+  ].join("\n");
+
+  /* ---------- elements ---------- */
+  function $(id){ return document.getElementById(id); }
+  var msgsEl = $("ask-msgs"), inputEl = $("ask-input"), formEl = $("ask-form"),
+      sendBtn = $("ask-send"), statusEl = $("ask-status"),
+      settingsEl = $("ask-settings"), settingsBtn = $("ask-settings-btn"),
+      keyEl = $("ask-key"), baseEl = $("ask-base"), modelEl = $("ask-model"),
+      savedEl = $("ask-saved"), toggleBtn = $("ask-toggle"), bodyEl = $("ask-body");
+
+  /* ---------- storage ---------- */
+  function lsGet(k){ try { return window.localStorage.getItem(k); } catch(e){ return null; } }
+  function lsSet(k, v){ try { window.localStorage.setItem(k, v); } catch(e){} }
+  function lsDel(k){ try { window.localStorage.removeItem(k); } catch(e){} }
+  function getKey(){ return (lsGet(LS.key) || "").trim(); }
+  function getBase(){ return (lsGet(LS.base) || DEFAULT_BASE).trim() || DEFAULT_BASE; }
+  function getModel(){ return (lsGet(LS.model) || DEFAULT_MODEL).trim() || DEFAULT_MODEL; }
+
+  function refreshStatus(){
+    if(getKey()){
+      statusEl.textContent = "API key saved in this browser";
+      statusEl.classList.add("ok");
+    } else {
+      statusEl.textContent = "No API key set";
+      statusEl.classList.remove("ok");
+    }
+  }
+  function flashSaved(msg){
+    savedEl.textContent = msg;
+    window.setTimeout(function(){ if(savedEl.textContent === msg) savedEl.textContent = ""; }, 3500);
+  }
+
+  /* ---------- retrieval: lightweight keyword scorer over the embedded records ---------- */
+  var STOP = {};
+  "the a an and or of in on for to do does did we have has are is was were with which what who whom any all show list give tell our their there about from by at it its this that these those be been can could you your yours they them then than company companies".split(" ").forEach(function(w){ STOP[w] = 1; });
+  var GENERIC_TOK = { training: 1, leader: 1, leaders: 1, learning: 1, contact: 1, contacts: 1 };
+  function queryTokens(q){
+    return String(q || "").toLowerCase().split(/[^a-z0-9]+/).filter(function(w){ return w.length > 1 && !STOP[w]; });
+  }
+  function tokenVariants(t){
+    var v = [t];
+    if(t.length > 3 && t.charAt(t.length - 1) === "s") v.push(t.slice(0, -1));
+    return v;
+  }
+  function wordSet(s){
+    var set = {};
+    String(s || "").toLowerCase().split(/[^a-z0-9]+/).forEach(function(w){ if(w) set[w] = 1; });
+    return set;
+  }
+  var INDEX = RECORDS.map(function(r){
+    var contacts = (r.suggested_contacts || []).map(function(c){ return (c.name || "") + " " + (c.title || ""); }).join(" ");
+    var updates = (r.recent_updates || []).map(function(u){ return (u.headline || "") + " " + (u.summary || ""); }).join(" ");
+    return {
+      r: r,
+      nameStr: (r.company || "").toLowerCase(),
+      name: wordSet(r.company),
+      hq: wordSet(r.hq),
+      contacts: wordSet(contacts),
+      sub: wordSet(r.subvertical),
+      training: wordSet(r.training),
+      note: wordSet(r.contacts_note),
+      updates: wordSet(updates),
+      seg: wordSet(r.segment)
+    };
+  });
+
+  function retrieve(query){
+    var toks = queryTokens(query);
+    var ql = " " + String(query || "").toLowerCase() + " ";
+    var tierM = ql.match(/tier[\s-]?([123])\b/);
+    var ranking = /top\s*\d+/.test(ql) || /highest/.test(ql) || /top[ -]scored/.test(ql) || /best[ -]scored/.test(ql);
+    var noLeader = /no (verifiable |verified )?training leader/.test(ql) || /no verifiable/.test(ql) || /without a (verifiable |verified )?training leader/.test(ql);
+    var leaderAsk = /training leader|learning leader|contacts?\b|who (to|should)/.test(ql);
+    var scored = INDEX.map(function(ix){
+      var s = 0, hqHit = false;
+      toks.forEach(function(t){
+        tokenVariants(t).forEach(function(v){
+          if(ix.name[v]) s += 10;
+          if(ix.hq[v]){ s += 8; if(!GENERIC_TOK[v]) hqHit = true; }
+          if(ix.contacts[v]) s += 7;
+          if(ix.sub[v]) s += 5;
+          if(ix.training[v]) s += 4;
+          if(ix.note[v]) s += 4;
+          if(ix.updates[v]) s += 4;
+          if(ix.seg[v]) s += 3;
+        });
+      });
+      if(hqHit) s += 25;
+      if(ix.nameStr.length > 2 && ql.indexOf(" " + ix.nameStr + " ") !== -1) s += 100;
+      if(tierM){
+        if(ix.r.tier === parseInt(tierM[1], 10)) s += 30; else s -= 40;
+      }
+      if(noLeader){
+        if(ix.r.contacts_status === "none_found") s += 30; else s -= 60;
+      }
+      if(leaderAsk){
+        if(ix.r.contacts_status === "found") s += 20;
+        else if(ix.r.contacts_status === "weak") s += 10;
+      }
+      if(ranking) s += (ix.r.score || 0) * 2;
+      return { ix: ix, s: s };
+    });
+    scored.sort(function(a, b){ return (b.s - a.s) || ((b.ix.r.score || 0) - (a.ix.r.score || 0)); });
+    var out = [];
+    for(var i = 0; i < scored.length && out.length < 10; i++){
+      if(ranking || scored[i].s > 0) out.push(scored[i].ix.r);
+    }
+    return out;
+  }
+
+  /* ---------- context block ---------- */
+  function trunc(s, n){
+    s = String(s == null ? "" : s);
+    return s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, "") + "…" : s;
+  }
+  function contactState(r){
+    switch(r.contacts_status){
+      case "found": return "verified training leader";
+      case "weak": return "fallback contact only — not the training owner";
+      case "none_found": return "no verifiable training leader";
+      case "not_researched": return "not yet researched";
+      default: return "not available from verified source";
+    }
+  }
+  function contextBlock(r){
+    var lines = [];
+    lines.push("### " + r.company);
+    var meta = [];
+    if(r.score != null) meta.push("Focus score: " + r.score);
+    if(r.tier != null) meta.push("Tier " + r.tier);
+    if(r.segment) meta.push("Segment: " + r.segment);
+    if(r.subvertical) meta.push("Subvertical: " + r.subvertical);
+    if(r.hq) meta.push("HQ: " + r.hq);
+    if(meta.length) lines.push(meta.join(" · "));
+    if(r.parts){
+      lines.push("Score breakdown: tier " + (r.parts.tier || 0) + ", signals " + (r.parts.signals || 0) + ", contact readiness " + (r.parts.contacts || 0) + ", research " + (r.parts.research || 0) + ", enrichment " + (r.parts.enrichment || 0) + ", review penalty " + (r.parts.review_penalty || 0));
+    }
+    var fin = [];
+    if(r.revenue) fin.push("Revenue: " + r.revenue + (r.revenue_fy ? " (" + r.revenue_fy + ")" : ""));
+    if(r.employees) fin.push("Employees: " + r.employees);
+    if(fin.length) lines.push(fin.join(" · "));
+    if(r.training) lines.push("Training: " + trunc(r.training, 300));
+    lines.push("Contact state: " + contactState(r) + " (contacts_status: " + (r.contacts_status || "unknown") + ")");
+    (r.suggested_contacts || []).forEach(function(c){
+      var cl = "Suggested contact: " + (c.name || "") + " — " + (c.title || "");
+      if(c.evidence) cl += " [evidence: " + c.evidence + "]";
+      if(c.note) cl += " Note: " + trunc(c.note, 200);
+      lines.push(cl);
+    });
+    if(r.contacts_note) lines.push("Contacts note: " + trunc(r.contacts_note, 240));
+    (r.recent_updates || []).slice(0, 3).forEach(function(u){
+      lines.push("Recent update (" + (u.date || "") + (u.trigger_label ? ", " + u.trigger_label : "") + "): " + (u.headline || ""));
+    });
+    if(r.enriched === false) lines.push("Enrichment state: not yet enriched");
+    return lines.join("\n");
+  }
+  function buildContext(recs){
+    var text = "", used = [];
+    for(var i = 0; i < recs.length; i++){
+      var b = contextBlock(recs[i]);
+      if(text && text.length + b.length + 2 > MAX_CONTEXT) break;
+      text += (text ? "\n\n" : "") + b;
+      used.push(recs[i]);
+    }
+    return { text: text, used: used };
+  }
+
+  /* ---------- lightweight markdown (bold, lists, line breaks) ---------- */
+  function escHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function inlineMd(t){
+    t = escHtml(t);
+    t = t.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    t = t.replace(/`([^`]+)`/g, "<code>$1</code>");
+    return t;
+  }
+  function renderMd(src){
+    var lines = String(src || "").split(/\n/);
+    var html = "", list = null;
+    function closeList(){ if(list){ html += "</" + list + ">"; list = null; } }
+    lines.forEach(function(raw){
+      var line = raw.replace(/\s+$/, ""), m;
+      if((m = line.match(/^\s*[-•*]\s+(.*)$/))){
+        if(list !== "ul"){ closeList(); html += "<ul>"; list = "ul"; }
+        html += "<li>" + inlineMd(m[1]) + "</li>";
+      } else if((m = line.match(/^\s*\d+[.)]\s+(.*)$/))){
+        if(list !== "ol"){ closeList(); html += "<ol>"; list = "ol"; }
+        html += "<li>" + inlineMd(m[1]) + "</li>";
+      } else if((m = line.match(/^\s*#{1,4}\s+(.*)$/))){
+        closeList();
+        html += "<p><strong>" + inlineMd(m[1]) + "</strong></p>";
+      } else if(line.trim() === ""){
+        closeList();
+      } else {
+        closeList();
+        html += "<p>" + inlineMd(line) + "</p>";
+      }
+    });
+    closeList();
+    return html;
+  }
+
+  /* ---------- messages ---------- */
+  function addMsg(role, text, sources){
+    var div = document.createElement("div");
+    div.className = "ask-msg " + role;
+    if(role === "user"){ div.textContent = text; }
+    else { div.innerHTML = renderMd(text); }
+    if(sources && sources.length){
+      var s = document.createElement("div");
+      s.className = "ask-srcs";
+      var lbl = document.createElement("span");
+      lbl.className = "lbl";
+      lbl.textContent = "Sources:";
+      s.appendChild(lbl);
+      sources.forEach(function(name){
+        var c = document.createElement("span");
+        c.className = "src-chip";
+        c.textContent = name;
+        s.appendChild(c);
+      });
+      div.appendChild(s);
+    }
+    msgsEl.appendChild(div);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+    return div;
+  }
+  function addError(text){
+    var div = addMsg("assistant", text);
+    div.classList.add("err");
+    return div;
+  }
+  function addLoading(){
+    var div = document.createElement("div");
+    div.className = "ask-msg assistant";
+    div.innerHTML = '<span class="dots" aria-hidden="true"><span></span><span></span><span></span></span>Thinking…';
+    msgsEl.appendChild(div);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+    return div;
+  }
+  function openSettings(){
+    settingsEl.hidden = false;
+    settingsBtn.setAttribute("aria-expanded", "true");
+  }
+
+  /* ---------- ask ---------- */
+  var history = [];
+  var busy = false;
+  function send(text){
+    text = (text || "").trim();
+    if(!text || busy) return;
+    addMsg("user", text);
+    var key = getKey();
+    if(!key){
+      addMsg("assistant", "To answer questions I need an API key first. Open **API settings** above, paste your key, and choose Save — the key stays in this browser and is sent only to the endpoint you configure.");
+      openSettings();
+      keyEl.focus();
+      return;
+    }
+    busy = true;
+    sendBtn.disabled = true;
+    var ctx = buildContext(retrieve(text));
+    var loading = addLoading();
+    var messages = [{ role: "system", content: SYSTEM_PROMPT }];
+    history.slice(-6).forEach(function(h){ messages.push(h); });
+    messages.push({ role: "user", content: "Company records (the only facts you may use):\n\n" + (ctx.text || "(no matching company records)") + "\n\nQuestion: " + text });
+    var url = getBase().replace(/\/+$/, "") + "/chat/completions";
+    function finish(){ busy = false; sendBtn.disabled = false; if(loading.parentNode) loading.parentNode.removeChild(loading); }
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
+      body: JSON.stringify({ model: getModel(), messages: messages, temperature: 0.2 })
+    }).then(function(res){
+      if(!res.ok){
+        finish();
+        if(res.status === 401) addError("API key rejected — check the key in settings.");
+        else if(res.status === 429) addError("The API is rate-limiting requests right now. Wait a moment, then try again.");
+        else addError("The API returned an error (HTTP " + res.status + "). Check the base URL and model in settings.");
+        return;
+      }
+      res.json().then(function(data){
+        finish();
+        var answer = data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
+        if(!answer){
+          addError("The API replied without an answer. Check the model name in settings and try again.");
+          return;
+        }
+        addMsg("assistant", answer, ctx.used.map(function(r){ return r.company; }));
+        history.push({ role: "user", content: text });
+        history.push({ role: "assistant", content: answer });
+      }, function(){
+        finish();
+        addError("The API reply could not be read. Try again in a moment.");
+      });
+    }, function(){
+      finish();
+      addError("Couldn't reach the API endpoint — check your connection and the base URL in settings.");
+    });
+  }
+
+  /* ---------- wiring ---------- */
+  formEl.addEventListener("submit", function(e){
+    e.preventDefault();
+    var v = inputEl.value;
+    inputEl.value = "";
+    send(v);
+  });
+  var chips = document.querySelectorAll(".ask-chip");
+  for(var i = 0; i < chips.length; i++){
+    (function(chip){
+      chip.addEventListener("click", function(){ send(chip.textContent); });
+    })(chips[i]);
+  }
+  settingsBtn.addEventListener("click", function(){
+    var open = settingsEl.hidden;
+    settingsEl.hidden = !open;
+    settingsBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  toggleBtn.addEventListener("click", function(){
+    var open = bodyEl.hidden;
+    bodyEl.hidden = !open;
+    toggleBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  $("ask-save").addEventListener("click", function(){
+    var k = keyEl.value.trim(), b = baseEl.value.trim(), m = modelEl.value.trim();
+    if(k) lsSet(LS.key, k); else lsDel(LS.key);
+    if(b) lsSet(LS.base, b); else lsDel(LS.base);
+    if(m) lsSet(LS.model, m); else lsDel(LS.model);
+    baseEl.value = b || DEFAULT_BASE;
+    modelEl.value = m || DEFAULT_MODEL;
+    refreshStatus();
+    flashSaved("Settings saved in this browser.");
+  });
+  $("ask-clear").addEventListener("click", function(){
+    lsDel(LS.key);
+    keyEl.value = "";
+    refreshStatus();
+    flashSaved("API key cleared from this browser.");
+  });
+
+  /* ---------- init ---------- */
+  keyEl.value = lsGet(LS.key) || "";
+  baseEl.value = lsGet(LS.base) || DEFAULT_BASE;
+  modelEl.value = lsGet(LS.model) || DEFAULT_MODEL;
+  refreshStatus();
+  if(window.matchMedia && window.matchMedia("(max-width: 640px)").matches){
+    bodyEl.hidden = true;
+    toggleBtn.setAttribute("aria-expanded", "false");
+  }
+  if(!getKey()){
+    addMsg("assistant", "Before your first question, add an API key in **API settings** above. The key is stored only in this browser and sent only to the endpoint you configure — this page has no server of its own.");
+  }
+
+  /* Exposed for verification of the retrieval layer. */
+  window.AskEON = { retrieve: retrieve, buildContext: buildContext };
 })();
 </script>
 </body>
