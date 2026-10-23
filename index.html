@@ -168,6 +168,10 @@
   .cov-lab{font-size:12.5px;color:var(--ink-2);margin-top:2px;line-height:1.35}
   .cov-pct{font-size:12px;color:var(--muted);margin-top:3px}
   .cov-note{font-size:11.5px;color:var(--amber);font-weight:600;margin-top:2px;text-transform:uppercase;letter-spacing:.04em}
+  button.cov-tile{cursor:pointer;text-align:left;font:inherit;width:100%;display:block}
+  button.cov-tile:hover{border-color:var(--line-strong)}
+  button.cov-tile:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  button.cov-tile.active{outline:2px solid var(--accent);outline-offset:-2px}
 
   /* ---------- ranked list ---------- */
   .list{display:flex;flex-direction:column;gap:8px}
@@ -474,7 +478,7 @@
   <p class="count-line" id="count-line" role="status"></p>
 
   <section class="covstats" id="cov-stats" aria-label="Coverage and quality of contact data for the companies in view">
-    <h2 class="cov-title">Coverage &amp; quality <span class="cov-sub">&mdash; contact data for the companies in view; updates as you change the filters above</span></h2>
+    <h2 class="cov-title">Coverage &amp; quality <span class="cov-sub">&mdash; contact data for the companies in view. Click a tile to filter the list by it; click it again to clear</span></h2>
     <div class="cov-grid" id="cov-grid"></div>
   </section>
 
@@ -566,7 +570,7 @@
     {key:"enrichment", label:"Enrichment overlay", max:15, color:"var(--bar-enrich)"}
   ];
   var PAGE = 25;
-  var state = { q:"", tier:"all", seg:"", min:0, enr:false, need:false, recent:false, sugg:false, tl:false, showAll:false, open:{} };
+  var state = { q:"", tier:"all", seg:"", min:0, enr:false, need:false, recent:false, sugg:false, tl:false, cov:null, showAll:false, open:{} };
 
   var DISPLAY_NAMES = { "bourbon-online.com": "Bourbon" };
   function dispName(r){ return DISPLAY_NAMES[r.company] || r.company; }
@@ -633,6 +637,7 @@
       if(state.recent && !(r.recent_updates && r.recent_updates.length)) return false;
       if(state.sugg && !(r.suggested_contacts && r.suggested_contacts.length)) return false;
       if(state.tl && r.contacts_status !== "found") return false;
+      if(!covPass(r)) return false;
       if(q){
         var name = r.company.toLowerCase(), dom = (r.domain||"").toLowerCase();
         if(name.indexOf(q) === -1 && dom.indexOf(q) === -1) return false;
@@ -819,6 +824,7 @@
       if(state.seg && r.segment !== state.seg) return false;
       if(state.sugg && !(r.suggested_contacts && r.suggested_contacts.length)) return false;
       if(state.tl && r.contacts_status !== "found") return false;
+      if(!covPass(r)) return false;
       if(q){
         var name = r.company.toLowerCase(), dom = (r.domain||"").toLowerCase();
         if(name.indexOf(q) === -1 && dom.indexOf(q) === -1) return false;
@@ -873,6 +879,16 @@
     });
     return best;
   }
+  function covPass(r){
+    if(!state.cov) return true;
+    if(state.cov === "any") return !!(r.suggested_contacts && r.suggested_contacts.length);
+    if(state.cov === "found") return r.contacts_status === "found";
+    if(state.cov === "solid") return r.contacts_status === "found" && covBestEvidence(r) !== "aggregator";
+    if(state.cov === "agg") return r.contacts_status === "found" && covBestEvidence(r) === "aggregator";
+    if(state.cov === "weak") return r.contacts_status === "weak";
+    if(state.cov === "none") return r.contacts_status !== "found" && r.contacts_status !== "weak";
+    return true;
+  }
   function renderCovStats(rows, pend){
     var view = rows.concat(pend || []);
     var n = view.length, found = 0, weak = 0, none = 0, solid = 0, aggOnly = 0;
@@ -885,21 +901,22 @@
     });
     var anyC = found + weak;
     function p(x, base){ return base ? (Math.round(x / base * 1000) / 10).toFixed(1) + "%" : "\u2014"; }
-    function tile(label, val, pct, cls, note){
-      return '<div class="cov-tile' + (cls ? " " + cls : "") + '">' +
+    function tile(label, val, pct, cls, note, covKey){
+      var active = covKey ? (state.cov === covKey) : !state.cov;
+      return '<button type="button" class="cov-tile' + (cls ? " " + cls : "") + (active ? " active" : "") + '" data-cov="' + (covKey || "") + '" aria-pressed="' + active + '">' +
         '<div class="cov-num">' + val.toLocaleString("en-US") + '</div>' +
         '<div class="cov-lab">' + label + '</div>' +
         (pct ? '<div class="cov-pct">' + pct + '</div>' : "") +
-        (note ? '<div class="cov-note">' + note + '</div>' : "") + '</div>';
+        (note ? '<div class="cov-note">' + note + '</div>' : "") + '</button>';
     }
     document.getElementById("cov-grid").innerHTML =
-      tile("Companies in view", n, p(n, ALL.length) + " of the full portfolio", "", "") +
-      tile("With any contact candidate", anyC, p(anyC, n) + " of view", "", "") +
-      tile("Verifiable training leader", found, p(found, n) + " of view", "lead", "") +
-      tile("Leader backed by official / press source", solid, p(solid, found) + " of leaders", "", "") +
-      tile("Leader from a single aggregator listing", aggOnly, p(aggOnly, found) + " of leaders", "warn", "unconfirmed") +
-      tile("Fallback only \u2014 not the training owner", weak, p(weak, n) + " of view", "", "") +
-      tile("No verifiable contact", none, p(none, n) + " of view", "", "");
+      tile("Companies in view", n, p(n, ALL.length) + " of the full portfolio", "", "", "") +
+      tile("With any contact candidate", anyC, p(anyC, n) + " of view", "", "", "any") +
+      tile("Verifiable training leader", found, p(found, n) + " of view", "lead", "", "found") +
+      tile("Leader backed by official / press source", solid, p(solid, found) + " of leaders", "", "", "solid") +
+      tile("Leader from a single aggregator listing", aggOnly, p(aggOnly, found) + " of leaders", "warn", "unconfirmed", "agg") +
+      tile("Fallback only \u2014 not the training owner", weak, p(weak, n) + " of view", "", "", "weak") +
+      tile("No verifiable contact", none, p(none, n) + " of view", "", "", "none");
   }
 
   function render(){
@@ -951,8 +968,21 @@
   $("enr-only").addEventListener("change", function(e){ state.enr = e.target.checked; state.showAll = false; render(); });
   $("need-research").addEventListener("change", function(e){ state.need = e.target.checked; state.showAll = false; render(); });
   $("has-recent").addEventListener("change", function(e){ state.recent = e.target.checked; state.showAll = false; render(); });
-  $("has-sugg").addEventListener("change", function(e){ state.sugg = e.target.checked; state.showAll = false; render(); });
-  $("tl-only").addEventListener("change", function(e){ state.tl = e.target.checked; state.showAll = false; render(); });
+  $("has-sugg").addEventListener("change", function(e){ state.sugg = e.target.checked; state.cov = state.sugg ? "any" : (state.cov === "any" ? null : state.cov); state.showAll = false; render(); });
+  $("tl-only").addEventListener("change", function(e){ state.tl = e.target.checked; state.cov = state.tl ? "found" : (state.cov === "found" ? null : state.cov); state.showAll = false; render(); });
+  $("cov-grid").addEventListener("click", function(e){
+    var btn = e.target.closest("[data-cov]");
+    if(!btn) return;
+    var key = btn.getAttribute("data-cov");
+    state.cov = (key && state.cov !== key) ? key : null;
+    /* keep the two contact checkboxes coherent with tile-driven filtering */
+    if(state.cov === "found"){ state.tl = true; $("tl-only").checked = true; }
+    else { state.tl = false; $("tl-only").checked = false; }
+    if(state.cov === "any"){ state.sugg = true; $("has-sugg").checked = true; }
+    else if(state.cov){ state.sugg = false; $("has-sugg").checked = false; }
+    state.showAll = false;
+    render();
+  });
   showAllBtn.addEventListener("click", function(){ state.showAll = true; render(); });
 
   render();
