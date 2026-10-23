@@ -970,7 +970,7 @@
     if(state.cov === "found"){ state.tl = true; $("tl-only").checked = true; }
     else { state.tl = false; $("tl-only").checked = false; }
     if(state.cov === "any"){ state.sugg = true; $("has-sugg").checked = true; }
-    else if(state.cov){ state.sugg = false; $("has-sugg").checked = false; }
+    else { state.sugg = false; $("has-sugg").checked = false; }
     state.showAll = false;
     render();
   });
