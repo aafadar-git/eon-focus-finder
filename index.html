@@ -157,6 +157,17 @@
   .check input{width:17px;height:17px;accent-color:var(--accent);cursor:pointer;margin:0}
   .count-line{color:var(--muted);font-size:13.5px;margin:10px 2px 12px}
   .count-line b{color:var(--ink)}
+  .covstats{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;margin:0 0 14px}
+  .cov-title{font-size:15px;margin:0 0 10px;color:var(--ink)}
+  .cov-title .cov-sub{font-weight:400;color:var(--muted);font-size:13px}
+  .cov-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+  .cov-tile{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+  .cov-tile.lead{background:var(--accent-soft);border-color:var(--accent)}
+  .cov-tile.warn{background:var(--amber-soft)}
+  .cov-num{font-size:22px;font-weight:700;color:var(--ink);line-height:1.1}
+  .cov-lab{font-size:12.5px;color:var(--ink-2);margin-top:2px;line-height:1.35}
+  .cov-pct{font-size:12px;color:var(--muted);margin-top:3px}
+  .cov-note{font-size:11.5px;color:var(--amber);font-weight:600;margin-top:2px;text-transform:uppercase;letter-spacing:.04em}
 
   /* ---------- ranked list ---------- */
   .list{display:flex;flex-direction:column;gap:8px}
@@ -461,6 +472,11 @@
   </section>
 
   <p class="count-line" id="count-line" role="status"></p>
+
+  <section class="covstats" id="cov-stats" aria-label="Coverage and quality of contact data for the companies in view">
+    <h2 class="cov-title">Coverage &amp; quality <span class="cov-sub">&mdash; contact data for the companies in view; updates as you change the filters above</span></h2>
+    <div class="cov-grid" id="cov-grid"></div>
+  </section>
 
   <div class="list" id="list"></div>
   <div class="empty" id="empty" hidden>No companies match these filters. Loosen the search, tier, or minimum score to see more of the portfolio.</div>
@@ -848,6 +864,44 @@
     "</article>";
   }
 
+  /* ----- coverage & quality stats (recomputed for the filtered view) ----- */
+  function covBestEvidence(r){
+    var rank = {company_official:0, reputable_press:1, aggregator:2};
+    var best = null;
+    (r.suggested_contacts || []).forEach(function(c){
+      if(c.evidence && (best === null || rank[c.evidence] < rank[best])) best = c.evidence;
+    });
+    return best;
+  }
+  function renderCovStats(rows, pend){
+    var view = rows.concat(pend || []);
+    var n = view.length, found = 0, weak = 0, none = 0, solid = 0, aggOnly = 0;
+    view.forEach(function(r){
+      if(r.contacts_status === "found"){
+        found++;
+        if(covBestEvidence(r) === "aggregator") aggOnly++; else solid++;
+      } else if(r.contacts_status === "weak"){ weak++; }
+      else { none++; }
+    });
+    var anyC = found + weak;
+    function p(x, base){ return base ? (Math.round(x / base * 1000) / 10).toFixed(1) + "%" : "\u2014"; }
+    function tile(label, val, pct, cls, note){
+      return '<div class="cov-tile' + (cls ? " " + cls : "") + '">' +
+        '<div class="cov-num">' + val.toLocaleString("en-US") + '</div>' +
+        '<div class="cov-lab">' + label + '</div>' +
+        (pct ? '<div class="cov-pct">' + pct + '</div>' : "") +
+        (note ? '<div class="cov-note">' + note + '</div>' : "") + '</div>';
+    }
+    document.getElementById("cov-grid").innerHTML =
+      tile("Companies in view", n, p(n, ALL.length) + " of the full portfolio", "", "") +
+      tile("With any contact candidate", anyC, p(anyC, n) + " of view", "", "") +
+      tile("Verifiable training leader", found, p(found, n) + " of view", "lead", "") +
+      tile("Leader backed by official / press source", solid, p(solid, found) + " of leaders", "", "") +
+      tile("Leader from a single aggregator listing", aggOnly, p(aggOnly, found) + " of leaders", "warn", "unconfirmed") +
+      tile("Fallback only \u2014 not the training owner", weak, p(weak, n) + " of view", "", "") +
+      tile("No verifiable contact", none, p(none, n) + " of view", "", "");
+  }
+
   function render(){
     var rows = filtered();
     var shown = state.showAll ? rows : rows.slice(0, PAGE);
@@ -856,6 +910,7 @@
     pendSection.hidden = pend.length === 0;
     $("pending-list").innerHTML = pend.map(pendingHTML).join("");
     countEl.innerHTML = "Showing <b>" + shown.length + "</b> of <b>" + rows.length + "</b> matching companies · <b>" + RECORDS.length + "</b> scored in total";
+    renderCovStats(rows, pend);
     emptyEl.hidden = rows.length !== 0 || pend.length !== 0;
     listEl.innerHTML = shown.map(rowHTML).join("");
     if(!state.showAll && rows.length > PAGE){
