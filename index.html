@@ -408,6 +408,24 @@
     .ask-msgs{max-height:340px}
     .ask-setbtn{margin-left:0}
   }
+
+  /* review section: staged prospects, kept visually and functionally separate from the portfolio */
+  .review-section{margin-top:30px;border-top:2px solid var(--amber);padding-top:18px}
+  .review-section h2{font-size:19px;font-weight:700;margin:0 0 4px;letter-spacing:-.01em}
+  .review-section .review-sub{color:var(--ink-2);font-size:14px;margin:0 0 12px;max-width:78ch}
+  .review-tally{font-size:13px;font-weight:600;border-radius:8px;padding:8px 12px;margin:0 0 14px;background:var(--amber-soft);border:1px solid var(--amber);color:var(--ink)}
+  .review-details summary{cursor:pointer;font-weight:600;font-size:14.5px;margin-bottom:12px}
+  .review-list{display:flex;flex-direction:column;gap:8px}
+  .review-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px}
+  .review-head{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:baseline}
+  .review-name{font-weight:700;font-size:16px}
+  .review-dom{color:var(--muted);font-size:13px}
+  .review-tag{font-size:12.5px;color:var(--ink-2)}
+  .review-chip{margin-left:auto;font-size:12px;font-weight:600;border-radius:999px;padding:3px 10px;border:1px solid var(--line)}
+  .review-chip.unconf{background:var(--amber-soft);border-color:var(--amber)}
+  .review-facts{color:var(--ink-2);font-size:13.5px;margin:8px 0}
+  .review-card p{margin:6px 0;font-size:14px;line-height:1.5}
+  .review-card .review-note{color:var(--ink-2);font-size:13.5px}
 </style>
 </head>
 <body>
@@ -502,6 +520,237 @@
     <h2>Newly added from your enrichment list — baseline scan pending</h2>
     <p class="pend-sub">These five companies came from your curated enrichment list and were reconciled into the Finder on 2026-10-18. They carry verified enriched facts and researched suggested contacts, but no trigger history yet — so they are not scored and sit outside the ranking above until a baseline scan runs.</p>
     <div class="list" id="pending-list"></div>
+  </section>
+
+  <section class="review-section" id="review-section" aria-label="New prospects under review">
+    <h2>New prospects — under review</h2>
+    <p class="review-sub">20 companies from the October 2026 prospect list, shown here for team review <em>before</em> any are accepted. These are <strong>not</strong> part of the portfolio above: they carry no score, they are not counted in the coverage panel, they do not appear in the CSV export, and Ask EON does not know them yet. Send accept/discard feedback to Anas — accepted companies will join the portfolio as baseline-pending records (like the five above) and enter the ranking after a baseline trigger scan; discarded ones will be logged so they are not re-proposed.</p>
+    <p class="review-tally">20 companies · 0 verified training leaders · 1 unconfirmed contact (Delek US) · 19 no contact candidate</p>
+    <details class="review-details" open>
+      <summary>Review the 20 companies (click to collapse)</summary>
+      <div class="review-list">
+<article class="review-card" id="review-card-0">
+  <div class="review-head"><span class="review-name">Permian Resources</span> <span class="review-dom">permianres.com</span> <span class="review-tag">Oil &amp; gas producer · USA</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Midland, Texas, USA · Revenue: $5.07B USD (FY2025) · Employees: 515</p>
+  <p class="review-sub">Independent oil and natural gas E&amp;P focused on the core Delaware Basin of the Permian Basin, West Texas and New Mexico (NYSE: PR)</p>
+  <p><b>Training:</b> Safety training, leadership development, continuous learning, a Manager Academy launched in 2023, tuition reimbursement, and a summer intern program; no training/L&amp;D leader publicly named</p>
+  <p><b>Expansion:</b> ~$1.1B of acquisitions in 2025 (&gt;700 transactions, ~30,000 net acres, ~19,000 net royalty acres), including the $608M acquisition of Apache (APA) Northern Delaware Basin assets closed June 16, 2025; $534.3M of bolt-on acquisitions in H1 2026</p>
+  <p><b>Safety:</b> Safety training emphasized in sustainability reporting; no major 2024-2026 safety incident surfaced in searches</p>
+  <p><b>Status:</b> Still operating independently as a public company (NYSE: PR), co-CEOs William M. Hickey III and James H. Walter; acquirer in bolt-on deals, not acquired</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No training/L&amp;D leader publicly named. Searches surfaced only generic role descriptions and the sustainability report (safety training, Manager Academy, tuition reimbursement) with no individual owner identified.</p>
+</article>
+<article class="review-card" id="review-card-1">
+  <div class="review-head"><span class="review-name">Range Resources</span> <span class="review-dom">rangeresources.com</span> <span class="review-tag">Oil &amp; gas producer · USA</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Fort Worth, Texas, USA · Revenue: $2.99B USD (FY2025) · Employees: 564</p>
+  <p class="review-sub">Independent natural gas and NGL E&amp;P, pure-play Marcellus Shale operator in the Appalachian Basin of Southwest Pennsylvania (NYSE: RRC)</p>
+  <p><b>Training:</b> Technical and safety training, corporate-level talent development and succession planning referenced generically; no academy, named program, or training/L&amp;D leader publicly identified</p>
+  <p><b>Expansion:</b> No major asset expansion in 2024-2025; instead the company agreed to be acquired (see status flag)</p>
+  <p><b>Safety:</b> Safety training referenced in company HR materials; no major 2024-2026 safety incident surfaced in searches</p>
+  <p><b>Status:</b> FLAG — PENDING ACQUISITION: EQT Corporation agreed on October 26, 2026 to acquire Range Resources in an all-stock deal (~$13B equity value; 0.987 EQT shares per Range share), expected to close Q1 2027 subject to shareholder and regulatory approval. If it closes, Range ceases to exist as an independent company. (Corroborated Oct 27, 2026 via Reuters/Morningstar coverage.) Note: acquirer EQT Corporation is itself NOT in the EON portfolio.</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No training/L&amp;D leader publicly named. The only people-side leader found is Juli Basinger, VP of Human Resources (HR generalist), explicitly NOT a valid training-leader result and not substituted.</p>
+</article>
+<article class="review-card" id="review-card-2">
+  <div class="review-head"><span class="review-name">Delek US</span> <span class="review-dom">delekus.com</span> <span class="review-tag">Refiner · USA</span> <span class="review-chip unconf">Unconfirmed contact</span></div>
+  <p class="review-facts">Brentwood, Tennessee, USA · Revenue: $10.72B USD (FY2025) · Employees: 1,902</p>
+  <p class="review-sub">Independent downstream energy company: petroleum refining (Tyler TX, Big Spring TX, El Dorado AR, Krotz Springs LA), logistics/transportation and storage, and renewables; retail segment divested in 2024 (NYSE: DK)</p>
+  <p><b>Training:</b> No dedicated academy or named L&amp;D program publicly identified; workforce training referenced in job postings (behavior-based safety culture); a Director, Enterprise Learning &amp; Talent role exists (see contact)</p>
+  <p><b>Expansion:</b> Sold retail network (249 stores) to a FEMSA subsidiary on September 30, 2024 for ~$390M net proceeds; Delek Logistics acquired H2O Midstream (Sept 2024, $229.5M) and Gravity Water Midstream (closed Jan 2, 2025, $300.8M); Tyler refinery expansion announced Oct 2026 under the Defense Production Act</p>
+  <p><b>Safety:</b> Behavior-based safety culture referenced in operations job postings; no major 2024-2026 refinery safety incident surfaced in searches</p>
+  <p><b>Status:</b> Still operating independently as a public company (NYSE: DK); no merger or ownership change in 2024-2026. Headcount fell from 3,591 (2023) to 1,902 (2025) on the retail divestiture.</p>
+<p><b>Contact:</b> Nate Slavik (Nathaniel Slavik), Director, Enterprise Learning &amp; Talent — aggregator only, <b>unconfirmed, not verified</b>. Source: <a href="https://wiza.co/d/delek-us-holdings/d6ef/nate-slavik">https://wiza.co/d/delek-us-holdings/d6ef/nate-slavik</a></p>
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). One current-role candidate found, but backed only by aggregator listings, so it is UNCONFIRMED, not verified.</p>
+</article>
+<article class="review-card" id="review-card-3">
+  <div class="review-head"><span class="review-name">Helmerich &amp; Payne</span> <span class="review-dom">helmerichpayne.com</span> <span class="review-tag">Drilling contractor · USA</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Tulsa, Oklahoma, USA · Revenue: $3.75B USD (FY2025 (fiscal year ended September 30, 2025)) · Employees: 15,700</p>
+  <p class="review-sub">Contract drilling services and solutions provider (FlexRig land rigs, offshore Gulf of Mexico platform rigs, international drilling) — North America Solutions, Offshore Gulf of Mexico, International Solutions (NYSE: HP)</p>
+  <p><b>Training:</b> Technical training, leadership development and organizational development led by a Global Talent Development &amp; Learning team (represented on the Safety Leadership Team); acquired KCA Deutag's DART simulator-based training business (six locations globally). No individual training leader publicly named — the Manager, Global Talent Development &amp; Learning post was vacant and advertised in Oct 2026, reporting to an unnamed Director of Global Talent and Learning</p>
+  <p><b>Expansion:</b> Transformative $1.97B all-cash acquisition of KCA Deutag closed January 16, 2025, pivoting H&amp;P from a predominantly North American land driller to a global driller; headcount jumped from ~7,000 to 15,700</p>
+  <p><b>Safety:</b> Safety is a stated core focus; the Talent Development &amp; Learning function is represented on the Safety Leadership Team; no major 2024-2026 safety incident surfaced in searches</p>
+  <p><b>Status:</b> Still operating independently as a public company (NYSE: HP), CEO John W. Lindsay; acquirer (KCA Deutag, closed Jan 2025), not acquired</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No training/L&amp;D leader publicly named. A vacant Manager, Global Talent Development &amp; Learning role advertised in Oct 2026 reporting to an unnamed Director of Global Talent and Learning is a vacancy, not a candidate; no name was substituted.</p>
+</article>
+<article class="review-card" id="review-card-4">
+  <div class="review-head"><span class="review-name">Tourmaline Oil</span> <span class="review-dom">tourmalineoil.com</span> <span class="review-tag">Oil &amp; gas producer · Canada</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Calgary, Alberta, Canada · Revenue: CAD 5,650 million (2024) · Employees: 1,130 (as of Dec 31, 2024)</p>
+  <p class="review-sub">Canadian senior natural gas producer; exploration, development, production and acquisition in the Western Canadian Sedimentary Basin (Alberta Deep Basin, NEBC Montney, Peace River Triassic Oil), with integrated midstream gathering and processing</p>
+  <p><b>Training:</b> Partnership with Northern Lights College funding the Field Operations Technician - Hydrocarbon Resources program (announced Feb 2024, pilot cohort fall 2024); growing student/intern program (25 students/interns in the latest year); workforce averages 33.6 hours of health, safety and emergency response training; all employees/contractors must complete training to access sites</p>
+  <p><b>Expansion:</b> Q1 2025 acquisitions: remaining 50% non-op working interest in Laprise-Conroy (Montney) and Greater Septimus assets plus Resthaven acreage; NEBC Montney buildout including four new gas plants (first, Aitken, slated late 2026); target 850,000 boe/d by 2030; Oct 2024-Jun 2025 spent $2.3B acquiring Crew, Todd and Saguaro plus Strathcona Resources assets (all BC Montney)</p>
+  <p><b>Safety:</b> 2024 Sustainability Report: contractor TRIF 0.48 in 2024 (0.48 in 2023), 5 contractor lost-time injuries, 46 contractor recordable injuries, 0 contractor fatalities in 2024; zero lost-time/recordable employee injuries since 2014 claimed</p>
+  <p><b>Status:</b> Operating independently; no merger or acquisition of the company itself found in 2024-2026 (it has been the acquirer)</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No named training/L&amp;D leader publicly verifiable. Todd Maheux (General Manager of Production Operations) is quoted on the Northern Lights College program but is an operations manager, not a training owner.</p>
+</article>
+<article class="review-card" id="review-card-5">
+  <div class="review-head"><span class="review-name">Pembina Pipeline</span> <span class="review-dom">pembina.com</span> <span class="review-tag">Midstream / pipelines · Canada</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Calgary, Alberta, Canada · Revenue: CAD 7,384 million (2024) · Employees: 2,997 full-time</p>
+  <p class="review-sub">Canadian midstream company: transportation and midstream services — crude oil, natural gas and NGL pipelines in western Canada, plus gas gathering/processing, fractionation, storage, NGL exports and the Cedar LNG joint venture</p>
+  <p><b>Training:</b> Compliance &amp; Technical Training function (Compliance &amp; Technical Training Advisor/Sr Advisor roles, Supervisor, People Program Execution, SuccessFactors Learning) plus a Leadership, Talent and Learning unit; First Nations Environmental Technician Program; in-house Pembina Learning System; Engineer-in-Training (EIT) program with four 12-month rotations</p>
+  <p><b>Expansion:</b> Full consolidation of Alliance Pipeline and Aux Sable via a $3.1B acquisition of Enbridge's interests (Apr 2024); Cedar LNG JV with Haisla Nation (Kitimat BC, ~3 mtpa, ~$4B, positive FID; PETRONAS 1.0 mtpa + Ovintiv 0.5 mtpa deals); $430M Phase VIII Peace Pipeline Expansion and $90M NEBC MPS Expansion completed 2024; two conventional pipeline expansions totalling $425M sanctioned Feb 2026; Jul 2026 non-binding Heads of Agreement to participate in a proposed ~1M bpd nation-building energy corridor (Alberta to West Coast) with the Government of Canada, Alberta and Trans Mountain</p>
+  <p><b>Safety:</b> 2024 ESG Report: 0 employee fatalities 2022-2024, 0 contractor fatalities in 2024 (1 in 2022); combined TRIF 0.68 in 2024 (employee 0.32, contractor 1.44); Tier 1 process safety incidents 4 in 2024, Tier 2: 15; safety culture 'Zero by Choice' and Life Saving Rules</p>
+  <p><b>Status:</b> Operating independently; no merger or acquisition of the company itself found in 2024-2026 (it has been the acquirer/consolidator)</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). A training function exists (Leadership, Talent and Learning unit; Compliance &amp; Technical Training roles) but no named training/L&amp;D leader is publicly verifiable. Claudia D'Orazio (VP Human Resources) and Sarah Schwann (Chief Legal, People &amp; Corporate Affairs Officer) are HR generalists, not training leaders. Lisa Hurl (Administration, Technical Training, per an aggregator listing) is an administrative role, not a leader.</p>
+</article>
+<article class="review-card" id="review-card-6">
+  <div class="review-head"><span class="review-name">Serica Energy</span> <span class="review-dom">serica-energy.com</span> <span class="review-tag">Offshore producer · United Kingdom</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">London, United Kingdom · Revenue: USD 727 million (2024) · Employees: 228 (FY2024); 242 (FY2025)</p>
+  <p class="review-sub">British independent upstream oil and gas company; exploration, development and production on the UK Continental Shelf (Bruce/Keith/Rhum Northern North Sea hub, Triton FPSO Central North Sea, Columbus, Orlando, Erskine, West of Shetland); ~5% of UK natural gas production</p>
+  <p><b>Training:</b> Training and Competence Team with a Training and Competence Lead role (Aberdeen/hybrid, reports to Chief People Officer; owns the training and competence framework, LMS, training records and competence frameworks onshore/offshore) and a Training and Competence Coordinator; ESG report includes an 'Our Training Programmes' appendix; Salus Technical Process Safety Awareness online course rolled out to the UK workforce (250 delegates, 3-year access)</p>
+  <p><b>Expansion:</b> Four cash-generative acquisitions through 2025 at ~$3.3/boe 2P; 40% operated interest in Greater Laggan Area + infrastructure + four near-field blocks from TotalEnergies (announced Sep 2025, completed Mar 2026, GBP 1 consideration, $56M net completion payment received); entered West of Shetland via the Prax Upstream acquisition (Lancaster field); planned 2026: Catcher and Golden Eagle interests from ONE-Dyas + asset package from Spirit Energy; production target &gt;65,000 boepd by end 2026 (2025: 27,600 boepd)</p>
+  <p><b>Safety:</b> HSE improvement notice over a Bruce platform fuel-gas release (196kg hydrocarbons over 2.5+ hours; no injuries); Triton FPSO storm damage Jan 2024 (Storm Eowyn) suspended production to mid/late Mar 2024 with repeated H2 2024 compressor issues; 2024 environmental statement: Bruce chemical non-compliance reports</p>
+  <p><b>Status:</b> Operating independently; no merger or acquisition of the company itself found in 2024-2026 (it has been the acquirer). Note: 2025 saw discussions with EnQuest about a possible all-share combination, but no completed transaction found.</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). The Training and Competence Lead role genuinely exists (company job description on serica-energy.com, newly created ~2025) and reports to Chief People Officer Janice Doyle, but no named holder is publicly verifiable — the posting names no incumbent and no later source names one. Janice Doyle is an HR generalist (CPO), not a training leader; Andrew Sekulin (Integrity and Process Safety Manager) sponsored the Salus training rollout but is a process-safety manager, not the training owner. Worth a re-check later: if the role has been filled, the holder would be the ideal contact.</p>
+</article>
+<article class="review-card" id="review-card-7">
+  <div class="review-head"><span class="review-name">Preem</span> <span class="review-dom">preem.se</span> <span class="review-tag">Refiner · Sweden</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Stockholm, Sweden · Revenue: SEK 130,765 million (net sales) (2024) · Employees: 1,823 average in 2024 (press boilerplate ~1,600, of which 1,100 at refineries)</p>
+  <p class="review-sub">Sweden's largest fuel company; refining (Preemraff Lysekil and Preemraff Gothenburg, combined capacity &gt;18M m3/year), renewable fuels, heating oil and lubricants, ~500 filling stations, ~80% of products exported</p>
+  <p><b>Training:</b> Physical and digital training initiatives (work environment, Code of Conduct, leadership, information security, regulatory requirements); Learning Management System implemented during 2024; individual development plans identifying short/long-term competence needs; engagement index 83 (2024)</p>
+  <p><b>Expansion:</b> Renewable transition: target 5M m3 renewable fuels production by 2030; Synsat co-processing facility at Lysekil (out of operation Q3 2025 for revamp); record renewable production 247,000 m3 in Q3 2025; Lysekil turnaround Sep-Dec 2025; new environmental permit application planned for Preemraff Lysekil</p>
+  <p><b>Safety:</b> 0 serious environmental incidents in 2024 (also 0 in 2023 and 2022); NOx 764 tonnes, SOx 266 tonnes, VOC 6,997 tonnes to air in 2024; zero-target vision for health, safety and environment; Sweden's second-largest industrial CO2 emitter in 2024 (~1.94M tonnes from Lysekil + Gothenburg)</p>
+  <p><b>Status:</b> FLAG — NO LONGER INDEPENDENT: VARO Energy announced agreement Mar 2025 to acquire 100% of parent Corral Petroleum Holdings AB (all-cash); VARO completed the acquisition Jan 16, 2026, creating VAROPreem; Preem renamed VAROPreem Sverige AB in Feb 2026, with the Preem name retained for the Swedish filling-station network. (Corroborated Oct 27, 2026 via VARO/Cision and trade-press coverage.) Team should weigh whether it still belongs as a standalone prospect.</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No named training/L&amp;D leader publicly verifiable. CEO Magnus Heimburg is not a training owner; no learning/competence leadership role surfaced in leadership or HR searches.</p>
+</article>
+<article class="review-card" id="review-card-8">
+  <div class="review-head"><span class="review-name">Borr Drilling</span> <span class="review-dom">borrdrilling.com</span> <span class="review-tag">Drilling contractor · Norway / UAE</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Hamilton, Bermuda · Revenue: $1.02 billion (FY2025) · Employees: 2,030–2,087</p>
+  <p class="review-sub">Offshore shallow-water drilling contractor — owns and operates modern high-specification jack-up rigs on dayrate contracts, plus Integrated Well Services (IWS) through Opex and Akal</p>
+  <p><b>Training:</b> Mintra-based Borr Drilling Training Portal (e-learning), a structured competency programme (Borr Competence Assurance Management System, BCAMS) and a Corporate Training and Development department with role-specific training, competency assessment and succession planning; no academy under its own brand found</p>
+  <p><b>Expansion:</b> New jack-up commitments through 2026: Prospector 5 binding letter of award from BW Energy in Gabon (4 wells, minimum 320 days, from Q3 2026); Ran six-month extension with Eni in Mexico (to Sep 2026); Thor two-well award in Vietnam (from Jul 2026); Norve three-well West Africa award (from mid-Dec 2026); Shell option exercised on Natt in Nigeria (into Aug 2027); Galar and Gersemi two-year extensions with Pemex in Mexico (to May 2030); listed on Euronext Growth Oslo in Dec 2025 in addition to NYSE</p>
+  <p><b>Safety:</b> 2024 TRIR 0.25. FLAG — Oct 24-25, 2026: Prospector 5 jack-up sank off Gabon (Dussafu Marin) during jacking/preload after a punch-through event; 110 of 115 aboard safe; Reuters reported 1 worker found dead and 4 missing, while Borr's Oct 26 statement said 5 unaccounted for with no fatalities confirmed; Gabon's oil ministry ordered a technical investigation. (Corroborated Oct 27, 2026 via Borr/BW Energy statements and trade press.) Outreach timing sensitivity — do not approach on training while the incident response is ongoing.</p>
+  <p><b>Status:</b> Still operating independently; listed on NYSE and Euronext Growth Oslo (Oslo listing Dec 2025); CEO Bruno Morand. No 2024–2026 merger or change of control found. Note: Prospector 5 sank in Oct 2026 and its BW Energy Gabon campaign is disrupted.</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No named training/L&amp;D leader publicly verifiable. A Corporate Training and Development Manager (T&amp;D Manager) role exists but its holder is unnamed in public sources; the only named training staff found are Training and Competence Coordinators (e.g., Lovella Evangelista, Dubai — single aggregator listing), which is a coordinator role, not a training leader.</p>
+</article>
+<article class="review-card" id="review-card-9">
+  <div class="review-head"><span class="review-name">Tullow Oil</span> <span class="review-dom">tullowoil.com</span> <span class="review-tag">Offshore producer · United Kingdom / Ghana</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">London, United Kingdom · Revenue: $847.0 million (FY2025 (2024 restated: $1,287.2 million after Gabon classified as discontinued operation)) · Employees: 346 (2025 average)</p>
+  <p class="review-sub">Independent upstream oil and gas exploration and production company focused on West Africa (Ghana Jubilee and TEN fields) and South America</p>
+  <p><b>Training:</b> Leadership and development training, mandatory HSE/compliance and technical skills training and an in-house mentoring programme (company careers page); in Ghana, supplier training via the Upstream Petroleum Business Academy partnership with the Petroleum Commission and the Tullow Supplier SDG Readiness Programme; no standalone academy found</p>
+  <p><b>Expansion:</b> Completed sale of Tullow Oil Gabon to Gabon Oil Company for $307 million on 29 Jul 2025 (exit after 21 years); sold Kenya working interest for at least $120 million (2025); restarted Jubilee drilling in Ghana in Aug 2025 (J72-P well, better-than-expected net pay); West Cape Three Points and Deep Water Tano licences extended to 2040 (ratified by Ghana Parliament 20 Feb 2026); signed agreement 19 Feb 2026 to acquire the TEN FPSO for $205 million gross (completion expected end Q1 2027)</p>
+  <p><b>Safety:</b> Zero fatalities and zero lost-time injuries in 2024 and 2025; 2024 TRIR 0.21, 2025 TRIR 1.02 (5 medical treatment cases, 2 high-potential incidents) per company sustainability data; 2024: 9 high-potential incidents, 1 minor recordable injury on TEN FPSO</p>
+  <p><b>Status:</b> Still operating independently, listed on the London Stock Exchange; Kosmos Energy's takeover approach ended Dec 2024 (Kosmos walked away); Ian Perks became CEO in Sep 2025; no 2024–2026 merger or change of control.</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No named training/L&amp;D leader publicly verifiable. L&amp;D activity is described on the company careers page without naming an owner; no Head of Learning, CLO or academy head found in public sources.</p>
+</article>
+<article class="review-card" id="review-card-10">
+  <div class="review-head"><span class="review-name">Oando</span> <span class="review-dom">oandoplc.com</span> <span class="review-tag">Oil &amp; gas producer · Nigeria</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Lagos, Nigeria · Revenue: ₦3.18 trillion (FY2025 (unaudited; FY2024 audited: ₦4.09 trillion)) · Employees: 1,045</p>
+  <p class="review-sub">Indigenous integrated energy group: upstream exploration and production (Oando Energy Resources), crude and refined-product supply and trading, and mining and infrastructure development</p>
+  <p><b>Training:</b> Internal 'Oando Academy' bespoke training offering (championed by OER COO Alex Irune); a 12-month drilling and digital-skills programme with NCDMB and Hilong launched Sep 2026 in Port Harcourt (Basic Drilling Engineering, MWD/LWD, rig operations, analytics); earlier Oleum Academy mechanic-training initiative (2016, Oando Marketing); an Organisational Development Manager role exists (job posting, holder unnamed)</p>
+  <p><b>Expansion:</b> Acquired and integrated NAOC Ltd in 2024 (peak operated production 103,206 boepd); upstream production up 32% in FY2025 to 32,482 boepd on full-year NAOC JV consolidation; awarded operatorship of Block KON 13 in Angola's onshore Kwanza Basin (2025)</p>
+  <p><b>Safety:</b> FY2025: 0 fatalities, 0 lost-time injuries, TRIR 0.05 (FY2024: 0.19), 1 medical treatment case, 34 near misses, 20.3 million hours worked (company FY2025 audited results); Apr 2025: three pipeline sabotage incidents (emergency response activated, third-party interference confirmed); Jul 2025: Ewelesuo-axis spill on Obama-Brass pipeline contained and repaired</p>
+  <p><b>Status:</b> Still operating independently, listed on the Nigerian Exchange and Johannesburg Stock Exchange; no 2024–2026 merger or change of control; the 2024 NAOC acquisition was an acquisition BY Oando, not of it.</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No named training/L&amp;D leader publicly verifiable. Oando Academy's delivery was championed by Dr Ainojie 'Alex' Irune, COO of Oando Energy Resources — a COO, excluded under the brief unless the person demonstrably owns training; no Head of Learning, CLO or academy head named in public sources. An Organisational Development Manager vacancy exists but its holder is unnamed.</p>
+</article>
+<article class="review-card" id="review-card-11">
+  <div class="review-head"><span class="review-name">Heirs Energies</span> <span class="review-dom">heirsenergies.com</span> <span class="review-tag">Oil &amp; gas producer · Nigeria</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Lagos, Nigeria · Revenue: Over $1 billion (cumulative, per CEO statement) (2021 to Q4 2024 (cumulative, not an annual figure; no audited annual revenue publicly disclosed)) · Employees: 100 (PitchBook estimate)</p>
+  <p class="review-sub">Indigenous integrated energy company: onshore oil and gas exploration and production, operator of OML 17 in Nigeria (Port Harcourt area)</p>
+  <p><b>Training:</b> Parent-group corporate university Heirs Academy (Heirs Holdings) runs immersive L&amp;D programmes, flagship leadership development programmes, self-study and MOOCs, plus a Graduate Trainee Programme (second cohort opened Aug 2026); Heirs Energies itself runs community training (e.g., Sun Books teacher training in Rivers State) and university scholarships for OML 17 host communities; no Heirs Energies-specific academy or training function named</p>
+  <p><b>Expansion:</b> OML 17 turnaround: 100% recovery factor by Q4 2024, production 51,000 bopd by end Q4 2024; Nov 2025: NNPC/Heirs Energies OML 17 JV rigless recompletion doubled output, adding over 135 MMscf/d to domestic gas supply; Agbada Green Corridor Initiative launched; OML 17 JV and Redtech commissioned an Integrated Operations Monitoring Centre</p>
+  <p><b>Safety:</b> Zero-fatality operations claimed by the CEO for the period to Q4 2024; community flaring-health concerns reported around Niger Delta operations in a 2026 study (not a company-reported incident)</p>
+  <p><b>Status:</b> Still operating independently as a private Heirs Holdings portfolio company; acquired a 45% participating interest in OML 17 from Shell, Total and Eni in 2021 ($1.1 billion); no 2024–2026 merger or change of control found (a Dec 2025 PitchBook secondary-transaction entry involving Seplat Energy could not be verified in detail).</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No named training/L&amp;D leader publicly verifiable for Heirs Energies. The group-level Heirs Academy (Heirs Holdings corporate university) names no director/head in public sources; its advisory board includes Group HR roles (Modupe Adesunloye, HR Director; Eluemuno Olumagin, Group Director HR), which are HR generalists and excluded under the brief.</p>
+</article>
+<article class="review-card" id="review-card-12">
+  <div class="review-head"><span class="review-name">Maurel &amp; Prom</span> <span class="review-dom">maureletprom.fr</span> <span class="review-tag">Oil &amp; gas producer · France / Gabon</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Paris, France · Revenue: $578 million USD (2025) · Employees: 783-810 (published figures vary; a group figure of around 760 has also been cited)</p>
+  <p class="review-sub">Independent oil and gas exploration and production company, principally onshore oil in Gabon and gas in Tanzania, with additional operations including Venezuela</p>
+  <p><b>Training:</b> Compliance training program reported at 100% completion among operational staff (third-party company profile, weak source) and an apprenticeship program with IFP School (2024); no dedicated academy or named training leader publicly identified</p>
+  <p><b>Expansion:</b> Restart of activities in Venezuela under way (2024). The planned $1.3 billion acquisition of Assala Energy (Gabon) did NOT proceed: Gabon Oil Company exercised its pre-emptive right and signed its own share purchase agreement with Carlyle on 15 February 2024, superseding Maurel &amp; Prom's August 2023 agreement</p>
+  <p><b>Safety:</b> New safety management system reported with a 25% decrease in workplace incidents (third-party company profile, unverified); August 2023 Gabon update: employee safety unaffected and on-site activities normal</p>
+  <p><b>Status:</b> Still operating independently as a listed company (Euronext Paris) and a subsidiary of PT Pertamina Internasional Eksplorasi dan Produksi. No 2024–2026 merger or acquisition of the company itself; the Assala acquisition fell through in February 2024 when Gabon's national oil company pre-empted it</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No training/L&amp;D leader (CLO, Head of Learning/L&amp;D, VP Learning, Director of Training, or academy head) is publicly verifiable for Maurel &amp; Prom; searches surfaced only an unrelated Leadership Trainer/Facilitator job posting and no named training owner. No substitute is offered.</p>
+</article>
+<article class="review-card" id="review-card-13">
+  <div class="review-head"><span class="review-name">PRIO</span> <span class="review-dom">prio3.com.br</span> <span class="review-tag">Offshore producer · Brazil</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Rio de Janeiro, Brazil · Revenue: $2.41 billion USD (2024; alternative published figures up to $2.665 billion) (2024) · Employees: 810 (2024; other published figures up to approximately 1,115)</p>
+  <p class="review-sub">Brazilian independent offshore oil and gas producer focused on redeveloping mature fields with FPSOs, mainly in the Campos Basin; Brazil's largest private oil company, second only to Petrobras</p>
+  <p><b>Training:</b> No public academy, corporate university, or dedicated L&amp;D program identified, and no training leader publicly named</p>
+  <p><b>Expansion:</b> Wahoo field: Ibama installation license September 2025, first oil March-April 2026, second well online 27 March 2026 at 12,000 bopd; $3.5 billion acquisition of Equinor's 60% stake in the Peregrino field</p>
+  <p><b>Safety:</b> ANP ordered a production halt at the Peregrino FPSO (risk-management documentation deficiencies and deluge-system adjustments), lasting an estimated 3-6 weeks to about 2 months and affecting approximately 97,500 boepd (approximately $192 million estimated lost revenue, per 2025 trade-press reporting)</p>
+  <p><b>Status:</b> Still operating independently; no controlling shareholder (largest disclosed holder BlackRock approximately 7.5%). Renamed from PetroRio to PRIO in May 2022 (legal name finalized August 2023) — a rebrand, not a merger or acquisition</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No training/L&amp;D leader (CLO, Head of Learning/L&amp;D, VP Learning, Director of Training, or academy head) is publicly verifiable for PRIO; searches in English and Portuguese found no corporate university, training academy, or named training owner, and the published leadership team contains no training or HR head. No substitute is offered.</p>
+</article>
+<article class="review-card" id="review-card-14">
+  <div class="review-head"><span class="review-name">Vista Energy</span> <span class="review-dom">vistaenergy.com</span> <span class="review-tag">Oil &amp; gas producer · Argentina</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Mexico City, Mexico (operations in Argentina and Mexico) · Revenue: $1,647.8 million USD (2024) · Employees: 584 (FY2024; another published figure is 542)</p>
+  <p class="review-sub">Independent shale oil and gas exploration and production company focused on the Vaca Muerta formation in Argentina, with operations also in Mexico</p>
+  <p><b>Training:</b> HSE safety training program: 7,449 HSE training hours delivered to employees and contractors in 2025 (+136% year on year), focused on policy compliance, risk management and operational controls; 3,162 hours across 402 activities in 2024. No dedicated academy or named training leader publicly identified</p>
+  <p><b>Expansion:</b> 50% stake in La Amarga Chica from Petronas (SPA signed 15 April 2025; $900 million upfront plus $150 million in 2029/2030 plus 7.3 million shares); acquired Equinor's Vaca Muerta assets (25.1% Bandurria Sur, 35% Bajo del Toro) in May 2026; Q2 2026 production 156.1 Mboe/d; year-end 2025 proved reserves 588.1 MMboe</p>
+  <p><b>Safety:</b> 2025: five lost-time injuries (all contractors), consolidated TRIR 0.80 (below the 1.0 target), zero fatalities, 6.25 million hours worked; 2024 TRIR 0.59 with zero fatalities since 2019; zero major oil spill incidents in 2023</p>
+  <p><b>Status:</b> Still operating independently; no merger or acquisition of the company itself in 2024-2026 (it has been the acquirer in the deals above)</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No training/L&amp;D leader (CLO, Head of Learning/L&amp;D, VP Learning, Director of Training, or academy head) is publicly verifiable for Vista Energy; searches found HSE training activity but no named training owner, and the published leadership team contains no training or HR head. No substitute is offered.</p>
+</article>
+<article class="review-card" id="review-card-15">
+  <div class="review-head"><span class="review-name">Parex Resources</span> <span class="review-dom">parexresources.com</span> <span class="review-tag">Oil &amp; gas producer · Colombia</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Calgary, Alberta, Canada · Revenue: $1.288 billion USD (FY2024; alternative published figures range from $887.5 million to $1.04 billion) (2024) · Employees: 448-461 (448 at 31 December 2024 per one source; 461 per PitchBook/GlobalData)</p>
+  <p class="review-sub">Largest independent oil and gas exploration and production company in Colombia, focused on conventional oil and gas in the Llanos, Magdalena and Putumayo basins</p>
+  <p><b>Training:</b> Structured program: 43,342 hours of training in 2025, 70/20/10 model, Individual Development Plan process with 24/7 access, education sponsorship (13 employees in 2025), Leading Through Change seminars (over 90% of leaders), Emotional Intelligence workshops, and approximately 93% mandatory compliance training completion in 2025. No named training leader publicly identified</p>
+  <p><b>Expansion:</b> Completed acquisition of Frontera E&amp;P on 1 June 2026, becoming Colombia's largest independent oil and gas producer</p>
+  <p><b>Safety:</b> 98% year-on-year reduction in oil spills from operations (company homepage)</p>
+  <p><b>Status:</b> Still operating independently; it was the acquirer in the June 2026 Frontera E&amp;P deal, not an acquisition target</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No training/L&amp;D leader (CLO, Head of Learning/L&amp;D, VP Learning, Director of Training, or academy head) is publicly verifiable for Parex Resources; searches found a well-documented training program but no named training owner, and no people/HR leader surfaced in leadership searches. No substitute is offered.</p>
+</article>
+<article class="review-card" id="review-card-16">
+  <div class="review-head"><span class="review-name">Oil India</span> <span class="review-dom">oil-india.com</span> <span class="review-tag">State-owned producer · India</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Duliajan, Assam, India (field headquarters); corporate office in Noida, Uttar Pradesh, India · Revenue: ₹33,946 crore (consolidated) (FY2025-26 (year ended 31 March 2026)) · Employees: 6,593</p>
+  <p class="review-sub">State-owned oil and gas exploration and production company (upstream), with refining via subsidiary Numaligarh Refinery, pipelines, petrochemicals and city gas distribution</p>
+  <p><b>Training:</b> HR Learning Department at the Management Training and Development Centre (MTDC) complex, Duliajan, housing five specialised institutes/centres; the function dates to a Training &amp; Development Department established in 1984, renamed Learning &amp; Development in 2013 and HR Learning Department in June 2021</p>
+  <p><b>Expansion:</b> Numaligarh Refinery expansion from 3 to 9 MMTPA (₹33,901 crore project) in staged commissioning through December 2026, with the ~1,635 km Paradip-Numaligarh crude pipeline and the upgraded Numaligarh-Siliguri product pipeline (1.72 to 5.5 MMTPA, inaugurated March 2026); incorporated wholly owned subsidiary OIL Green Energy Ltd in FY2025-26 and is developing 25 compressed biogas projects; announced plans in December 2025 to acquire a 10% stake in BPCL's greenfield refinery at Ramayapatnam</p>
+  <p><b>Safety:</b> Best-ever Lost Time Injury Frequency Rate of 0.071 at end of FY2024-25 (Chairman's speech, AGM 2024-25); Phase I of its HSE Transformation Plan completed, Phase II implementing an HSE Management System</p>
+  <p><b>Status:</b> Still operating independently as a Government of India Maharatna CPSE (Government of India owns 56.66%); no merger or acquisition in 2024-2026. Subsidiary Numaligarh Refinery (69.63% stake) is expanding, not being sold. Sanjay Verma assumed charge as Resident Chief Executive, Field Headquarters Duliajan, on 1 October 2026 (routine leadership change).</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). Oil India has an HR Learning Department at MTDC Duliajan and a GM-HR Learning role appears in tender documents, but no current named holder of a training/L&amp;D leadership role is publicly verifiable. An undated internal staff list circulating on Scribd names Syed Md Iqbal Zamir as Head-L&amp;D (WM) Duliajan and a student internship report thanks a Manager, HR-Learning, but neither is a current, reliable public source, so no candidate is reported rather than risk a stale name.</p>
+</article>
+<article class="review-card" id="review-card-17">
+  <div class="review-head"><span class="review-name">Thai Oil</span> <span class="review-dom">thaioilgroup.com</span> <span class="review-tag">Refiner · Thailand</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Bangkok, Thailand · Revenue: THB 395.7 billion (total revenue, consolidated) (FY2025 (year ended 31 December 2025)) · Employees: 2,108</p>
+  <p class="review-sub">Integrated oil refining and petrochemicals group operating one of Asia-Pacific's most efficient refineries (275,000 bpd), plus lube base oil, LAB, power, solvents, logistics and marine/pipeline transportation and storage</p>
+  <p><b>Training:</b> Thaioil Academy, its internal online/mobile learning platform (24/7 self-learning, course registration, progress tracking), plus a 2025 Employee Development Programs suite including a Mobility Academy / Mobility Development framework (host-country, international business and cross-cultural programs) and an internal digital cross-cultural learning module; partners with academic institutions for destination-specific programs</p>
+  <p><b>Expansion:</b> Clean Fuel Project (CFP) progressing: after the earlier EPC contract termination, Wood was awarded the EPCM contract in September 2025; board approved in October 2025 a new subsidiary with PTT Tank holding a 49% stake to support the project</p>
+  <p><b>Safety:</b> 2025 Integrated Report: zero work-related fatalities (employees and contractors); TRIFR 0.36 (employees) / 0.77 (contractors) per million hours and LTIFR 0.18 / 0.11, both above its 2025 targets; a contractor fatality during CFP construction (post-weld heat treatment accident, 2023) is disclosed on its OHS page, with construction halted and an expert investigation committee appointed</p>
+  <p><b>Status:</b> Still operating independently as a listed PTT-group refiner; no merger, acquisition or ownership change in 2024-2026 found. Bandhit Thamprajamchit is CEO and President.</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No training/L&amp;D leader publicly named. The executive roster names Viroj Wongsathirayakhun as Executive Vice President of Organization Effectiveness, an HR-adjacent generalist role, not a training owner, so no candidate is reported.</p>
+</article>
+<article class="review-card" id="review-card-18">
+  <div class="review-head"><span class="review-name">S-Oil</span> <span class="review-dom">s-oil.com</span> <span class="review-tag">Refiner / petrochemicals · South Korea</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Seoul, South Korea (head office; refinery at Onsan Industrial Complex, Ulsan) · Revenue: KRW 34.25 trillion (FY2025) · Employees: 3,398</p>
+  <p class="review-sub">South Korea's third-largest oil refiner, operating a 669,000 bpd refinery at Onsan, Ulsan, producing petroleum products, lube base oil and petrochemicals</p>
+  <p><b>Training:</b> Broad range of structured learning and development programs to prepare employees for future leadership roles (2025 ESG Report); no named academy or training centre identified in public sources</p>
+  <p><b>Expansion:</b> Shaheen petrochemical project at Onsan, Ulsan (KRW 9.26 trillion / ~US$7 billion, using Aramco's TC2C crude-to-chemicals technology; 1.8 million t/yr ethylene, 770,000 t/yr propylene) in trial operations as of October 2026 with commercial operations targeted in 2027; signed a KRW 5.5 trillion (US$3.7 billion) five-year polyethylene export agreement with SABIC running to December 2030</p>
+  <p><b>Safety:</b> 2025 ESG Report: total LTIR 0.01 and TRCF 0.01 in 2025, zero oil-spill incidents 2022-2025, zero Tier 1 process safety incidents and zero fire incidents in 2025; earlier incidents disclosed: a fire at the #2 alkylation unit in May 2022 (corporate fine imposed January 2026, under appeal) and a fire in a No. 2 PX process pump in 2024</p>
+  <p><b>Status:</b> Still operating independently; the October 2026 ownership filing was an internal Aramco restructuring, not a sale: Aramco's ~63% stake moved from its Netherlands subsidiary to Aramco Downstream Asia (Singapore entity) on 1 October 2026, with ultimate Aramco control unchanged. CEO Anwar A. Al-Hejazi.</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No training/L&amp;D leader publicly named; searches surfaced only the CEO and general HR framework descriptions, with no named head of learning, training or academy.</p>
+</article>
+<article class="review-card" id="review-card-19">
+  <div class="review-head"><span class="review-name">Karoon Energy</span> <span class="review-dom">karoonenergy.com</span> <span class="review-tag">Offshore producer · Australia / Brazil</span> <span class="review-chip none">No contact candidate</span></div>
+  <p class="review-facts">Houston, Texas, USA (global headquarters relocated from Melbourne, Australia in 2025) · Revenue: US$628.6 million (sales revenue) (FY2025 (year ended 31 December 2025)) · Employees: 167</p>
+  <p class="review-sub">Mid-tier offshore oil and gas producer operating the Baúna field (Santos Basin, Brazil) and a 30% non-operated interest in Who Dat (US Gulf of Mexico)</p>
+  <p><b>Training:</b> No academy; employee development programs including individual development plans, industry-specific training events, conferences and bespoke courses, and the Franklin Covey '6 Critical Practices of Leading a Team' internal leadership initiative running since 2022 (2024 Sustainability Report)</p>
+  <p><b>Expansion:</b> Acquired the Baúna FPSO (completed 30 April 2025) and is transitioning to direct operatorship (expected mid-2026); advancing the Neon development in Brazil and Baúna maintenance and revitalisation projects through 2026; earlier transformational acquisition of LLOG interests in the US Gulf of Mexico (Who Dat, announced November 2023); Carri Lockhart appointed CEO/MD in November 2025 as HQ moved to Houston</p>
+  <p><b>Safety:</b> 2025: zero lost-time injuries, TRIR 0.16 per 200,000 hours, no Tier 1 or Tier 2 process safety incidents; 2025 annual report notes an 80% reduction in TRIR versus 2024, with relaunched Golden Safety Rules and safety improvement plans</p>
+  <p><b>Status:</b> Still operating independently (ASX-listed); no merger or acquisition in 2024-2026. Major corporate change is the 2025 relocation of global HQ from Melbourne to Houston and a refreshed executive team (CEO Carri Lockhart, CFO Eric Williams, CCTO Mark Mick, CPO Beth Radtke, all 2025-2026).</p>
+
+  <p class="review-note"><b>Contact note:</b> No verifiable training/L&amp;D leader publicly named (Oct 2026). No training/L&amp;D leader publicly named; the named people executives are HR generalists (Chief People Officer Beth Radtke; Group Vice President People &amp; Culture Marney Leyonhjelm-Beck), which do not qualify, so no candidate is reported.</p>
+</article>
+      </div>
+    </details>
   </section>
 
   <section class="ask-section" id="ask-eon" aria-label="Ask EON">
