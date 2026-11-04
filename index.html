@@ -329,7 +329,15 @@
   }
 
   /* ---------- baseline-pending section ---------- */
-  .pending-section{margin-top:30px}
+  /* ---------- view tabs ---------- */
+.tabbar{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 6px;border-bottom:2px solid var(--line)}
+.tabbtn{appearance:none;background:transparent;border:1px solid transparent;border-bottom:none;border-radius:9px 9px 0 0;padding:8px 14px;font:inherit;font-size:14px;font-weight:600;color:var(--ink-2);cursor:pointer;margin-bottom:-2px}
+.tabbtn:hover{color:var(--ink);background:var(--surface-2)}
+.tabbtn[aria-selected="true"]{background:var(--surface);border-color:var(--line);color:var(--ink);box-shadow:var(--shadow)}
+body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladder,body[data-view="ladder"] .view-ranking,body[data-view="ladder"] .view-prospects,body[data-view="ranking"] .view-prospects,body[data-view="ranking"] .view-ladder{display:none}
+.ptr-strip{margin-top:26px;border:1px dashed var(--amber);background:var(--amber-soft);border-radius:var(--radius);padding:11px 14px;font-size:14px;color:var(--ink)}
+.ptr-strip button{background:none;border:none;font:inherit;font-weight:700;color:var(--accent);cursor:pointer;padding:0;text-decoration:underline}
+.pending-section{margin-top:30px}
   .pending-section h2{font-size:19px;font-weight:700;margin:0 0 4px;letter-spacing:-.01em}
   .pending-section .pend-sub{color:var(--ink-2);font-size:14px;margin:0 0 12px;max-width:78ch}
   .pending-head{padding:13px 16px 4px}
@@ -441,7 +449,7 @@
 .review-card .review-ev{color:var(--ink-2);font-size:13.5px}
 </style>
 </head>
-<body>
+<body data-view="ranking">
 <div class="wrap">
 
   <header class="top">
@@ -476,7 +484,13 @@
     </div>
   </details>
 
-  <section class="controls" aria-label="Filters">
+  <nav class="tabbar" role="tablist" aria-label="Dashboard views">
+    <button type="button" class="tabbtn" role="tab" id="tab-ranking" data-view-btn="ranking" aria-selected="true">Ranking</button>
+    <button type="button" class="tabbtn" role="tab" id="tab-prospects" data-view-btn="prospects" aria-selected="false">New prospects — under review (20)</button>
+    <button type="button" class="tabbtn" role="tab" id="tab-ladder" data-view-btn="ladder" aria-selected="false">Contact ladder — worked example</button>
+  </nav>
+
+  <section class="controls view-ranking" aria-label="Filters">
     <div class="ctl">
       <label for="q">Search company or domain</label>
       <input type="search" id="q" placeholder="e.g. bakerhughes.com" autocomplete="off" />
@@ -513,29 +527,29 @@
     </div>
   </section>
 
-  <p class="count-line" id="count-line" role="status"></p>
+  <p class="count-line view-ranking" id="count-line" role="status"></p>
 
-  <section class="covstats" id="cov-stats" aria-label="Coverage and quality of contact data for the companies in view">
+  <section class="covstats view-ranking" id="cov-stats" aria-label="Coverage and quality of contact data for the companies in view">
     <h2 class="cov-title">Coverage &amp; quality <span class="cov-sub">&mdash; contact data for the companies in view. Click a tile to filter the list by it; click it again to clear</span></h2>
     <div class="cov-grid" id="cov-grid"></div>
   </section>
 
-  <div class="export-row" aria-label="Export">
+  <div class="export-row view-ranking" aria-label="Export">
     <button type="button" class="export-btn" id="export-view">Export current view (CSV)</button>
     <button type="button" class="export-btn secondary" id="export-all">Export full portfolio (CSV)</button>
     <span class="export-note">Downloads the companies shown by the current filters, with scores, enrichment, and contact status.</span>
   </div>
-  <div class="list" id="list"></div>
-  <div class="empty" id="empty" hidden>No companies match these filters. Loosen the search, tier, or minimum score to see more of the portfolio.</div>
-  <button type="button" class="showall" id="showall" hidden></button>
+  <div class="list view-ranking" id="list"></div>
+  <div class="empty view-ranking" id="empty" hidden>No companies match these filters. Loosen the search, tier, or minimum score to see more of the portfolio.</div>
+  <button type="button" class="showall view-ranking" id="showall" hidden></button>
 
-  <section class="pending-section" id="pending-section" hidden aria-label="Newly added enriched companies, baseline scan pending">
+  <section class="pending-section view-ranking" id="pending-section" hidden aria-label="Newly added enriched companies, baseline scan pending">
     <h2>Newly added from your enrichment list — baseline scan pending</h2>
     <p class="pend-sub">These five companies came from your curated enrichment list and were reconciled into the Finder on 2026-10-18. They carry verified enriched facts and researched suggested contacts, but no trigger history yet — so they are not scored and sit outside the ranking above until a baseline scan runs.</p>
     <div class="list" id="pending-list"></div>
   </section>
 
-  <section class="review-section" id="review-section" aria-label="New prospects under review">
+  <section class="review-section view-prospects" id="review-section" aria-label="New prospects under review">
     <h2>New prospects — under review</h2>
     <p class="review-sub">20 companies from the October 2026 prospect list, shown here for team review <em>before</em> any are accepted. These are <strong>not</strong> part of the portfolio above: they carry no score, they are not counted in the coverage panel, they do not appear in the CSV export, and Ask EON does not know them yet. Send accept/discard feedback to Anas — accepted companies will join the portfolio as baseline-pending records (like the five above) and enter the ranking after a baseline trigger scan; discarded ones will be logged so they are not re-proposed.</p>
     <p class="review-sub">Contacts below follow the 8-tier ladder: 1 verified current training leader; 2 verified current operations leader; 3 unconfirmed current training leader; 4 unconfirmed current operations leader; 5–8 the same four kinds for former employees (referral contacts, not pitch targets). Leadership tiers mean operations leaders only — no CEO, no HR. Tier 1 is the existing "verifiable training leader" definition; unconfirmed tiers are never labeled verified.</p>
@@ -787,7 +801,7 @@
     </details>
   </section>
 
-  <section class="ladder-section" id="ladder-example" aria-label="Contact ladder worked example: Chevron">
+  <section class="ladder-section view-ladder" id="ladder-example" aria-label="Contact ladder worked example: Chevron">
     <h2>Contact ladder — worked example: Chevron</h2>
     <p class="review-sub">One company from the ranking above — <strong>Chevron</strong> (Tier 1 in the portfolio, score 80) — researched rung by rung on November 3, 2026, to show how the 8-tier contact ladder works inside a single account. <strong>This is a worked example, not merged data:</strong> Chevron's Finder record still shows no contact candidate, and this section changes no scores, counts, panel tiles, CSV exports, or Ask EON answers.</p>
     <p class="review-sub"><strong>What separates the tiers?</strong></p>
@@ -847,7 +861,9 @@
     <p class="review-sub" style="margin-top:12px">Researched November 3, 2026 from public sources; names and titles only. Verified = backed by a company-official or reputable-press source; unconfirmed = an event listing or a single directory/aggregator listing, never labeled verified.</p>
   </section>
 
-  <section class="ask-section" id="ask-eon" aria-label="Ask EON">
+  <p class="ptr-strip view-ranking">Looking for the staged companies? <strong>20 new prospects</strong> are waiting for team accept/discard decisions on their own tab. <button type="button" data-goto="prospects">Open New prospects — under review &rarr;</button></p>
+
+  <section class="ask-section view-ranking" id="ask-eon" aria-label="Ask EON">
     <h2>Ask EON</h2>
     <p class="ask-sub">Ask questions about the companies in this Finder — who leads training where, why a company ranks where it does, what changed recently. Answers come only from the records on this page, using your own API key.</p>
     <div class="ask-card">
@@ -1757,6 +1773,39 @@
 
   /* Exposed for verification of the retrieval layer. */
   window.AskEON = { retrieve: retrieve, buildContext: buildContext };
+})();
+</script>
+
+<script>
+(function(){
+  var VIEWS = ["ranking", "prospects", "ladder"];
+  function fromHash(){
+    var h = (location.hash || "").replace("#", "");
+    if (h === "prospects" || h === "review-section") return "prospects";
+    if (h === "ladder" || h === "ladder-example") return "ladder";
+    return "ranking";
+  }
+  function setView(v, updateHash){
+    if (VIEWS.indexOf(v) < 0) v = "ranking";
+    document.body.setAttribute("data-view", v);
+    var btns = document.querySelectorAll("[data-view-btn]");
+    for (var i = 0; i < btns.length; i++){
+      btns[i].setAttribute("aria-selected", btns[i].getAttribute("data-view-btn") === v ? "true" : "false");
+    }
+    if (updateHash && history && history.replaceState){
+      history.replaceState(null, "", v === "ranking" ? (location.pathname + location.search) : ("#" + v));
+    }
+  }
+  function wire(sel, attr){
+    var els = document.querySelectorAll(sel);
+    for (var i = 0; i < els.length; i++){
+      els[i].addEventListener("click", function(){ setView(this.getAttribute(attr), true); window.scrollTo(0, 0); });
+    }
+  }
+  wire("[data-view-btn]", "data-view-btn");
+  wire("[data-goto]", "data-goto");
+  window.addEventListener("hashchange", function(){ setView(fromHash(), false); });
+  setView(fromHash(), false);
 })();
 </script>
 </body>
