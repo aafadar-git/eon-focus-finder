@@ -431,7 +431,14 @@
   .review-card p{margin:6px 0;font-size:14px;line-height:1.5}
   .review-card .review-note{color:var(--ink-2);font-size:13.5px}
   .review-card .review-backup{font-size:13.5px}
-  .review-card .review-ev{color:var(--ink-2);font-size:13.5px}
+  .ladder-section{margin-top:30px;border-top:2px solid var(--blue);padding-top:18px}
+.ladder-section h2{font-size:19px;font-weight:700;margin:0 0 4px;letter-spacing:-.01em}
+.ladder-section .review-sub{color:var(--ink-2);font-size:14px;margin:0 0 12px;max-width:78ch}
+.review-chip.none{background:transparent;border-color:var(--line);color:var(--muted)}
+.review-card.rung-empty{border-style:dashed;background:var(--surface-2);box-shadow:none}
+.review-card.rung-empty .review-name{color:var(--ink-2)}
+.review-card .src{font-size:13px;color:var(--muted)}
+.review-card .review-ev{color:var(--ink-2);font-size:13.5px}
 </style>
 </head>
 <body>
@@ -778,6 +785,62 @@
 </article>
       </div>
     </details>
+  </section>
+
+  <section class="ladder-section" id="ladder-example" aria-label="Contact ladder worked example: Chevron">
+    <h2>Contact ladder — worked example: Chevron</h2>
+    <p class="review-sub">One company from the ranking above — <strong>Chevron</strong> (Tier 1 in the portfolio, score 80) — researched rung by rung on November 3, 2026, to show how the 8-tier contact ladder works inside a single account. <strong>This is a worked example, not merged data:</strong> Chevron's Finder record still shows no contact candidate, and this section changes no scores, counts, panel tiles, CSV exports, or Ask EON answers.</p>
+    <p class="review-sub">How to read it: work from the top — the highest populated rung is the route into the account. Current contacts outrank former ones; within the same currency, verified outranks unconfirmed. Rungs 5–8 are <strong>former</strong> employees: referral and introduction contacts, not pitch targets. Empty rungs are shown empty on purpose — most companies populate only some rungs, and a forced name is worse than a gap.</p>
+    <p class="review-tally">8 rungs · 5 populated (tiers 2, 3, 5, 6, 7) · 3 empty (tiers 1, 4, 8)</p>
+    <div class="review-list">
+<article class="review-card rung-empty" id="ladder-rung-1">
+  <div class="review-head"><span class="review-name">Tier 1 · Training leader — verified, current</span> <span class="review-chip none">Empty</span></div>
+  <p class="review-note"><b>No contact candidate at this tier.</b> No Chevron page, press release, or reputable-press article names a current Chief Learning &amp; Talent Officer. The seat is contested in weaker sources (see tier 3), so nothing is labeled verified. Grading call by parent agent, Nov 3, 2026: Glenda Valero de Silano is press-verified in the role in 2024-25 but has no 2026 currency confirmation, and an Oct 2026 event listing bills a different person with the same title — she therefore does not clear the 'verified, current' bar.</p>
+</article>
+<article class="review-card" id="ladder-rung-2">
+  <div class="review-head"><span class="review-name">Tier 2 · Operations leader — verified, current</span> <span class="review-chip ver">Verified</span></div>
+  <p><b>Robert Clay Neff</b> — President, Upstream<br><span class="src">Evidence: Company official · Source: <a href="https://www.chevron.com/who-we-are/leadership" target="_blank" rel="noopener">Chevron — Leadership</a></span></p>
+  <p class="review-note">Heads the entire Upstream segment since Jul 1, 2025. Spot-checked on chevron.com by parent agent, Nov 3, 2026.</p>
+  <p><b>Andy Walz</b> — President, Downstream, Midstream &amp; Chemicals<br><span class="src">Evidence: Company official · Source: <a href="https://www.chevron.com/who-we-are/leadership" target="_blank" rel="noopener">Chevron — Leadership</a></span></p>
+  <p class="review-note">Heads refining, midstream and chemicals. Spot-checked on chevron.com by parent agent, Nov 3, 2026.</p>
+  <p><b>Gerbert Schoonman</b> — President, Shale &amp; Tight<br><span class="src">Evidence: Company official · Source: <a href="https://www.businesswire.com/news/home/20260205452968/en/" target="_blank" rel="noopener">Chevron leadership-changes release, Feb 5, 2026 (Business Wire)</a></span></p>
+  <p class="review-note">Succeeded Bruce Niemeyer effective Apr 1, 2026; runs the global shale &amp; tight portfolio.</p>
+</article>
+<article class="review-card" id="ladder-rung-3">
+  <div class="review-head"><span class="review-name">Tier 3 · Training leader — unconfirmed, current</span> <span class="review-chip unconf">Unconfirmed — confirm before use</span></div>
+  <p><b>Justin Steele</b> — Chief Learning and Talent Officer (as billed)<br><span class="src">Evidence: Event listing only · Source: <a href="https://stateofdowntown.org/" target="_blank" rel="noopener">Central Houston — State of Downtown, Oct 29, 2026</a></span></p>
+  <p class="review-note">Event-listing evidence only, uncorroborated by Chevron or press — unconfirmed. Spot-checked on stateofdowntown.org by parent agent, Nov 3, 2026.</p>
+  <p class="review-note">Competing claim: directories still list Glenda Valero de Silano as CLTO; she is press-verified in the role in 2024-25 (Flipping the Barrel, May 21, 2024) but no 2026 source confirms she still holds it. Two names, one seat — unresolved.</p>
+</article>
+<article class="review-card rung-empty" id="ladder-rung-4">
+  <div class="review-head"><span class="review-name">Tier 4 · Operations leader — unconfirmed, current</span> <span class="review-chip none">Empty</span></div>
+  <p class="review-note"><b>No contact candidate at this tier.</b> Directory candidates failed checking: a 'GM of Operations' aggregator listing is stale and the role is now business development (outside the boundary); an SVP Operations for Saudi Arabian Chevron is named in an event bio and a trade magazine but never by Chevron — held out rather than forced into the tier.</p>
+</article>
+<article class="review-card" id="ladder-rung-5">
+  <div class="review-head"><span class="review-name">Tier 5 · Training leader — verified, former (referral)</span> <span class="review-chip ver">Verified</span></div>
+  <p><b>Stacy Eng</b> — Chief Learning &amp; Talent Officer (former)<br><span class="src">Evidence: Reputable press · Source: <a href="https://hrtoday.in/nrg-energy-appoints-stacy-eng-as-senior-vice-president-head-of-people-ai-innovation/" target="_blank" rel="noopener">HR Today, Jun 17, 2026; ATD/CTDO and IACET for the Chevron role</a></span></p>
+  <p class="review-note">Now SVP, Head of People &amp; AI Innovation at NRG Energy (joined Jun 2026). CORRECTION to earlier records: Jun 2026 is when she joined NRG, not when she left Chevron; her Chevron exit date was never published and predates her successor's documented start in 2024.</p>
+  <p><b>Barry Leskin</b> — Chief Learning Officer, ChevronTexaco (former, until ~2002)<br><span class="src">Evidence: Reputable press · Source: <a href="https://hbr.org/2003/01/the-best-laid-incentive-plans" target="_blank" rel="noopener">Harvard Business Review, Jan 2003</a></span></p>
+  <p class="review-note">Historical reference only — too dated for outreach; shown to complete the rung honestly.</p>
+</article>
+<article class="review-card" id="ladder-rung-6">
+  <div class="review-head"><span class="review-name">Tier 6 · Operations leader — verified, former (referral)</span> <span class="review-chip ver">Verified</span></div>
+  <p><b>Nigel Hearne</b> — Executive Vice President, Oil, Products &amp; Gas (former)<br><span class="src">Evidence: Company official · Source: <a href="https://www.chevron.com/newsroom/2024/q3/chevron-announces-headquarters-relocation-and-senior-leadership-changes" target="_blank" rel="noopener">Chevron release, Aug 2, 2024</a></span></p>
+  <p class="review-note">Retired Oct 1, 2024 after 35 years; was Chevron's top operations role.</p>
+  <p><b>Bruce Niemeyer</b> — President, Shale &amp; Tight (former)<br><span class="src">Evidence: Company official · Source: <a href="https://www.businesswire.com/news/home/20260205452968/en/" target="_blank" rel="noopener">Chevron leadership-changes release, Feb 5, 2026 (Business Wire)</a></span></p>
+  <p class="review-note">Retired Oct 2026 after 26 years; succeeded by Gerbert Schoonman (tier 2).</p>
+</article>
+<article class="review-card" id="ladder-rung-7">
+  <div class="review-head"><span class="review-name">Tier 7 · Training leader — unconfirmed, former (referral)</span> <span class="review-chip unconf">Unconfirmed — confirm before use</span></div>
+  <p><b>J.C. (José Carlos) Cunha</b> — Drilling &amp; Completions Technical Training Leader, Chevron Energy Technology Company (former)<br><span class="src">Evidence: Single directory listing · Source: <a href="https://www.professors.directory/rate/j-c-cunha_university-of-alberta" target="_blank" rel="noopener">Professors Directory (single directory listing of his CV)</a></span></p>
+  <p class="review-note">Function-level technical-training leader, not the enterprise CLO; tenure undated in the source; now a petroleum-engineering professor. Unconfirmed.</p>
+</article>
+<article class="review-card rung-empty" id="ladder-rung-8">
+  <div class="review-head"><span class="review-name">Tier 8 · Operations leader — unconfirmed, former (referral)</span> <span class="review-chip none">Empty</span></div>
+  <p class="review-note"><b>No contact candidate at this tier.</b> Every former Chevron operations leader who surfaces publicly carries company or press documentation, which places them in tier 6. No aggregator-only former operations leader could be evidenced cleanly.</p>
+</article>
+    </div>
+    <p class="review-sub" style="margin-top:12px">Researched November 3, 2026 from public sources; names and titles only. Verified = backed by a company-official or reputable-press source; unconfirmed = an event listing or a single directory/aggregator listing, never labeled verified.</p>
   </section>
 
   <section class="ask-section" id="ask-eon" aria-label="Ask EON">
