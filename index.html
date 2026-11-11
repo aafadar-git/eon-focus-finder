@@ -442,6 +442,11 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
   .ladder-section{margin-top:30px;border-top:2px solid var(--blue);padding-top:18px}
 .ladder-section h2{font-size:19px;font-weight:700;margin:0 0 4px;letter-spacing:-.01em}
 .ladder-section .review-sub{color:var(--ink-2);font-size:14px;margin:0 0 12px;max-width:78ch}
+.pin-box{border:1px dashed var(--blue);border-radius:10px;padding:10px 12px;margin:0 0 12px;max-width:78ch}
+.pin-box input{padding:6px 8px;border:1px solid #999;border-radius:6px;margin-left:8px}
+.pin-box button{margin-left:8px;padding:6px 12px;border-radius:6px;border:1px solid var(--blue);background:transparent;color:inherit;cursor:pointer}
+.pin-msg{margin-left:8px;font-size:13px;color:var(--ink-2)}
+.contact-slot{display:block}
 .review-chip.none{background:transparent;border-color:var(--line);color:var(--muted)}
 .review-card.rung-empty{border-style:dashed;background:var(--surface-2);box-shadow:none}
 .review-card.rung-empty .review-name{color:var(--ink-2)}
@@ -803,63 +808,101 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
 
   <section class="ladder-section view-ladder" id="ladder-example" aria-label="Contact ladder worked example: Chevron">
     <h2>Contact ladder — worked example: Chevron</h2>
-    <p class="review-sub">One company from the ranking above — <strong>Chevron</strong> (Tier 1 in the portfolio, score 80) — researched rung by rung on November 3, 2026 (tier 3 updated November 6, 2026), to show how the 8-tier contact ladder works inside a single account. <strong>This is a worked example, not merged data:</strong> Chevron's Finder record still shows no contact candidate, and this section changes no scores, counts, panel tiles, CSV exports, or Ask EON answers.</p>
+    <p class="review-sub">One company from the ranking above — <strong>Chevron</strong> (Tier 1 in the portfolio, score 80) — first researched rung by rung on November 3, 2026 and <strong>revised on November 11, 2026</strong> under the team's updated rules: current employees only; learning &amp; development specialists included and ranked above operations leaders; Apollo used to confirm employment where no company or press source exists, and to supply contact details, which are PIN-protected in this section and revealed only after the team PIN is entered. <strong>This is a worked example, not merged data:</strong> Chevron's Finder record still shows no contact candidate, and this section changes no scores, counts, panel tiles, CSV exports, or Ask EON answers.</p>
     <p class="review-sub"><strong>What separates the tiers?</strong></p>
-    <p class="review-sub"><strong>Role:</strong> Training leaders own the learning function. Operations leaders run a business unit or asset and can sponsor training — here that means a COO or operations/business-unit/asset head, not the CEO or HR.</p>
-    <p class="review-sub"><strong>Status:</strong> Current employees are direct routes into the company. Former employees — tiers 5–8 — are referral contacts, not pitch targets.</p>
-    <p class="review-sub"><strong>Evidence:</strong> Verified means backed by the company or reputable press. Unconfirmed means the claim rests only on an event, directory, or aggregator listing and must be checked before use.</p>
-    <p class="review-sub"><strong>Reading order:</strong> current outranks former; verified outranks unconfirmed; and when those are equal, training outranks operations. That is why an unconfirmed current contact at tier 3 or 4 still ranks above a verified former contact at tier 5 or 6. The highest populated rung is the route into the account — and empty rungs are shown empty on purpose: most companies populate only some rungs, and a forced name is worse than a gap.</p>
-    <p class="review-tally">8 rungs · 5 populated (tiers 2, 3, 5, 6, 7) · 3 empty (tiers 1, 4, 8)</p>
+    <p class="review-sub"><strong>Role:</strong> Training leaders own the learning function. Learning &amp; development specialists run training day to day — training managers, L&amp;D specialists, instructional designers. Operations leaders run a business unit or asset and can sponsor training — here that means a COO or operations/business-unit/asset head, not the CEO or HR.</p>
+    <p class="review-sub"><strong>Status:</strong> Current employees only. Former employees appeared in the original version of this example as referral contacts; the team removed them on November 11, 2026.</p>
+    <p class="review-sub"><strong>Evidence:</strong> Verified means backed by the company or reputable press. Apollo-confirmed means Apollo's records confirm the person currently holds the role (with a verified work email where Apollo holds one) — a stronger grade than a bare event, directory, or aggregator listing, but still short of verified. Anything weaker is unconfirmed and must be checked before use.</p>
+    <p class="review-sub"><strong>Reading order:</strong> Verified rungs come first, then unconfirmed; inside each group the order is training leaders, then L&amp;D specialists, then operations leaders; Apollo-confirmed sits at the top of the unconfirmed group. The highest populated rung is the route into the account — and empty rungs are shown empty on purpose: most companies populate only some rungs, and a forced name is worse than a gap.</p>
+    <div class="pin-box" id="pin-box">
+      <strong>Team access — contact details.</strong> Work emails and LinkedIn profiles for the contacts in this example (sourced from Apollo) are PIN-protected.
+      <span id="pin-form"><input type="password" id="pin-input" placeholder="Team PIN" autocomplete="off"><button type="button" id="pin-btn">Unlock contact details</button></span><span class="pin-msg" id="pin-msg"></span>
+    </div>
+    <p class="review-tally">6 rungs · 4 populated (tiers 3, 4, 5, 6) · 2 empty (tiers 1, 2)</p>
     <div class="review-list">
 <article class="review-card rung-empty" id="ladder-rung-1">
   <div class="review-head"><span class="review-name">Tier 1 · Training leader — verified, current</span> <span class="review-chip none">Empty</span></div>
-  <p class="review-note"><b>No contact candidate at this tier.</b> No Chevron page, press release, or reputable-press article names a current Chief Learning &amp; Talent Officer. The seat is contested in weaker sources (see tier 3), so nothing is labeled verified. Grading note: Glenda Valero de Silano is press-verified in the role in 2024-25 but has no 2026 currency confirmation, and an Oct 2026 event listing bills a different person with the same title — she therefore does not clear the 'verified, current' bar.</p>
+  <p class="review-note"><b>No contact candidate at this tier.</b> No Chevron page, press release, or reputable-press article names a current Chief Learning &amp; Talent Officer. The strongest candidate (tier 4) is Apollo-confirmed only, which does not meet the verified bar.</p>
 </article>
-<article class="review-card" id="ladder-rung-2">
-  <div class="review-head"><span class="review-name">Tier 2 · Operations leader — verified, current</span> <span class="review-chip ver">Verified</span></div>
-  <p><b>Robert Clay Neff</b> — President, Upstream<br><span class="src">Evidence: Company official · Source: <a href="https://www.chevron.com/who-we-are/leadership" target="_blank" rel="noopener">Chevron — Leadership</a></span></p>
-  <p class="review-note">Heads the entire Upstream segment since Jul 1, 2025. Chevron's own leadership page, checked Nov 3, 2026.</p>
-  <p><b>Andy Walz</b> — President, Downstream, Midstream &amp; Chemicals<br><span class="src">Evidence: Company official · Source: <a href="https://www.chevron.com/who-we-are/leadership" target="_blank" rel="noopener">Chevron — Leadership</a></span></p>
-  <p class="review-note">Heads refining, midstream and chemicals. Chevron's own leadership page, checked Nov 3, 2026.</p>
-  <p><b>Gerbert Schoonman</b> — President, Shale &amp; Tight<br><span class="src">Evidence: Company official · Source: <a href="https://www.businesswire.com/news/home/20260205452968/en/" target="_blank" rel="noopener">Chevron leadership-changes release, Feb 5, 2026 (Business Wire)</a></span></p>
-  <p class="review-note">Succeeded Bruce Niemeyer effective Apr 1, 2026; runs the global shale &amp; tight portfolio.</p>
+<article class="review-card rung-empty" id="ladder-rung-2">
+  <div class="review-head"><span class="review-name">Tier 2 · L&amp;D specialist — verified, current</span> <span class="review-chip none">Empty</span></div>
+  <p class="review-note"><b>No contact candidate at this tier.</b> Individual specialists are essentially never named in company or press sources, so this rung is expected to stay empty; the specialists sit at tier 5 on Apollo evidence.</p>
 </article>
 <article class="review-card" id="ladder-rung-3">
-  <div class="review-head"><span class="review-name">Tier 3 · Training leader — unconfirmed, current</span> <span class="review-chip unconf">Unconfirmed — confirm before use</span></div>
-  <p><b>Justin Steele</b> — Chief Learning and Talent Officer (as billed)<br><span class="src">Evidence: Event listing · Source: <a href="https://stateofdowntown.org/" target="_blank" rel="noopener">Central Houston — State of Downtown, Oct 29, 2026</a></span><br><span class="src">Evidence: Aggregator · Source: Apollo (checked Nov 6, 2026)</span></p>
-  <p class="review-note">Two weaker sources now agree: the Oct 29, 2026 event listing bills him in the role, and Apollo lists him as current Chief Learning and Talent Officer since Apr 1, 2026 (previously Senior Director, HR, at Chevron from Jan 2024). Neither source is Chevron or reputable press, so this tier stays unconfirmed.</p>
-  <p class="review-note">Competing claim: directories still list Glenda Valero de Silano as CLTO; she is press-verified in the role in 2024-25 (Flipping the Barrel, May 21, 2024) but no 2026 source confirms she still holds it, and Apollo's Apr 2026 start date for Steele makes her claim look stale. Only a company or press source can close the seat question and open tier 1.</p>
+  <div class="review-head"><span class="review-name">Tier 3 · Operations leader — verified, current</span> <span class="review-chip ver">Verified</span></div>
+  <p><b>Robert Clay Neff</b> — President, Upstream<br><span class="src">Evidence: Company official · Source: <a href="https://www.chevron.com/who-we-are/leadership" target="_blank" rel="noopener">Chevron — Leadership</a></span><br><span class="contact-slot src" data-contact="neff"></span></p>
+  <p class="review-note">Heads the entire Upstream segment since Jul 1, 2025. Chevron's own leadership page, checked Nov 3, 2026. Apollo's record for this name is thin and adds nothing reliable.</p>
+  <p><b>Andy Walz</b> — President, Downstream, Midstream &amp; Chemicals<br><span class="src">Evidence: Company official · Source: <a href="https://www.chevron.com/who-we-are/leadership" target="_blank" rel="noopener">Chevron — Leadership</a></span><br><span class="contact-slot src" data-contact="walz"></span></p>
+  <p class="review-note">Heads refining, midstream and chemicals. Chevron's own leadership page; Apollo also lists him current in the role since Oct 1, 2024.</p>
+  <p><b>Gerbert Schoonman</b> — President, Shale &amp; Tight<br><span class="src">Evidence: Company official · Source: <a href="https://www.businesswire.com/news/home/20260205452968/en/" target="_blank" rel="noopener">Chevron leadership-changes release, Feb 5, 2026 (Business Wire)</a></span><br><span class="contact-slot src" data-contact="schoonman"></span></p>
+  <p class="review-note">Succeeded Bruce Niemeyer effective Apr 1, 2026; Apollo's employment history agrees (joined from Hess, where he was SVP Global Production) and lists him current.</p>
 </article>
-<article class="review-card rung-empty" id="ladder-rung-4">
-  <div class="review-head"><span class="review-name">Tier 4 · Operations leader — unconfirmed, current</span> <span class="review-chip none">Empty</span></div>
-  <p class="review-note"><b>No contact candidate at this tier.</b> Directory candidates failed checking: a 'GM of Operations' aggregator listing is stale and the role is now business development (outside the boundary); an SVP Operations for Saudi Arabian Chevron is named in an event bio and a trade magazine but never by Chevron — held out rather than forced into the tier.</p>
+<article class="review-card" id="ladder-rung-4">
+  <div class="review-head"><span class="review-name">Tier 4 · Training leader — unconfirmed, current</span> <span class="review-chip unconf">Unconfirmed — confirm before use</span></div>
+  <p><b>Justin Steele</b> — Chief Learning and Talent Officer<br><span class="src">Evidence: Aggregator — Apollo-confirmed · Source: Apollo (checked Nov 6, 2026)</span><br><span class="src">Evidence: Event listing · Source: <a href="https://stateofdowntown.org/" target="_blank" rel="noopener">Central Houston — State of Downtown, Oct 29, 2026</a></span><br><span class="contact-slot src" data-contact="steele"></span></p>
+  <p class="review-note">Apollo lists him current in the role since Apr 1, 2026 (previously Senior Director, HR, at Chevron from Jan 2024) and holds a verified work email for him, protected below (team PIN). An Oct 29, 2026 event listing bills him with the same title. No Chevron or press source names him, so this tier stays unconfirmed — Apollo-confirmed is the strongest unconfirmed grade.</p>
+  <p class="review-note">Competing claim resolved as far as aggregator evidence can: Apollo's employment history shows Glenda Valero de Silano held this role from Jun 2023 to Apr 2026, then moved to a Senior Director HR role at Chevron — a handover to Steele, and an HR role that no longer qualifies for this ladder.</p>
 </article>
 <article class="review-card" id="ladder-rung-5">
-  <div class="review-head"><span class="review-name">Tier 5 · Training leader — verified, former (referral)</span> <span class="review-chip ver">Verified</span></div>
-  <p><b>Stacy Eng</b> — Chief Learning &amp; Talent Officer (former)<br><span class="src">Evidence: Reputable press · Source: <a href="https://hrtoday.in/nrg-energy-appoints-stacy-eng-as-senior-vice-president-head-of-people-ai-innovation/" target="_blank" rel="noopener">HR Today, Jun 17, 2026; ATD/CTDO and IACET for the Chevron role</a></span></p>
-  <p class="review-note">Now SVP, Head of People &amp; AI Innovation at NRG Energy (joined Jun 2026). CORRECTION to earlier records: Jun 2026 is when she joined NRG, not when she left Chevron; her Chevron exit date was never published and predates her successor's documented start in 2024.</p>
-  <p><b>Barry Leskin</b> — Chief Learning Officer, ChevronTexaco (former, until ~2002)<br><span class="src">Evidence: Reputable press · Source: <a href="https://hbr.org/2003/01/the-best-laid-incentive-plans" target="_blank" rel="noopener">Harvard Business Review, Jan 2003</a></span></p>
-  <p class="review-note">Historical reference only — too dated for outreach; shown to complete the rung honestly.</p>
+  <div class="review-head"><span class="review-name">Tier 5 · L&amp;D specialist — unconfirmed, current</span> <span class="review-chip unconf">Unconfirmed — confirm before use</span></div>
+  <p><b>Stephanie Castillo</b> — Learning and Development Specialist<br><span class="src">Evidence: Aggregator — Apollo-confirmed · Source: Apollo (checked Nov 11, 2026)</span><br><span class="contact-slot src" data-contact="castillo"></span></p>
+  <p class="review-note">Apollo lists her current in the role since May 2023, Los Angeles; verified work email protected below (team PIN).</p>
+  <p><b>Bryan Troxell</b> — Learning and Development Specialist<br><span class="src">Evidence: Aggregator — Apollo-confirmed · Source: Apollo (checked Nov 11, 2026)</span><br><span class="contact-slot src" data-contact="troxell"></span></p>
+  <p class="review-note">Apollo lists him current in the role since Oct 2025, at Chevron since 2020, Martinez, California; verified work email protected below (team PIN).</p>
+  <p><b>Amy Heyman</b> — Instructional Designer<br><span class="src">Evidence: Aggregator — Apollo-confirmed · Source: Apollo (checked Nov 11, 2026)</span><br><span class="contact-slot src" data-contact="heyman"></span></p>
+  <p class="review-note">Apollo lists her current in the role since Mar 2024, Denver; verified work email protected below (team PIN).</p>
+  <p><b>Alexandra Valion</b> — Training Manager<br><span class="src">Evidence: Aggregator — Apollo-confirmed · Source: Apollo (checked Nov 11, 2026)</span><br><span class="contact-slot src" data-contact="valion"></span></p>
+  <p class="review-note">Apollo lists her as a current Training Manager (Le Havre, France); her Apollo record carries no dates, the weakest of the four. Verified work email protected below (team PIN).</p>
+  <p class="review-note">Apollo's Chevron pool for specialist titles is deep — 91 matches across L&amp;D specialist, instructional design, and training titles. These four are a worked sample, confirmed current by Apollo on Nov 11, 2026, not a census.</p>
 </article>
 <article class="review-card" id="ladder-rung-6">
-  <div class="review-head"><span class="review-name">Tier 6 · Operations leader — verified, former (referral)</span> <span class="review-chip ver">Verified</span></div>
-  <p><b>Nigel Hearne</b> — Executive Vice President, Oil, Products &amp; Gas (former)<br><span class="src">Evidence: Company official · Source: <a href="https://www.chevron.com/newsroom/2024/q3/chevron-announces-headquarters-relocation-and-senior-leadership-changes" target="_blank" rel="noopener">Chevron release, Aug 2, 2024</a></span></p>
-  <p class="review-note">Retired Oct 1, 2024 after 35 years; was Chevron's top operations role.</p>
-  <p><b>Bruce Niemeyer</b> — President, Shale &amp; Tight (former)<br><span class="src">Evidence: Company official · Source: <a href="https://www.businesswire.com/news/home/20260205452968/en/" target="_blank" rel="noopener">Chevron leadership-changes release, Feb 5, 2026 (Business Wire)</a></span></p>
-  <p class="review-note">Retired Oct 2026 after 26 years; succeeded by Gerbert Schoonman (tier 2).</p>
-</article>
-<article class="review-card" id="ladder-rung-7">
-  <div class="review-head"><span class="review-name">Tier 7 · Training leader — unconfirmed, former (referral)</span> <span class="review-chip unconf">Unconfirmed — confirm before use</span></div>
-  <p><b>J.C. (José Carlos) Cunha</b> — Drilling &amp; Completions Technical Training Leader, Chevron Energy Technology Company (former)<br><span class="src">Evidence: Single directory listing · Source: <a href="https://www.professors.directory/rate/j-c-cunha_university-of-alberta" target="_blank" rel="noopener">Professors Directory (single directory listing of his CV)</a></span></p>
-  <p class="review-note">Function-level technical-training leader, not the enterprise CLO; tenure undated in the source; now a petroleum-engineering professor. Unconfirmed.</p>
-</article>
-<article class="review-card rung-empty" id="ladder-rung-8">
-  <div class="review-head"><span class="review-name">Tier 8 · Operations leader — unconfirmed, former (referral)</span> <span class="review-chip none">Empty</span></div>
-  <p class="review-note"><b>No contact candidate at this tier.</b> Every former Chevron operations leader who surfaces publicly carries company or press documentation, which places them in tier 6. No aggregator-only former operations leader could be evidenced cleanly.</p>
+  <div class="review-head"><span class="review-name">Tier 6 · Operations leader — unconfirmed, current</span> <span class="review-chip unconf">Unconfirmed — confirm before use</span></div>
+  <p><b>Don Stelling</b> — Senior Vice President Operations, Saudi Arabian Chevron<br><span class="src">Evidence: Aggregator — Apollo-confirmed · Source: Apollo (checked Nov 11, 2026)</span><br><span class="contact-slot src" data-contact="stelling"></span></p>
+  <p class="review-note">Held out of the original version of this example because no Chevron source names him; Apollo lists him current in the role since May 2021, based in Kuwait. Apollo holds no email for him.</p>
 </article>
     </div>
-    <p class="review-sub" style="margin-top:12px">Researched November 3, 2026 from public sources; names and titles only. Verified = backed by a company-official or reputable-press source; unconfirmed = an event listing or a single directory/aggregator listing, never labeled verified.</p>
   </section>
+<script type="application/json" id="contact-vault">{"salt":"23EZJxWIFANj/GVOsyaVnQ==","iv":"VaUe7VmGsfSv3UQD","data":"+GrppU/YLEvCK1SFmUFqjqXMKk37erDwHqcS1NgGe46Nsa4sUfCfMjjs2joJ+1CxmS8+bD00dTjVw+y4m2YuCbSBMpevpiBrPODAMDaeT+0NpzlN4Qm21WAex2XrX7oUMi6RfyQsg7SlFGK/TRo7cXdulchRKM8IJiDQFBHi5TJN+ac/BZxboKaXrrVuzUc771G7JmKSEkuH/ru5UXTPBp/fs4AMuVlMkCJsCJR4keIDsZVzyKGUdC6FOmMZNmHg7I22wJDW+x7R707P3fMFfKZLaTKXCyxB2pmV9LgITEvtfjHiO0U60Od/ZsSgan9i7E5qRCDtdInuXue52Q4Vmcyv79hjo9KLgTS/agApHc4J+8cCEcdYEE6LuU01j+jP9JOFMowBKWnMxYCyuJpi9wF0i9Hn0uaso0bZA/+MkXravrJBH12R07AIs5gOLRqIs0dhu4PsZa0dqWkBp7S6YgRbn13ZIz0mqzhCMcVKCBowHWSLf5k5qdhQn3jiddTnKB9LnS+EmdXgzKDt2vDk90GeLwysl90NUuF/IzLob1vr3eBMfPzXrf11fTVw088O52MHXIFXVRBQL8mEGUDSQTigF6vdvWms4wUIIENXT6DG8P34QTrc0Kj9l9WkNi0aZQ8GC0eQKvHpiUbmblzCpzYfwJ841vDAp0DlvHDFXDynADOZ+ClB1n4Wd37x2URo1u/x/5detJ8oxxWZru9iOo5ECNIqIv5V8IOu7aI55u9QeKapcJlPhR/YI91WLbqdShx6tP4ZmnGxEwSDw4neV6BEDMYtQthF4BzIPHE71SowN0gZ/ZLN1oCrGsRj+ijJsmxAtc0UEbgjUK5UuxobElLFmoSH7D149h1Lw2QWSmeR42XgXxRxIGHDva9SbQzI3SpANOVyCndf4HQloIuzJBdbqseMJMvEHtrRRtBDXG+Nm5GrDKRU3CchqvqC0ErVHEbjFGqygvBBUTCrM924py0saCn6q5y71bGw/ZLciZS9orLToDuM8cgS8Fvm2f8vs7Hw/tnsWp7kKFWQ//7ZmdTju7Fr2oH04gVo16WI5djYPuG9jx64oizWgmewwRTigxZji/FWZIKIEgYRs4vVTmacaOBlG8+Oc3uMv4n0TAKon4hOO58Gwl1T59IpoZQYzQCg3DOQvjeK1DyC0leZk9kbPrfFMPWu"}</script>
+<script>
+(function () {
+  var btn = document.getElementById('pin-btn');
+  var inp = document.getElementById('pin-input');
+  var msg = document.getElementById('pin-msg');
+  var form = document.getElementById('pin-form');
+  if (!btn || !inp) return;
+  function b64(s) { var bin = atob(s); var arr = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i); return arr; }
+  async function unlock() {
+    var pin = inp.value;
+    if (!pin) return;
+    btn.disabled = true; msg.textContent = 'Checking...';
+    try {
+      var vault = JSON.parse(document.getElementById('contact-vault').textContent);
+      var enc = new TextEncoder();
+      var base = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveKey']);
+      var key = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(vault.salt), iterations: 600000, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+      var pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(vault.iv) }, key, b64(vault.data));
+      var data = JSON.parse(new TextDecoder().decode(pt));
+      document.querySelectorAll('[data-contact]').forEach(function (el) {
+        var c = data[el.getAttribute('data-contact')];
+        if (!c) return;
+        var parts = [];
+        if (c.email) parts.push('Work email: <a href="mailto:' + c.email + '">' + c.email + '</a>');
+        if (c.linkedin) parts.push('<a href="https://www.linkedin.com/in/' + c.linkedin + '" target="_blank" rel="noopener">LinkedIn</a>');
+        if (c.note) parts.push(c.note);
+        el.innerHTML = parts.join(' \u00b7 ');
+      });
+      msg.textContent = 'Contact details unlocked for this session.';
+      inp.value = '';
+      form.style.display = 'none';
+    } catch (e) {
+      msg.textContent = 'Incorrect PIN - details stay locked.';
+    }
+    btn.disabled = false;
+  }
+  btn.addEventListener('click', unlock);
+  inp.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); unlock(); } });
+})();
+</script>
 
   <p class="ptr-strip view-ranking">Looking for the staged companies? <strong>20 new prospects</strong> are waiting for team accept/discard decisions on their own tab. <button type="button" data-goto="prospects">Open New prospects — under review &rarr;</button></p>
 
