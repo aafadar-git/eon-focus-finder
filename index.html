@@ -466,6 +466,14 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
   .wi-row label.check{display:flex;gap:6px;align-items:center;font-size:13.5px;cursor:pointer}
   .wi-btn{background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);border-radius:8px;padding:7px 12px;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer}
   .wi-btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .wi-head-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+  .wi-pending{color:var(--amber);font-weight:700;font-size:12.5px}
+  .wi-summary{font-size:12.5px;color:var(--muted)}
+  .kw-top25{margin-top:10px}
+  .kw-top25-body{margin-top:6px}
+  .cmp-contact{font-size:13px;line-height:1.5}
+  .cmp-contact .cname{font-weight:700}
+  .cmp-contact .od{color:var(--ink-2);font-size:12.5px;margin-top:2px}
   .wi-btn:hover{filter:brightness(1.06)}
   .wi-btn:disabled{opacity:.5;cursor:default}
   .wi-note{font-size:12.5px;color:var(--muted);margin:8px 0 0}
@@ -546,6 +554,17 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
       <input type="search" id="q" placeholder="e.g. bakerhughes.com" autocomplete="off" />
     </div>
     <div class="ctl">
+      <label for="prioritize">Prioritize</label>
+      <select id="prioritize">
+        <option value="total" selected>Total score</option>
+        <option value="tier">Portfolio tier</option>
+        <option value="signals">Commercial signals</option>
+        <option value="contacts">Contact readiness</option>
+        <option value="research">Research depth</option>
+        <option value="enrichment">Enrichment overlay</option>
+      </select>
+    </div>
+    <div class="ctl">
       <span class="lbl" id="tier-lbl">Tier</span>
       <div class="tierbtns" role="group" aria-labelledby="tier-lbl">
         <button type="button" data-tier="all" aria-pressed="true">All</button>
@@ -578,9 +597,17 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
   </section>
 
 
-  <section class="wi-panel view-ranking" id="wi-panel" aria-label="What-if scoring">
-    <h2>What-if scoring <span class="wi-badge" id="wi-badge" hidden>What-if view</span></h2>
-    <p class="wi-sub">Change the weights and the ranking re-sorts instantly. This is a <strong>view only</strong> — it never changes the stored scores. The canonical score stays shown next to each what-if score.</p>
+  <section class="wi-panel view-ranking" id="wi-panel" aria-label="Advanced scoring">
+    <h2>Advanced scoring <span class="wi-badge" id="wi-badge" hidden>What-if view</span></h2>
+    <p class="wi-sub">Sorting is the quick path — use the Prioritize dropdown above the ranking. These sliders are the advanced path: re-weight the score components, then apply. This is a <strong>view only</strong> — it never changes the stored scores. The canonical score stays shown next to each what-if score.</p>
+    <div class="wi-head-row">
+      <button type="button" class="wi-btn" id="wi-toggle" aria-expanded="false">Show advanced scoring</button>
+      <button type="button" class="wi-btn primary" id="wi-apply">Apply</button>
+      <button type="button" class="wi-btn" id="wi-reset">Reset to canonical weights</button>
+      <span class="wi-pending" id="wi-pending" hidden>Changes pending — click Apply.</span>
+      <span class="wi-summary" id="wi-applied"></span>
+    </div>
+    <div id="wi-body" hidden>
     <div class="wi-sliders">
       <div class="wi-slider"><label for="wi-w-tier">Portfolio tier</label><div class="slider-row"><input type="range" id="wi-w-tier" min="0" max="2" step="0.1" value="1"><span class="slider-val" id="wi-w-tier-val">1.0&times;</span></div></div>
       <div class="wi-slider"><label for="wi-w-signals">Commercial signals</label><div class="slider-row"><input type="range" id="wi-w-signals" min="0" max="2" step="0.1" value="1"><span class="slider-val" id="wi-w-signals-val">1.0&times;</span></div></div>
@@ -590,7 +617,6 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     </div>
     <div class="wi-row">
       <label class="check"><input type="checkbox" id="wi-pen" checked> Apply profile-review penalty (&minus;8 where flagged)</label>
-      <button type="button" class="wi-btn" id="wi-reset">Reset to canonical weights</button>
     </div>
     <div class="wi-row">
       <label for="wi-view-name" class="wi-lab">Saved view</label>
@@ -599,14 +625,21 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
       <span id="wi-view-msg" role="status"></span>
     </div>
     <div id="wi-view-list"></div>
-    <p class="wi-note">Weights are multipliers on the stored components (0&ndash;2&times;). The penalty is stored as a signed &minus;8 and added as-is; turning it off adds 8 points back to the 197 flagged accounts.</p>
+    <p class="wi-note">Weights are multipliers on the stored components (0&ndash;2&times;). The penalty is stored as a signed &minus;8 and added as-is; turning it off adds 8 points back to the 197 flagged accounts. Changes only take effect when you click Apply.</p>
+    </div>
   </section>
   <section class="wi-panel view-ranking" id="kw-panel" aria-label="Keyword preview">
     <h2>Keyword preview <span class="wi-badge">Preview — not a new score</span></h2>
     <p class="wi-sub">Edit the title families below and see which <strong>existing</strong> suggested contacts match them, and how each company&rsquo;s projected contact-readiness would move. This is a projection from contacts already on file — the score only moves when contacts are actually found. No searches run and nothing is written. Slash terms from the Ladder tab (e.g. &ldquo;Manager / Lead&rdquo;) are expanded into their alternatives here.</p>
+    <div class="wi-head-row">
+      <button type="button" class="wi-btn" id="kw-toggle" aria-expanded="false">Show keyword editor</button>
+      <span class="wi-summary" id="kw-summary"></span>
+    </div>
+    <div id="kw-body" hidden>
     <div id="kw-families"></div>
     <div class="wi-row"><button type="button" class="wi-btn" id="kw-reset">Reset keyword families</button></div>
     <div id="kw-results"></div>
+    </div>
   </section>
   <p class="count-line view-ranking" id="count-line" role="status"></p>
 
@@ -1100,11 +1133,31 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     {key:"enrichment", label:"Enrichment overlay", max:15, color:"var(--bar-enrich)"}
   ];
   var PAGE = 25;
-  var state = { q:"", tier:"all", seg:"", min:0, enr:false, need:false, recent:false, sugg:false, tl:false, cov:null, showAll:false, open:{} };
+  var state = { q:"", tier:"all", seg:"", min:0, enr:false, need:false, recent:false, sugg:false, tl:false, cov:null, showAll:false, open:{}, priority:"total" };
   /* ================= what-if engine ================= */
   var WI_KEYS = ["tier", "signals", "contacts", "research", "enrichment"];
   var WI_LABELS = {tier:"Portfolio tier", signals:"Commercial signals", contacts:"Contact readiness", research:"Research depth", enrichment:"Enrichment overlay"};
   var wi = { w:{tier:1, signals:1, contacts:1, research:1, enrichment:1}, pen:true };
+  var staged = { w:{tier:1, signals:1, contacts:1, research:1, enrichment:1}, pen:true };
+  var wiOpen = false, kwOpen = false, kwTop25Open = false;
+  function stagedDiffers(){ return WI_KEYS.some(function(k){ return staged.w[k] !== wi.w[k]; }) || staged.pen !== wi.pen; }
+  function applyStaged(){
+    wi.w = {tier:staged.w.tier, signals:staged.w.signals, contacts:staged.w.contacts, research:staged.w.research, enrichment:staged.w.enrichment};
+    wi.pen = staged.pen;
+    syncWiUI();
+    render();
+  }
+  function updateWiPending(){ var el = $("wi-pending"); if(el) el.hidden = !stagedDiffers(); }
+  function updateWiSummary(){
+    var el = $("wi-applied");
+    if(!el) return;
+    if(!wiActive()){ el.textContent = "Canonical weights"; return; }
+    var bits = [];
+    WI_KEYS.forEach(function(k){ if(wi.w[k] !== 1) bits.push(WI_LABELS[k] + " " + Number(wi.w[k]).toFixed(1) + "\u00d7"); });
+    if(!wi.pen) bits.push("penalty off");
+    el.textContent = "Applied: " + (bits.length ? bits.join(" \u00b7 ") : "custom weights");
+  }
+  var PRIORITY_LABELS = {total:"Total score", tier:"Portfolio tier", signals:"Commercial signals", contacts:"Contact readiness", research:"Research depth", enrichment:"Enrichment overlay"};
   function wiScore(r){
     var p = r.parts || {};
     var s = (p.tier||0)*wi.w.tier + (p.signals||0)*wi.w.signals + (p.contacts||0)*wi.w.contacts + (p.research||0)*wi.w.research + (p.enrichment||0)*wi.w.enrichment + (wi.pen ? (p.review_penalty||0) : 0);
@@ -1126,7 +1179,16 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
   }
   function viewRows(){
     var rows = filtered();
-    if(wiActive()){
+    var prio = state.priority || "total";
+    if(prio !== "total"){
+      rows = rows.slice().sort(function(a,b){
+        var d = wiParts(b)[prio] - wiParts(a)[prio];
+        if(d) return d;
+        d = effScore(b) - effScore(a);
+        if(d) return d;
+        return String(a.company || "").localeCompare(String(b.company || ""));
+      });
+    } else if(wiActive()){
       rows = rows.slice().sort(function(a,b){
         var d = wiScore(b) - wiScore(a);
         if(d) return d;
@@ -1199,32 +1261,40 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     if(r.types && r.types.length) return (TYPE_LABELS[r.types[0]] || r.types[0]) + " activity at " + r.company;
     return "";
   }
+  function isSeniorTitle(t){
+    return /\b(vp|svp|evp|avp|vice\s+president|chief|president|c-suite|ceo|cfo|coo|cto|cio|clo|head|director)\b/i.test(String(t || ""));
+  }
   function buildDraft(ctx, variant){
     var fn = firstName(ctx.name), co = ctx.company, ti = ctx.title;
     var trig = ctx.trigger || ("training operations at " + co);
-    var g = "Hi " + fn + ",\n\n";
-    var close = "\n\nWould a 20-minute call next week work to walk through it?\n\nBest regards,\n[Your name]\nEON AI Ventures";
+    var senior = isSeniorTitle(ti);
+    var g = senior
+      ? "Hi " + fn + ",\n\nI hope you don't mind me writing \u2014 I know your time is limited, so I'll keep this brief.\n\n"
+      : "Hi " + fn + ",\n\nI hope this finds you well.\n\n";
+    var close = senior
+      ? "\n\nI would be grateful for a brief conversation at your convenience \u2014 and I completely understand if the timing isn't right. Thank you for considering this.\n\nWith best regards,\n[Your name]\nEON AI Ventures"
+      : "\n\nWould a brief call next week work to walk through it? No pressure at all if the timing isn't right.\n\nBest regards,\n[Your name]\nEON AI Ventures";
     var body;
     if(ctx.ev === "fallback"){
       if(variant === "B"){
-        body = "I'm looking for whoever owns learning and training at " + co + ". EON Genesis turns operating procedures into scored simulations, so field teams can practise high-consequence work before doing it for real — if that's your area, or you can point me to who owns it, I'd welcome a short call.";
+        body = "I'm writing because I'm looking for whoever owns learning and training at " + co + ". EON Genesis turns operating procedures into scored simulations, so field teams can practise high-consequence work before doing it for real \u2014 if that's your area, or you can point me to who owns it, I'd welcome a short call.";
       } else {
-        body = "I'm looking for whoever owns learning and training at " + co + " — your name came up in that search, and if there's someone better placed I'd be grateful for a pointer. I noticed " + trig + ", and it points to a team that will need to train people quickly and safely.";
+        body = "I'm writing because I'm looking for whoever owns learning and training at " + co + " \u2014 your name came up in that search, and if there's someone better placed I'd be very grateful for a pointer. I noticed " + trig + ", which suggests a team that will need to train people quickly and safely.";
       }
       return g + body + close;
     }
     if(ctx.ev === "unconfirmed"){
       if(variant === "B"){
-        body = "I came across your name in connection with " + ti + " at " + co + " — I hope I've got the right person. EON Genesis turns operating procedures into scored simulations, so field teams can practise high-consequence work before doing it for real. If the title is out of date, just say so — no harm done.";
+        body = "I came across your name in connection with " + ti + " at " + co + " \u2014 I hope I've got the right person, and please do forgive me if this has found the wrong desk. EON Genesis turns operating procedures into scored simulations, so field teams can practise high-consequence work before doing it for real. If the title is out of date, just say so \u2014 no harm done, and I'd be grateful for a pointer to the right person.";
       } else {
-        body = "I came across your name in connection with " + ti + " at " + co + " — I hope I've got the right person. I noticed " + trig + ", and it points to a team that will need to train people quickly and safely. If the title is out of date, just say so — no harm done.";
+        body = "I came across your name in connection with " + ti + " at " + co + " \u2014 I hope I've got the right person, and please do forgive me if this has found the wrong desk. I noticed " + trig + ", which suggests a team that will need to train people quickly and safely. If the title is out of date, or there's someone better placed, a quick pointer would be very much appreciated.";
       }
       return g + body + close;
     }
     if(variant === "B"){
-      body = "EON Genesis turns operating procedures into scored simulations, so field teams can practise high-consequence work before doing it for real — and " + co + " looks like exactly the kind of operation it was built for. As " + ti + " at " + co + ", you'd be the right person to judge whether that would help your teams.";
+      body = "EON Genesis turns operating procedures into scored simulations, so field teams can practise high-consequence work before doing it for real \u2014 and " + co + " looks like exactly the kind of operation it was built for. As " + ti + " at " + co + ", your perspective on whether it would help your teams would be very welcome.";
     } else {
-      body = "I noticed " + trig + " at " + co + ", and it points to a team that will need to train people quickly and safely. As " + ti + " at " + co + ", you'd be the right person to judge whether EON Genesis — scored simulations that let field teams practise high-consequence work before doing it for real — would help your teams.";
+      body = "I noticed " + trig + " at " + co + ", and it suggests a team that will need to train people quickly and safely. As " + ti + " at " + co + ", you'd be well placed to judge whether EON Genesis \u2014 scored simulations that let field teams practise high-consequence work before doing it for real \u2014 might help your teams. I'd welcome your view, whenever you have a moment.";
     }
     return g + body + close;
   }
@@ -1321,6 +1391,68 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     for(var i=0;i<RECORDS.length;i++){ if(RECORDS[i].company === company) return RECORDS[i]; }
     return null;
   }
+  var VAULT_CONTACTS = {
+    "Chevron|steele":"steele", "Chevron|neff":"neff", "Chevron|walz":"walz", "Chevron|schoonman":"schoonman",
+    "Chevron|castillo":"castillo", "Chevron|troxell":"troxell", "Chevron|heyman":"heyman", "Chevron|valion":"valion", "Chevron|stelling":"stelling",
+    "Delek US|slavik":"slavik", "Tourmaline Oil|maheux":"maheux", "Tourmaline Oil|gordon":"gordon", "Range Resources|gaudlip":"gaudlip"
+  };
+  function vaultKeyFor(company, name){
+    var parts = String(name || "").trim().split(/\s+/);
+    var last = parts.length ? parts[parts.length-1].toLowerCase().replace(/[^a-z]/g, "") : "";
+    return VAULT_CONTACTS[(company || "") + "|" + last] || null;
+  }
+  function truncText(s, n){ s = String(s || ""); return s.length > n ? s.slice(0, n-1) + "\u2026" : s; }
+  function breakdownText(r){
+    var p = r.parts || {};
+    var t = PART_META.map(function(m){ return m.label + " " + (p[m.key] || 0); }).join(" \u00b7 ");
+    if(p.review_penalty) t += " \u00b7 Review penalty " + p.review_penalty;
+    t += " = " + r.score;
+    if(wiActive()){
+      var w = wiParts(r);
+      var tw = PART_META.map(function(m){ return m.label + " " + fmtScore(w[m.key]); }).join(" \u00b7 ");
+      if(!wi.pen && p.review_penalty) tw += " \u00b7 Penalty off";
+      else if(p.review_penalty) tw += " \u00b7 Review penalty " + p.review_penalty;
+      t += '<br><span class="wi-canon">What-if: ' + tw + " = " + fmtScore(wiScore(r)) + "</span>";
+    }
+    return t;
+  }
+  function enrichSummary(r){
+    if(!r.enriched) return "Not enriched";
+    var bits = [];
+    if(r.training) bits.push("Training: " + truncText(r.training, 110));
+    if(r.expansion) bits.push("Expansion: " + truncText(r.expansion, 110));
+    if(r.safety) bits.push("Safety: " + truncText(r.safety, 110));
+    return bits.length ? bits.join(" | ") : "Enriched \u2014 no summary on file";
+  }
+  function cmpContactHTML(r){
+    var c = (r.suggested_contacts || [])[0];
+    if(!c) return "\u2014";
+    var weak = r.contacts_status === "weak";
+    var b = weak ? {label:"Fallback \u2014 not the training owner", tone:"grey"} : candBadge(c);
+    var h = '<div class="cmp-contact"><span class="cname">' + esc(c.name) + '</span> \u2014 <span class="ctitle">' + esc(c.title) + '</span> ' +
+      '<span class="badge ' + esc(b.tone) + '">' + esc(b.label) + '</span>' +
+      (c.apollo_confirmed ? '<span class="apollo-pill">Apollo-confirmed</span>' : "") +
+      (c.apollo_checked ? '<div class="od">Apollo checked ' + esc(c.apollo_checked) + '</div>' : "") +
+      (c.source_url ? '<div class="od"><a href="' + esc(c.source_url) + '" target="_blank" rel="noopener">Source</a></div>' : "");
+    if(PILOT_NOINVAULT[c.name]){
+      h += '<div class="od">Contact details held internally, not in the vault \u2014 request from the team.</div>';
+    } else {
+      var vk = vaultKeyFor(r.company, c.name);
+      if(vk){
+        var d = vaultDetails(vk);
+        if(d){
+          h += '<div class="od">' + d + '</div>';
+        } else if(window.EONVault && window.EONVault.unlocked){
+          h += '<div class="od">No details held for this contact in the vault.</div>';
+        } else {
+          h += '<div class="od">Details PIN-protected.</div><div class="wi-cand-actions"><button type="button" class="wi-btn" data-wi-cmp-pin data-vaultkey="' + esc(vk) + '" data-company="' + esc(r.company) + '" data-name="' + esc(c.name) + '">Request details (PIN)</button></div>';
+        }
+      } else {
+        h += '<div class="od">No contact details on this page \u2014 verify before outreach.</div>';
+      }
+    }
+    return h + "</div>";
+  }
   function renderCompare(){
     var el = $("cmp-panel");
     if(!el) return;
@@ -1329,17 +1461,26 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
       return;
     }
     var recs = compareSel.map(findRecord).filter(function(x){ return x; });
+    var wiRankMap = {};
+    if(wiActive()){ viewRows().forEach(function(x, i){ wiRankMap[x.company] = i + 1; }); }
     var rows = [
       ["Canonical score", function(r){ return String(r.score); }],
       ["What-if score", function(r){ return wiActive() ? fmtScore(wiScore(r)) : "\u2014"; }],
       ["Rank (canonical)", function(r){ return "#" + r._rank; }],
+      ["Rank (what-if)", function(r){ return wiActive() ? "#" + (wiRankMap[r.company] || "\u2014") : "\u2014"; }],
+      ["Score breakdown", function(r){ return breakdownText(r); }],
       ["Tier", function(r){ return "Tier " + r.tier; }],
       ["Segment", function(r){ return esc(r.segment || ""); }],
-      ["Signal types", function(r){ return String(r.n_types); }],
-      ["Signal events", function(r){ return String(r.n_events); }],
+      ["Signals", function(r){
+        var types = (r.types || []).map(function(t){ return TYPE_LABELS[t] || t; }).join(", ");
+        var s = types ? types : "No signal types on file";
+        s += " (" + r.n_events + " events" + (r.latest ? ", latest " + fmtDate(r.latest) : "") + ")";
+        return esc(s);
+      }],
+      ["Enrichment", function(r){ return esc(enrichSummary(r)); }],
       ["Contacts on file", function(r){ return String(r.contacts); }],
       ["Contact status", function(r){ return esc(r.contacts_status || ""); }],
-      ["Best contact", function(r){ var c = (r.suggested_contacts || [])[0]; return c ? esc(c.name) + " — " + esc(c.title) : "\u2014"; }]
+      ["Best contact", function(r){ return cmpContactHTML(r); }]
     ];
     var h = '<table class="cmp-table"><thead><tr><th></th>' + recs.map(function(r){ return "<th>" + esc(dispName(r)) + "</th>"; }).join("") + "</tr></thead><tbody>";
     rows.forEach(function(row){
@@ -1392,11 +1533,13 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
   function syncWiUI(){
     WI_KEYS.forEach(function(k){
       var inp = $("wi-w-" + k), lab = $("wi-w-" + k + "-val");
-      if(inp) inp.value = wi.w[k];
-      if(lab) lab.textContent = Number(wi.w[k]).toFixed(1) + "×";
+      if(inp) inp.value = staged.w[k];
+      if(lab) lab.textContent = Number(staged.w[k]).toFixed(1) + "×";
     });
-    var pen = $("wi-pen"); if(pen) pen.checked = wi.pen;
+    var pen = $("wi-pen"); if(pen) pen.checked = staged.pen;
     var badge = $("wi-badge"); if(badge) badge.hidden = !wiActive();
+    updateWiPending();
+    updateWiSummary();
   }
   function renderKw(){
     var host = $("kw-families");
@@ -1432,13 +1575,20 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     pv.changed.forEach(function(c){ if(c.proj > c.cur) ups++; else downs++; });
     var h = '<p class="wi-note"><b>PREVIEW</b> — projection from contacts already on file, not a new score. <b>' + pv.matchedCompanies + '</b> of ' + RECORDS.length + ' companies have at least one title match under the edited families. <b>' + pv.changed.length + '</b> companies would move readiness buckets if only title-matched contacts counted (' + ups + ' up, ' + downs + ' down — most contacts on file are operations leaders or fallbacks, not training-titled). Your edits vs the default families: <b>' + editChanged + '</b> companies change (' + editGained + ' contacts gained, ' + editLost + ' lost). <b>' + pv.expOnlyContacts + '</b> contacts match only expanded families.</p>';
     if(pv.changed.length){
-      h += '<div class="outreach-item" style="border-top:0"><b>Companies whose projected readiness moves (top ' + Math.min(25, pv.changed.length) + '):</b></div>';
+      h += '<div class="kw-top25"><button type="button" class="wi-btn" data-kw-top25-toggle aria-expanded="' + kwTop25Open + '">Companies whose projected readiness moves (top ' + Math.min(25, pv.changed.length) + ') \u2014 ' + pv.changed.length + ' companies move</button><div class="kw-top25-body"' + (kwTop25Open ? '' : ' hidden') + '>';
       pv.changed.slice(0, 25).forEach(function(c){
         h += '<div class="outreach-item"><b>' + esc(dispName(c.r)) + '</b> — readiness ' + c.cur + ' → ' + c.proj + ' (canonical score ' + c.r.score + ')<div class="od">' +
           c.matches.map(function(x){ return esc(x.c.name) + " — " + esc(x.c.title) + " (" + esc(x.m.family) + ")"; }).join("; ") + '</div></div>';
       });
+      h += '</div></div>';
     }
     host.innerHTML = h;
+    var sumEl = $("kw-summary");
+    if(sumEl){
+      var totalTerms = 0;
+      kw.forEach(function(f){ totalTerms += f.terms.length; });
+      sumEl.textContent = kw.length + " families, " + totalTerms + " terms \u00b7 " + pv.matchedCompanies + " companies match";
+    }
   }
 
   /* ----- draft panel ----- */
@@ -1480,6 +1630,7 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     var parts = [];
     if(v.w){ parts.push("tier " + v.w.tier + "×, signals " + v.w.signals + "×, contacts " + v.w.contacts + "×, research " + v.w.research + "×, enrichment " + v.w.enrichment + "×"); }
     parts.push(v.pen ? "penalty on" : "penalty off");
+    if(v.priority && v.priority !== "total") parts.push("prioritize " + (PRIORITY_LABELS[v.priority] || v.priority));
     return parts.join(" · ");
   }
   function renderViews(){
@@ -1496,6 +1647,8 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
   function applyView(v){
     if(v.w) wi.w = {tier:+v.w.tier||0, signals:+v.w.signals||0, contacts:+v.w.contacts||0, research:+v.w.research||0, enrichment:+v.w.enrichment||0};
     wi.pen = !!v.pen;
+    staged = {w:{tier:wi.w.tier, signals:wi.w.signals, contacts:wi.w.contacts, research:wi.w.research, enrichment:wi.w.enrichment}, pen:wi.pen};
+    if(v.priority){ state.priority = v.priority; var pr = $("prioritize"); if(pr) pr.value = v.priority; }
     if(v.kw) kw = kwCopy(v.kw);
     if(v.filters){
       state.q = v.filters.q || "";
@@ -1517,7 +1670,7 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     var nameEl = $("wi-view-name");
     var name = (nameEl ? nameEl.value : "").trim() || ("View " + (loadViews().length + 1));
     var views = loadViews().filter(function(v){ return v.name !== name; });
-    views.push({name: name, w: {tier:wi.w.tier, signals:wi.w.signals, contacts:wi.w.contacts, research:wi.w.research, enrichment:wi.w.enrichment}, pen: wi.pen, kw: kwCopy(kw), filters: {q: state.q, tier: state.tier, seg: state.seg, min: state.min}});
+    views.push({name: name, w: {tier:wi.w.tier, signals:wi.w.signals, contacts:wi.w.contacts, research:wi.w.research, enrichment:wi.w.enrichment}, pen: wi.pen, priority: state.priority, kw: kwCopy(kw), filters: {q: state.q, tier: state.tier, seg: state.seg, min: state.min}});
     saveViews(views);
     renderViews();
     var msg = $("wi-view-msg"); if(msg){ msg.textContent = "Saved view \u201c" + name + "\u201d."; setTimeout(function(){ if(msg.textContent.indexOf(name) !== -1) msg.textContent = ""; }, 3000); }
@@ -1883,7 +2036,7 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     var pendSection = $("pending-section");
     pendSection.hidden = pend.length === 0;
     $("pending-list").innerHTML = pend.map(pendingHTML).join("");
-    countEl.innerHTML = "Showing <b>" + shown.length + "</b> of <b>" + rows.length + "</b> matching companies · <b>" + RECORDS.length + "</b> scored in total" + (wiActive() ? ' <span class="wi-badge">What-if view</span>' : "");
+    countEl.innerHTML = "Showing <b>" + shown.length + "</b> of <b>" + rows.length + "</b> matching companies · <b>" + RECORDS.length + "</b> scored in total" + (wiActive() ? ' <span class="wi-badge">What-if view</span>' : "") + (state.priority && state.priority !== "total" ? ' · Sorted by: <b>' + PRIORITY_LABELS[state.priority] + '</b>, then total score' : "");
     renderCovStats(rows, pend);
     syncWiUI();
     renderCompare();
@@ -1920,6 +2073,7 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     });
   });
   $("seg").addEventListener("change", function(e){ state.seg = e.target.value; state.showAll = false; render(); });
+  $("prioritize").addEventListener("change", function(e){ state.priority = e.target.value || "total"; state.showAll = false; render(); });
   $("minscore").addEventListener("input", function(e){
     state.min = parseInt(e.target.value,10) || 0;
     $("minscore-val").textContent = state.min;
@@ -1996,20 +2150,38 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     var inp = $("wi-w-" + key);
     if(!inp) return;
     inp.addEventListener("input", function(){
-      wi.w[key] = parseFloat(inp.value) || 0;
+      staged.w[key] = parseFloat(inp.value) || 0;
       syncWiUI();
-      render();
     });
   }
   WI_KEYS.forEach(wireSlider);
   var penEl = $("wi-pen");
-  if(penEl) penEl.addEventListener("change", function(){ wi.pen = penEl.checked; syncWiUI(); render(); });
+  if(penEl) penEl.addEventListener("change", function(){ staged.pen = penEl.checked; syncWiUI(); });
+  var applyEl = $("wi-apply");
+  if(applyEl) applyEl.addEventListener("click", applyStaged);
   var resetEl = $("wi-reset");
   if(resetEl) resetEl.addEventListener("click", function(){
     wi.w = {tier:1, signals:1, contacts:1, research:1, enrichment:1};
     wi.pen = true;
+    staged = {w:{tier:1, signals:1, contacts:1, research:1, enrichment:1}, pen:true};
     syncWiUI();
     render();
+  });
+  var wiToggleEl = $("wi-toggle");
+  if(wiToggleEl) wiToggleEl.addEventListener("click", function(){
+    wiOpen = !wiOpen;
+    var body = $("wi-body");
+    if(body) body.hidden = !wiOpen;
+    wiToggleEl.setAttribute("aria-expanded", wiOpen ? "true" : "false");
+    wiToggleEl.textContent = wiOpen ? "Hide advanced scoring" : "Show advanced scoring";
+  });
+  var kwToggleEl = $("kw-toggle");
+  if(kwToggleEl) kwToggleEl.addEventListener("click", function(){
+    kwOpen = !kwOpen;
+    var body = $("kw-body");
+    if(body) body.hidden = !kwOpen;
+    kwToggleEl.setAttribute("aria-expanded", kwOpen ? "true" : "false");
+    kwToggleEl.textContent = kwOpen ? "Hide keyword editor" : "Show keyword editor";
   });
   var saveEl = $("wi-view-save");
   if(saveEl) saveEl.addEventListener("click", saveCurrentView);
@@ -2017,9 +2189,9 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
   if(kwResetEl) kwResetEl.addEventListener("click", function(){ kw = kwCopy(KW_DEF); renderKw(); });
   var ocEl = $("outreach-clear");
   if(ocEl) ocEl.addEventListener("click", function(){ outreach = []; saveOutreach(); renderOutreach(); render(); });
-  document.addEventListener("eon:vault-unlocked", function(){ renderOutreach(); });
+  document.addEventListener("eon:vault-unlocked", function(){ renderOutreach(); renderCompare(); });
   document.addEventListener("click", function(e){
-    var t = e.target && e.target.closest ? e.target.closest("[data-wi-draft],[data-wi-select],[data-wi-o-remove],[data-wi-o-reveal],[data-wi-view-load],[data-wi-view-del],[data-wi-cmp-clear],[data-wi-variant],[data-wi-copy],[data-kw-del],[data-kw-add]") : null;
+    var t = e.target && e.target.closest ? e.target.closest("[data-wi-draft],[data-wi-select],[data-wi-o-remove],[data-wi-o-reveal],[data-wi-view-load],[data-wi-view-del],[data-wi-cmp-clear],[data-wi-variant],[data-wi-copy],[data-kw-del],[data-kw-add],[data-kw-top25-toggle],[data-wi-cmp-pin]") : null;
     if(!t) return;
     if(t.hasAttribute("data-wi-draft")){ openDraft(t); return; }
     if(t.hasAttribute("data-wi-select")){ toggleSelect(t); return; }
@@ -2076,6 +2248,16 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
       }
       return;
     }
+    if(t.hasAttribute("data-kw-top25-toggle")){
+      kwTop25Open = !kwTop25Open;
+      renderKwResults();
+      return;
+    }
+    if(t.hasAttribute("data-wi-cmp-pin")){
+      if(window.EONVault && window.EONVault.unlocked){ renderCompare(); }
+      else { promptPinFor(t.getAttribute("data-name") || "this contact"); }
+      return;
+    }
   });
   document.addEventListener("change", function(e){
     var t = e.target;
@@ -2098,7 +2280,7 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
   renderViews();
   renderDraft();
   syncWiUI();
-  window.EONWhatIf = { wiScore: wiScore, wiActive: wiActive, effScore: effScore, fmtScore: fmtScore, wi: wi, getKw: function(){ return kw; }, KW_DEF: KW_DEF, buildDraft: buildDraft, titleMatches: titleMatches, normStr: normStr, readinessBucket: readinessBucket, parseContactLine: parseContactLine, triggerText: triggerText, kwPreview: kwPreview, viewRows: viewRows, RECORDS: RECORDS, toCSV: toCSV, render: render, getOutreach: function(){ return outreach; }, getCompare: function(){ return compareSel; } };
+  window.EONWhatIf = { wiScore: wiScore, wiActive: wiActive, effScore: effScore, fmtScore: fmtScore, wi: wi, getKw: function(){ return kw; }, KW_DEF: KW_DEF, buildDraft: buildDraft, isSeniorTitle: isSeniorTitle, titleMatches: titleMatches, normStr: normStr, readinessBucket: readinessBucket, parseContactLine: parseContactLine, triggerText: triggerText, kwPreview: kwPreview, viewRows: viewRows, RECORDS: RECORDS, toCSV: toCSV, render: render, getOutreach: function(){ return outreach; }, getCompare: function(){ return compareSel; }, getStaged: function(){ return staged; }, stagedDiffers: stagedDiffers, applyStaged: applyStaged, isWiOpen: function(){ return wiOpen; }, isKwOpen: function(){ return kwOpen; }, isKwTop25Open: function(){ return kwTop25Open; }, getPriority: function(){ return state.priority; }, setPriority: function(p){ state.priority = p || "total"; var pr = $("prioritize"); if(pr) pr.value = state.priority; render(); }, vaultKeyFor: vaultKeyFor, cmpContactHTML: cmpContactHTML, breakdownText: breakdownText, enrichSummary: enrichSummary, PRIORITY_LABELS: PRIORITY_LABELS };
 })();
 </script>
 <script>
