@@ -452,6 +452,51 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
 .review-card.rung-empty .review-name{color:var(--ink-2)}
 .review-card .src{font-size:13px;color:var(--muted)}
 .review-card .review-ev{color:var(--ink-2);font-size:13.5px}
+
+  /* ---------- what-if engine ---------- */
+  .wi-panel{background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px;margin:0 0 14px}
+  .wi-panel h2{font-size:15px;margin:0 0 4px}
+  .wi-panel .wi-sub{font-size:13px;color:var(--muted);margin:0 0 12px}
+  .wi-badge{display:inline-block;background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber);border-radius:20px;font-size:11.5px;font-weight:700;padding:1px 9px;margin-left:8px;vertical-align:2px}
+  .wi-sliders{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px 18px;margin-bottom:10px}
+  .wi-slider label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+  .wi-slider .slider-row{display:flex;align-items:center;gap:10px;min-height:28px}
+  .wi-slider input[type="range"]{flex:1}
+  .wi-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+  .wi-row label.check{display:flex;gap:6px;align-items:center;font-size:13.5px;cursor:pointer}
+  .wi-btn{background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);border-radius:8px;padding:7px 12px;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer}
+  .wi-btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .wi-btn:hover{filter:brightness(1.06)}
+  .wi-btn:disabled{opacity:.5;cursor:default}
+  .wi-note{font-size:12.5px;color:var(--muted);margin:8px 0 0}
+  .wi-canon{font-size:12px;color:var(--muted);font-weight:400}
+  .row{position:relative}
+  .cmp-wrap{position:absolute;left:4px;top:12px;z-index:2}
+  .cmp-wrap input{width:16px;height:16px;accent-color:var(--accent);cursor:pointer}
+  .wi-cand-actions{display:flex;gap:8px;margin-top:8px}
+  .wi-cand-actions .wi-btn{padding:5px 10px;font-size:12.5px}
+  .wi-sumline{font-family:"IBM Plex Mono",monospace;font-size:13px;margin-top:10px;padding-top:9px;border-top:1px dashed var(--line-strong);color:var(--ink-2)}
+  .wi-sumline b{color:var(--ink)}
+  .wi-h3{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:16px 0 8px}
+  .wi-panel input[type="text"]{padding:7px 10px;border:1px solid var(--line-strong);border-radius:8px;font:inherit;font-size:13.5px;background:var(--surface);color:var(--ink)}
+  .wi-lab{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .wi-view-item{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0;font-size:13.5px}
+  .draft-meta{font-size:13px;color:var(--ink-2);margin:0 0 8px}
+  .draft-variants{display:flex;gap:8px;margin:0 0 8px}
+  .draft-variants button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .draft-box{width:100%;min-height:170px;font:inherit;font-size:14px;line-height:1.5;padding:10px 12px;border:1px solid var(--line-strong);border-radius:8px;background:var(--surface);color:var(--ink);resize:vertical;box-sizing:border-box}
+  .outreach-item{border-top:1px solid var(--line);padding:8px 0;font-size:13.5px}
+  .outreach-item .od{color:var(--ink-2);font-size:12.5px;margin-top:2px}
+  .cmp-table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px}
+  .cmp-table th,.cmp-table td{text-align:left;padding:6px 10px 6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  .cmp-table th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+  .kw-fam{margin:10px 0}
+  .kw-fam h4{margin:0 0 6px;font-size:13px}
+  .kw-chip{display:inline-block;background:var(--surface-2);border:1px solid var(--line-strong);border-radius:20px;padding:2px 6px 2px 10px;font-size:12.5px;margin:0 6px 6px 0}
+  .kw-chip button{background:none;border:0;color:var(--red);font:inherit;font-weight:700;cursor:pointer;padding:0 2px}
+  .kw-chip.new{background:var(--accent-soft);border-color:var(--accent)}
+  .kw-add{display:inline-block;margin:0 6px 6px 0}
+  .kw-add input{padding:4px 8px;border:1px solid var(--line-strong);border-radius:6px;font:inherit;font-size:12.5px;width:170px;background:var(--surface);color:var(--ink)}
 </style>
 </head>
 <body data-view="ranking">
@@ -473,7 +518,7 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
   <details class="method">
     <summary><span class="chev">&#9654;</span> How the focus score works</summary>
     <div class="method-body">
-      <div class="formula">score = tier + signals + contact readiness + research depth + enrichment &minus; review penalty &nbsp;(max 100)</div>
+      <div class="formula">score = tier + signals + contact readiness + research depth + enrichment + review penalty &nbsp;(max 100)</div>
       <table>
         <tr><th>Component</th><th>Points</th><th>What earns them</th></tr>
         <tr><td>Portfolio tier</td><td class="pts">35 / 22 / 10</td><td>Tier 1 = 35, Tier 2 = 22, Tier 3 = 10, from the Wingman portfolio tiering.</td></tr>
@@ -481,7 +526,7 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
         <tr><td>Contact readiness</td><td class="pts">0 / 6 / 10 / 14</td><td>By contacts on file: 0 contacts = 0, 1&ndash;2 = 6, 3&ndash;5 = 10, 6 or more = 14.</td></tr>
         <tr><td>Research depth</td><td class="pts">4</td><td>Awarded when the account has been through an AI research pass.</td></tr>
         <tr><td>Enrichment overlay</td><td class="pts">up to 15</td><td>Awarded to accounts in the curated enrichment set with verified firmographic and training / expansion / safety facts.</td></tr>
-        <tr><td>Profile-review penalty</td><td class="pts">&minus;8</td><td>Applied when the account carries a business-model review flag — it may not be an asset-operating company.</td></tr>
+        <tr><td>Profile-review penalty</td><td class="pts">&minus;8</td><td>Applied when the account carries a business-model review flag — it may not be an asset-operating company. The penalty is stored as a signed &minus;8 and added to the other components.</td></tr>
       </table>
       <div class="notdo">
         <p><b>Contacts:</b> suggested contacts were retargeted in Oct 2026 to training / L&amp;D leaders — chief learning officers, heads of learning, and corporate academy / university heads. Of the 788 enriched companies, <b>130 have a verified training leader</b> (name and title backed by an official company or press source). A further <b>24 name a training leader from a single aggregator listing only</b> &mdash; categorized separately as unconfirmed, badged &ldquo;Unverified &mdash; confirm before use&rdquo;, and not counted as verified. Where no training / L&amp;D leader is publicly named, the earlier HR or operations contact is kept as a fallback — <b>65 companies</b> — badged &ldquo;Fallback — not the training owner&rdquo;: a route into the account, not the training buyer. The remaining <b>568 researched companies have no publicly named candidate</b>. Everywhere else the tool recommends a target persona only; all suggested contacts must be verified before outreach.</p>
@@ -532,6 +577,37 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     </div>
   </section>
 
+
+  <section class="wi-panel view-ranking" id="wi-panel" aria-label="What-if scoring">
+    <h2>What-if scoring <span class="wi-badge" id="wi-badge" hidden>What-if view</span></h2>
+    <p class="wi-sub">Change the weights and the ranking re-sorts instantly. This is a <strong>view only</strong> — it never changes the stored scores. The canonical score stays shown next to each what-if score.</p>
+    <div class="wi-sliders">
+      <div class="wi-slider"><label for="wi-w-tier">Portfolio tier</label><div class="slider-row"><input type="range" id="wi-w-tier" min="0" max="2" step="0.1" value="1"><span class="slider-val" id="wi-w-tier-val">1.0&times;</span></div></div>
+      <div class="wi-slider"><label for="wi-w-signals">Commercial signals</label><div class="slider-row"><input type="range" id="wi-w-signals" min="0" max="2" step="0.1" value="1"><span class="slider-val" id="wi-w-signals-val">1.0&times;</span></div></div>
+      <div class="wi-slider"><label for="wi-w-contacts">Contact readiness</label><div class="slider-row"><input type="range" id="wi-w-contacts" min="0" max="2" step="0.1" value="1"><span class="slider-val" id="wi-w-contacts-val">1.0&times;</span></div></div>
+      <div class="wi-slider"><label for="wi-w-research">Research depth</label><div class="slider-row"><input type="range" id="wi-w-research" min="0" max="2" step="0.1" value="1"><span class="slider-val" id="wi-w-research-val">1.0&times;</span></div></div>
+      <div class="wi-slider"><label for="wi-w-enrichment">Enrichment overlay</label><div class="slider-row"><input type="range" id="wi-w-enrichment" min="0" max="2" step="0.1" value="1"><span class="slider-val" id="wi-w-enrichment-val">1.0&times;</span></div></div>
+    </div>
+    <div class="wi-row">
+      <label class="check"><input type="checkbox" id="wi-pen" checked> Apply profile-review penalty (&minus;8 where flagged)</label>
+      <button type="button" class="wi-btn" id="wi-reset">Reset to canonical weights</button>
+    </div>
+    <div class="wi-row">
+      <label for="wi-view-name" class="wi-lab">Saved view</label>
+      <input type="text" id="wi-view-name" placeholder="Name this view, e.g. Signals-first" autocomplete="off">
+      <button type="button" class="wi-btn" id="wi-view-save">Save current view</button>
+      <span id="wi-view-msg" role="status"></span>
+    </div>
+    <div id="wi-view-list"></div>
+    <p class="wi-note">Weights are multipliers on the stored components (0&ndash;2&times;). The penalty is stored as a signed &minus;8 and added as-is; turning it off adds 8 points back to the 197 flagged accounts.</p>
+  </section>
+  <section class="wi-panel view-ranking" id="kw-panel" aria-label="Keyword preview">
+    <h2>Keyword preview <span class="wi-badge">Preview — not a new score</span></h2>
+    <p class="wi-sub">Edit the title families below and see which <strong>existing</strong> suggested contacts match them, and how each company&rsquo;s projected contact-readiness would move. This is a projection from contacts already on file — the score only moves when contacts are actually found. No searches run and nothing is written. Slash terms from the Ladder tab (e.g. &ldquo;Manager / Lead&rdquo;) are expanded into their alternatives here.</p>
+    <div id="kw-families"></div>
+    <div class="wi-row"><button type="button" class="wi-btn" id="kw-reset">Reset keyword families</button></div>
+    <div id="kw-results"></div>
+  </section>
   <p class="count-line view-ranking" id="count-line" role="status"></p>
 
   <section class="covstats view-ranking" id="cov-stats" aria-label="Coverage and quality of contact data for the companies in view">
@@ -547,6 +623,19 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
   <div class="list view-ranking" id="list"></div>
   <div class="empty view-ranking" id="empty" hidden>No companies match these filters. Loosen the search, tier, or minimum score to see more of the portfolio.</div>
   <button type="button" class="showall view-ranking" id="showall" hidden></button>
+
+  <section class="wi-panel view-ranking" id="wi-outreach" aria-label="Outreach: drafts, selected contacts, comparison">
+    <h2>Outreach workbench</h2>
+    <p class="wi-sub">Drafts and selections live only in this browser. Nothing here sends a message — drafts are copied by hand, and contact details are revealed only after the team PIN.</p>
+    <h3 class="wi-h3">Draft message</h3>
+    <div id="draft-panel"><p class="wi-note">Pick a contact and choose &ldquo;Draft message&rdquo; to generate a draft here.</p></div>
+    <h3 class="wi-h3">Selected contacts <span id="outreach-count"></span></h3>
+    <div id="outreach-list"></div>
+    <div class="wi-row"><button type="button" class="wi-btn" id="outreach-clear">Clear selected contacts</button></div>
+    <h3 class="wi-h3">Compare companies</h3>
+    <div id="cmp-panel"><p class="wi-note">Tick the compare box on 2&ndash;3 ranking rows to compare them side by side here.</p></div>
+  </section>
+
 
   <section class="pending-section view-ranking" id="pending-section" hidden aria-label="Newly added enriched companies, baseline scan pending">
     <h2>Newly added from your enrichment list — baseline scan pending</h2>
@@ -819,6 +908,7 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
       <p class="review-sub"><strong>Expanded list (tested Nov 18, 2026 &mdash; proposed, not yet standard).</strong> Competency &mdash; Head of Competency; Training &amp; Competency Manager; Competency Assurance Manager / Lead; Manager, Training and Competency. Academy &mdash; Head of Academy; Director, Corporate University; Head of Technical Academy. Technical &amp; field training &mdash; Technical Training Manager; Operations Training Manager; Field Training Manager; Drilling / Maintenance Training Manager. Simulation &mdash; Simulator Training Manager; Head of Simulation Training. Talent &amp; leadership development &mdash; Head of Talent Development; Director, Leadership Development. Workforce &amp; capability &mdash; Workforce Development Manager; Head of Capability; Capability Development Manager; Organisational Development Manager. Digital learning &mdash; Head of Digital Learning; Learning Technology Manager; Director, Learning Experience. Early careers &mdash; Apprenticeship Manager; Head of Early Careers; Graduate Programme Manager. HSE training (narrow only) &mdash; Safety Training Manager; Head of HSE Training; HSE Competency Manager.</p>
       <p class="review-sub"><strong>Still excluded:</strong> HR generalists, recruiting / talent acquisition, CEO, finance, legal, commercial, pure HSE, comms / IR. The test is whether the role owns a learning or training program or budget &mdash; talent <em>development</em> counts, talent <em>acquisition</em> does not.</p>
       <p class="review-sub"><strong>How expanded titles slot in:</strong> a Head / Director / Senior Manager owning a training function counts as a training leader (tier 4 if unconfirmed); a Manager / Lead counts as an L&amp;D specialist (tier 5 if unconfirmed). No new tiers. Pilot result: Shell, Canadian Natural Resources, Chevron, Cenovus Energy, Venture Global LNG, Ensign Energy Services &mdash; 4 of 6 gained a usable contact via Apollo, a 5th via web search; Chevron deepened with a specialist.</p>
+      <p class="review-sub">Edit these families and preview the effect on the Ranking tab, in the Keyword preview panel (What-if engine).</p>
     </details>
     <p class="review-sub">One company from the ranking above — <strong>Chevron</strong> (Tier 1 in the portfolio, score 80) — first researched rung by rung on November 3, 2026 and <strong>revised on November 11, 2026 and again on November 18, 2026</strong> under the team's updated rules: current employees only; learning &amp; development specialists included and ranked above operations leaders within each evidence level; Apollo used to confirm employment where no company or press source exists — shown as a pill next to the contact's name, not as a separate rung — and to supply contact details, which are PIN-protected in this section and revealed only after the team PIN is entered. <strong>This is a worked example, not merged data:</strong> Chevron's Finder record names only its best contact (Justin Steele, Chief Learning and Talent Officer — unconfirmed, Apollo-confirmed); the full rung-by-rung ladder lives here, and this section changes no scores.</p>
     <details class="review-details">
@@ -881,6 +971,7 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
 <script type="application/json" id="contact-vault">{"salt":"rff3cCBZdX/PF9nk7BWKOQ==","iv":"cHtj/v7+lfVstyAJ","data":"0C1LHFX2B8Dux2F0CAFDIumGUt2uWq21EgyBgGnzhjXOZMdX9oAsAgcCQ1cbrs8D47YfDaHDCp8CZ3PmNJLV3yqI4MOOPZyrREvqmagDQ1Hr4Ygu+LnC8XPRq4dl3gGugcyhPUWOQ+vku9dPZeU0SlW4jdlF28Ze5h20vh5vrlxZ4vbHDVMG2rnlbhkjTZhV6KJ2PXFq/a4SH93010VRZxLAjtmYrS4NvGYDD5wCCtcYV35+DOlJUU/CNcLhvs9GXVJUWuZWEneygVNeyn9kI3LYqjTGO036sNOPfQfKHQTaE1Bdxsj8UqdnBEHCb3Fc1Da/T6jy7AOxFp1EMR/T10EUHx0tlfdm4+t6R0jw+4//jmcfLbOnHuMaFWGOz5SQ4xwGKZL7tzN5HO5P0sJ/qI1+UBGLuSVMJbFuIaZf1VQFit0TLWDmwN2k3L42hE7wU5dZEn1BdjaJ8r36ZlkeRpYbZ95UyFHl+bnB69+bJ8evxkVaJCOge+gzIODiYxQl2pfe6K43xaGbmK1qPlUf8IEK4fzT64X7pTp5u1W/iWnhcinokTRDjMX+Big6YVmTp7ikc32p02Xto/o7R+8PZS0u9aaUKQ02XMV/QL8UQWzkGLSCPhM/sSzfpIFOJGaF96hFBRV/i8Zh3CN/hvPnjwHO0mWvcNG5+zgB2IdnS7zhL49m80R18B8gMbl0+M+zNUlXzbZkKl3XIDNKICpPoPlv1sIqH75sC77vsRuQlNQJ0D4k0V7uxvTUZcyvPPZosh+9I7wcx8+M7fpZBL3Mlp862Fqh1AcakSF/GEXWv5i671HlejaFX1ozNc99iE6QNxJ+ll2psJ/4OfD4u6uyBqRRYIgcSY7+aqup1GDETexIdxLe3vH9NnF5Uh8T2GVsHtQZoLn1v7hqXHOseM/MZ0mb3yJO2bFw2IBPCUmuemY98Bs/702iGAYtw9r2gHYWOWXgyhn4HUcURxg73eB5Uy8CbEU58ABWEW27lcX7YToSDWhCgclhRcFnclC3t5+0D1aE1sm0pIYmMqf6wwqYcV1f8/O/K98cGvCXDeqQBeyNsTDUEiMw04x06BRGLSklo1/gjdU4f/oFvczidZ+SYR9apjk9HS/40ygE95xY6NXzouHtjkUESCiWPFn3W/s/OKTSvVFixXtghskvmXJkIshKy9QhMBPORLiLC1lvoBcpbJ4YRXngzhXQoEsnWVNHK8//hNc9U6u1C4NhYa2m35xfKrTdcFp8SEB6cc77JVEwOu4Vx4J6moCJ/wEnXkqwNQCIfRWY4nqssCrkX89qRKG4R0ilGqe+ZZTo1+uXxyH4YRwalaRRqj0mzF4ENRr5ZtoLm92CKoqfLAIiUZuX3a38fZlKvndcRwLxi9VogiMlupNlqeR5/2tjKKf42RjLrhjvByaO2rADIeKQNj7a/LN+jiC0jsef5jxkm7LYXMRx40Km5OvCtcOqWAEipQSCKnoHjkvBL1+VQBHWV6LhdA2kHWG0W+mNAB8gH33ZNIcMwHKmJXcAgoah6kc4l8Ox9TWyptusxqFHr/yst7Ce+j8pIEWoCL4xmjPDxxboJA6bwuvqktmS9DIzsXiYpC3dyGbOrXagyojGYYZu1yMERhZ7SSwDsEHP0NlD3x4vuhUDtFKF0MYyxd1EP/lxazY12dAXcRxHenf9I9EqMN/7X0Hy5Y7ir63C+GEa4myx2h2FML/HXpgcrw0/TXx92Z96u269SdL/0xdHUT5Ri6a/qKpnEC0XWayBL6rIg/u3q3SUyZDsMhK8kgqQ6Eg+wCV9jnf5ryerot0k"}</script>
 <script>
 (function () {
+  window.EONVault = { unlocked: false, data: null };
   var boxes = document.querySelectorAll('.pin-box');
   if (!boxes.length) return;
   var unlocked = false;
@@ -905,6 +996,8 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
         el.innerHTML = parts.join(' · ');
       });
       unlocked = true;
+      window.EONVault = { unlocked: true, data: data };
+      document.dispatchEvent(new CustomEvent('eon:vault-unlocked'));
       boxes.forEach(function (box) {
         box.querySelector('.pin-msg').textContent = 'Contact details unlocked for this session.';
         var f = box.querySelector('.pin-form');
@@ -1008,6 +1101,429 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
   ];
   var PAGE = 25;
   var state = { q:"", tier:"all", seg:"", min:0, enr:false, need:false, recent:false, sugg:false, tl:false, cov:null, showAll:false, open:{} };
+  /* ================= what-if engine ================= */
+  var WI_KEYS = ["tier", "signals", "contacts", "research", "enrichment"];
+  var WI_LABELS = {tier:"Portfolio tier", signals:"Commercial signals", contacts:"Contact readiness", research:"Research depth", enrichment:"Enrichment overlay"};
+  var wi = { w:{tier:1, signals:1, contacts:1, research:1, enrichment:1}, pen:true };
+  function wiScore(r){
+    var p = r.parts || {};
+    var s = (p.tier||0)*wi.w.tier + (p.signals||0)*wi.w.signals + (p.contacts||0)*wi.w.contacts + (p.research||0)*wi.w.research + (p.enrichment||0)*wi.w.enrichment + (wi.pen ? (p.review_penalty||0) : 0);
+    return Math.round(s*10)/10;
+  }
+  function wiActive(){ return wi.w.tier!==1 || wi.w.signals!==1 || wi.w.contacts!==1 || wi.w.research!==1 || wi.w.enrichment!==1 || !wi.pen; }
+  function effScore(r){ return wiActive() ? wiScore(r) : r.score; }
+  function fmtScore(v){ return String(Math.round(v*10)/10); }
+  function wiParts(r){
+    var p = r.parts || {};
+    return {tier:(p.tier||0)*wi.w.tier, signals:(p.signals||0)*wi.w.signals, contacts:(p.contacts||0)*wi.w.contacts, research:(p.research||0)*wi.w.research, enrichment:(p.enrichment||0)*wi.w.enrichment};
+  }
+  function wiBreakdown(r){
+    if(!wiActive()) return "";
+    var p = r.parts || {};
+    var terms = WI_KEYS.map(function(k){ return WI_LABELS[k] + " " + (p[k]||0) + " \u00d7 " + wi.w[k]; }).join(" + ");
+    var pen = wi.pen ? (p.review_penalty ? " + (" + p.review_penalty + " penalty)" : "") : " (penalty off)";
+    return '<div class="wi-sumline">What-if: ' + terms + pen + ' = <b>' + fmtScore(wiScore(r)) + '</b> <span class="wi-canon">(canonical ' + r.score + ')</span></div>';
+  }
+  function viewRows(){
+    var rows = filtered();
+    if(wiActive()){
+      rows = rows.slice().sort(function(a,b){
+        var d = wiScore(b) - wiScore(a);
+        if(d) return d;
+        d = b.score - a.score;
+        if(d) return d;
+        return a._rank - b._rank;
+      });
+    }
+    return rows;
+  }
+
+  /* ----- keyword families (defaults match the Ladder tab) ----- */
+  var KW_DEF = [
+    {id:"cur-lead", label:"Current — training leaders", terms:["Chief Learning Officer","Chief Learning & Talent Officer","Head of Learning","Head of Learning & Development","Director of Training","Director of Learning","VP Training","Head of Training","Director, Enterprise Learning & Talent"]},
+    {id:"cur-spec", label:"Current — L&D specialists", terms:["Training Manager","L&D Specialist","Training Specialist","Instructional Designer","Learning Specialist","Learning Manager"]},
+    {id:"exp-comp", label:"Expanded — Competency", terms:["Head of Competency","Training & Competency Manager","Competency Assurance Manager","Competency Assurance Lead","Manager, Training and Competency"]},
+    {id:"exp-acad", label:"Expanded — Academy", terms:["Head of Academy","Director, Corporate University","Head of Technical Academy"]},
+    {id:"exp-tech", label:"Expanded — Technical & field training", terms:["Technical Training Manager","Operations Training Manager","Field Training Manager","Drilling Training Manager","Maintenance Training Manager"]},
+    {id:"exp-sim", label:"Expanded — Simulation", terms:["Simulator Training Manager","Head of Simulation Training"]},
+    {id:"exp-talent", label:"Expanded — Talent & leadership development", terms:["Head of Talent Development","Director, Leadership Development"]},
+    {id:"exp-work", label:"Expanded — Workforce & capability", terms:["Workforce Development Manager","Head of Capability","Capability Development Manager","Organisational Development Manager"]},
+    {id:"exp-digital", label:"Expanded — Digital learning", terms:["Head of Digital Learning","Learning Technology Manager","Director, Learning Experience"]},
+    {id:"exp-early", label:"Expanded — Early careers", terms:["Apprenticeship Manager","Head of Early Careers","Graduate Programme Manager"]},
+    {id:"exp-hse", label:"Expanded — HSE training (narrow only)", terms:["Safety Training Manager","Head of HSE Training","HSE Competency Manager"]}
+  ];
+  function kwCopy(src){ return JSON.parse(JSON.stringify(src)); }
+  var kw = kwCopy(KW_DEF);
+  function normStr(s){ return String(s || "").toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ").trim(); }
+  function titleMatches(title){
+    var nt = normStr(title);
+    if(!nt) return null;
+    for(var i=0;i<kw.length;i++){
+      for(var j=0;j<kw[i].terms.length;j++){
+        var t = normStr(kw[i].terms[j]);
+        if(t && nt.indexOf(t) !== -1) return {family: kw[i].label, term: kw[i].terms[j]};
+      }
+    }
+    return null;
+  }
+  function readinessBucket(n){ if(n===0) return 0; if(n<=2) return 6; if(n<=5) return 10; return 14; }
+  function kwPreview(){
+    var changed = [], matched = [], expOnlyContacts = 0;
+    RECORDS.forEach(function(r){
+      var cands = r.suggested_contacts || [];
+      var matches = [];
+      cands.forEach(function(c){
+        var m = titleMatches(c.title);
+        if(m){
+          matches.push({c:c, m:m});
+          if(m.family.indexOf("Expanded") === 0) expOnlyContacts++;
+        }
+      });
+      if(matches.length) matched.push({r:r, matches:matches});
+      var proj = readinessBucket(matches.length);
+      var cur = r.parts ? (r.parts.contacts || 0) : 0;
+      if(proj !== cur) changed.push({r:r, cur:cur, proj:proj, matches:matches});
+    });
+    changed.sort(function(a,b){ var d = Math.abs(b.proj-b.cur) - Math.abs(a.proj-a.cur); if(d) return d; return (b.r.score||0) - (a.r.score||0); });
+    return {changed: changed, matched: matched, matchedCompanies: matched.length, expOnlyContacts: expOnlyContacts};
+  }
+
+  /* ----- template drafts (stored facts only, never sent) ----- */
+  var PILOT_NOINVAULT = {"Kevin Mayer":1, "Rex George":1, "Zoe Naylor":1};
+  function firstName(n){ return String(n || "").split(" ")[0]; }
+  function triggerText(r){
+    var ups = r.recent_updates || [];
+    for(var i=0;i<ups.length;i++){ if(ups[i].in_window && ups[i].headline) return ups[i].headline; }
+    if(ups.length && ups[0].headline) return ups[0].headline;
+    if(r.signals_sample && r.signals_sample.length) return r.signals_sample[0];
+    if(r.types && r.types.length) return (TYPE_LABELS[r.types[0]] || r.types[0]) + " activity at " + r.company;
+    return "";
+  }
+  function buildDraft(ctx, variant){
+    var fn = firstName(ctx.name), co = ctx.company, ti = ctx.title;
+    var trig = ctx.trigger || ("training operations at " + co);
+    var g = "Hi " + fn + ",\n\n";
+    var close = "\n\nWould a 20-minute call next week work to walk through it?\n\nBest regards,\n[Your name]\nEON AI Ventures";
+    var body;
+    if(ctx.ev === "fallback"){
+      if(variant === "B"){
+        body = "I'm looking for whoever owns learning and training at " + co + ". EON Genesis turns operating procedures into scored simulations, so field teams can practise high-consequence work before doing it for real — if that's your area, or you can point me to who owns it, I'd welcome a short call.";
+      } else {
+        body = "I'm looking for whoever owns learning and training at " + co + " — your name came up in that search, and if there's someone better placed I'd be grateful for a pointer. I noticed " + trig + ", and it points to a team that will need to train people quickly and safely.";
+      }
+      return g + body + close;
+    }
+    if(ctx.ev === "unconfirmed"){
+      if(variant === "B"){
+        body = "I came across your name in connection with " + ti + " at " + co + " — I hope I've got the right person. EON Genesis turns operating procedures into scored simulations, so field teams can practise high-consequence work before doing it for real. If the title is out of date, just say so — no harm done.";
+      } else {
+        body = "I came across your name in connection with " + ti + " at " + co + " — I hope I've got the right person. I noticed " + trig + ", and it points to a team that will need to train people quickly and safely. If the title is out of date, just say so — no harm done.";
+      }
+      return g + body + close;
+    }
+    if(variant === "B"){
+      body = "EON Genesis turns operating procedures into scored simulations, so field teams can practise high-consequence work before doing it for real — and " + co + " looks like exactly the kind of operation it was built for. As " + ti + " at " + co + ", you'd be the right person to judge whether that would help your teams.";
+    } else {
+      body = "I noticed " + trig + " at " + co + ", and it points to a team that will need to train people quickly and safely. As " + ti + " at " + co + ", you'd be the right person to judge whether EON Genesis — scored simulations that let field teams practise high-consequence work before doing it for real — would help your teams.";
+    }
+    return g + body + close;
+  }
+
+  /* ----- outreach list (localStorage; details are session-only) ----- */
+  var LS_OUTREACH = "eon.outreach";
+  function lsGet(k){ try { return window.localStorage.getItem(k); } catch(e){ return null; } }
+  function lsSet(k, v){ try { window.localStorage.setItem(k, v); } catch(e){} }
+  function loadOutreach(){ try { var v = JSON.parse(lsGet(LS_OUTREACH) || "[]"); return Array.isArray(v) ? v : []; } catch(e){ return []; } }
+  var outreach = loadOutreach();
+  function saveOutreach(){ lsSet(LS_OUTREACH, JSON.stringify(outreach)); }
+  function inOutreach(company, name){
+    for(var i=0;i<outreach.length;i++){ if(outreach[i].company === company && outreach[i].name === name) return true; }
+    return false;
+  }
+  function vaultDetails(key){
+    if(window.EONVault && window.EONVault.unlocked && window.EONVault.data){
+      var c = window.EONVault.data[key];
+      if(!c) return null;
+      var parts = [];
+      if(c.email) parts.push('Work email: <a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a>');
+      if(c.linkedin) parts.push('<a href="https://www.linkedin.com/in/' + esc(c.linkedin) + '" target="_blank" rel="noopener">LinkedIn</a>');
+      if(c.note) parts.push(esc(c.note));
+      return parts.length ? parts.join(" · ") : null;
+    }
+    return null;
+  }
+  function outreachNote(it){
+    if(it.vaultKey){
+      var d = vaultDetails(it.vaultKey);
+      if(d) return d;
+      return "Details PIN-protected — use \u201cReveal details\u201d and enter the team PIN.";
+    }
+    if(PILOT_NOINVAULT[it.name]) return "Contact details held internally, not in the vault — request from the team.";
+    return "No contact details on this page — verify before outreach.";
+  }
+  function renderOutreach(){
+    var host = $("outreach-list");
+    if(!host) return;
+    var cnt = $("outreach-count");
+    if(cnt) cnt.textContent = outreach.length ? "(" + outreach.length + ")" : "";
+    if(!outreach.length){ host.innerHTML = '<p class="wi-note">No contacts selected yet. Use \u201cSelect for outreach\u201d on any contact.</p>'; return; }
+    host.innerHTML = outreach.map(function(it){
+      var d = outreachNote(it);
+      return '<div class="outreach-item"><b>' + esc(it.name) + '</b> — ' + esc(it.title) + ' · ' + esc(it.company) +
+        ' <span class="badge ' + (it.ev === "verified" ? "green" : it.ev === "unconfirmed" ? "amber" : "grey") + '">' + (it.ev === "verified" ? "Current verified" : it.ev === "unconfirmed" ? "Unconfirmed — confirm before use" : "Fallback — not the training owner") + '</span>' +
+        '<div class="od">' + d + '</div>' +
+        '<div class="wi-cand-actions"><button type="button" class="wi-btn" data-wi-o-remove data-company="' + esc(it.company) + '" data-name="' + esc(it.name) + '">Remove</button>' +
+        (it.vaultKey ? '<button type="button" class="wi-btn" data-wi-o-reveal data-vaultkey="' + esc(it.vaultKey) + '" data-company="' + esc(it.company) + '" data-name="' + esc(it.name) + '">Reveal details</button>' : "") +
+        '</div></div>';
+    }).join("");
+  }
+  function promptPinFor(name){
+    var boxes = document.querySelectorAll(".pin-box");
+    var target = null;
+    for(var i=0;i<boxes.length;i++){ if(boxes[i].offsetParent !== null){ target = boxes[i]; break; } }
+    if(!target && boxes.length) target = boxes[0];
+    if(!target) return false;
+    var inp = target.querySelector(".pin-input"), msg = target.querySelector(".pin-msg");
+    if(msg) msg.textContent = "Enter the team PIN to reveal details for " + name + ".";
+    if(target.scrollIntoView) target.scrollIntoView({behavior:"smooth", block:"center"});
+    if(inp) inp.focus();
+    return true;
+  }
+  function toggleSelect(btn){
+    var company = btn.getAttribute("data-company") || "";
+    var name = btn.getAttribute("data-name") || "";
+    var idx = -1;
+    for(var i=0;i<outreach.length;i++){ if(outreach[i].company === company && outreach[i].name === name){ idx = i; break; } }
+    if(idx !== -1){
+      outreach.splice(idx, 1);
+    } else {
+      var vaultKey = btn.getAttribute("data-vaultkey") || null;
+      outreach.push({company: company, name: name, title: btn.getAttribute("data-title") || "", ev: btn.getAttribute("data-ev") || "unconfirmed", vaultKey: vaultKey});
+      if(vaultKey && !(window.EONVault && window.EONVault.unlocked)) promptPinFor(name);
+    }
+    saveOutreach();
+    renderOutreach();
+    document.querySelectorAll("[data-wi-select]").forEach(function(b){
+      var on = inOutreach(b.getAttribute("data-company") || "", b.getAttribute("data-name") || "");
+      b.textContent = on ? "Selected \u2713 — remove" : "Select for outreach";
+    });
+    render();
+  }
+
+  /* ----- compare mode ----- */
+  var compareSel = [];
+  function cmpBoxHTML(r){
+    var sel = compareSel.indexOf(r.company) !== -1;
+    var dis = !sel && compareSel.length >= 3;
+    return '<label class="cmp-wrap"><input type="checkbox" class="cmp-box" data-company="' + esc(r.company) + '"' + (sel ? " checked" : "") + (dis ? " disabled" : "") + ' aria-label="Select ' + esc(dispName(r)) + ' for comparison"></label>';
+  }
+  function findRecord(company){
+    for(var i=0;i<RECORDS.length;i++){ if(RECORDS[i].company === company) return RECORDS[i]; }
+    return null;
+  }
+  function renderCompare(){
+    var el = $("cmp-panel");
+    if(!el) return;
+    if(compareSel.length < 2){
+      el.innerHTML = '<p class="wi-note">Tick the compare box on 2&ndash;3 ranking rows to compare them side by side here.' + (compareSel.length === 1 ? ' 1 selected.' : '') + '</p>';
+      return;
+    }
+    var recs = compareSel.map(findRecord).filter(function(x){ return x; });
+    var rows = [
+      ["Canonical score", function(r){ return String(r.score); }],
+      ["What-if score", function(r){ return wiActive() ? fmtScore(wiScore(r)) : "\u2014"; }],
+      ["Rank (canonical)", function(r){ return "#" + r._rank; }],
+      ["Tier", function(r){ return "Tier " + r.tier; }],
+      ["Segment", function(r){ return esc(r.segment || ""); }],
+      ["Signal types", function(r){ return String(r.n_types); }],
+      ["Signal events", function(r){ return String(r.n_events); }],
+      ["Contacts on file", function(r){ return String(r.contacts); }],
+      ["Contact status", function(r){ return esc(r.contacts_status || ""); }],
+      ["Best contact", function(r){ var c = (r.suggested_contacts || [])[0]; return c ? esc(c.name) + " — " + esc(c.title) : "\u2014"; }]
+    ];
+    var h = '<table class="cmp-table"><thead><tr><th></th>' + recs.map(function(r){ return "<th>" + esc(dispName(r)) + "</th>"; }).join("") + "</tr></thead><tbody>";
+    rows.forEach(function(row){
+      h += "<tr><th>" + row[0] + "</th>" + recs.map(function(r){ return "<td>" + row[1](r) + "</td>"; }).join("") + "</tr>";
+    });
+    h += '</tbody></table><div class="wi-row"><button type="button" class="wi-btn" data-wi-cmp-clear>Clear comparison</button></div>';
+    el.innerHTML = h;
+  }
+
+  /* ----- static contacts (prospects + ladder): parse + attach actions ----- */
+  function parseContactLine(text){
+    var t = String(text || "").replace(/Apollo-confirmed/g, "").replace(/\s+/g, " ").trim();
+    var m = t.match(/^(?:Best contact:|Also \(tier \d+\):)\s*([^,]+),\s*(.+?)(?:\s+—\s+|\.\s|$)/);
+    if(m && m[1].trim().length > 1 && m[2].trim().length >= 3) return {name: m[1].trim(), title: m[2].trim()};
+    var m2 = t.match(/^(.+?)\s+—\s+(.+?)\s+Evidence:/);
+    if(m2 && m2[1].trim().length > 1 && m2[2].trim().length >= 3 && m2[1].indexOf(":") === -1) return {name: m2[1].trim(), title: m2[2].trim()};
+    return null;
+  }
+  function enhanceStaticContacts(){
+    var cards = document.querySelectorAll(".review-card");
+    for(var i=0;i<cards.length;i++){
+      var card = cards[i];
+      var nameEl = card.querySelector(".review-name");
+      if(!nameEl) continue;
+      var company = nameEl.textContent.trim();
+      var chip = card.querySelector(".review-chip");
+      var chipUnconf = chip && chip.className.indexOf("unconf") !== -1;
+      var ps = card.querySelectorAll("p");
+      for(var j=0;j<ps.length;j++){
+        var p = ps[j];
+        if(p.getAttribute("data-wi-enhanced")) continue;
+        var parsed = parseContactLine(p.textContent);
+        if(!parsed) continue;
+        p.setAttribute("data-wi-enhanced", "1");
+        var vaultEl = p.querySelector("[data-contact]");
+        var vaultKey = vaultEl ? vaultEl.getAttribute("data-contact") : null;
+        var apollo = !!p.querySelector(".apollo-pill");
+        var ev = (chipUnconf || apollo || /aggregator/i.test(p.textContent)) ? "unconfirmed" : "verified";
+        var div = document.createElement("div");
+        div.className = "wi-cand-actions";
+        div.innerHTML =
+          '<button type="button" class="wi-btn" data-wi-draft data-company="' + esc(company) + '" data-name="' + esc(parsed.name) + '" data-title="' + esc(parsed.title) + '" data-ev="' + ev + '" data-trigger="">Draft message</button>' +
+          '<button type="button" class="wi-btn" data-wi-select data-company="' + esc(company) + '" data-name="' + esc(parsed.name) + '" data-title="' + esc(parsed.title) + '" data-ev="' + ev + '"' + (vaultKey ? ' data-vaultkey="' + esc(vaultKey) + '"' : "") + '>Select for outreach</button>';
+        p.parentNode.insertBefore(div, p.nextSibling);
+      }
+    }
+  }
+
+  /* ----- what-if UI sync + renders ----- */
+  function syncWiUI(){
+    WI_KEYS.forEach(function(k){
+      var inp = $("wi-w-" + k), lab = $("wi-w-" + k + "-val");
+      if(inp) inp.value = wi.w[k];
+      if(lab) lab.textContent = Number(wi.w[k]).toFixed(1) + "×";
+    });
+    var pen = $("wi-pen"); if(pen) pen.checked = wi.pen;
+    var badge = $("wi-badge"); if(badge) badge.hidden = !wiActive();
+  }
+  function renderKw(){
+    var host = $("kw-families");
+    if(!host) return;
+    var h = "";
+    kw.forEach(function(fam){
+      h += '<div class="kw-fam"><h4>' + esc(fam.label) + '</h4><div>';
+      fam.terms.forEach(function(t){
+        var inDef = false;
+        for(var d2=0;d2<KW_DEF.length;d2++){ if(KW_DEF[d2].id === fam.id && KW_DEF[d2].terms.indexOf(t) !== -1) inDef = true; }
+        h += '<span class="kw-chip' + (inDef ? "" : " new") + '">' + esc(t) + ' <button type="button" data-kw-del data-fam="' + esc(fam.id) + '" data-term="' + esc(t) + '" aria-label="Remove ' + esc(t) + '">&times;</button></span>';
+      });
+      h += '<span class="kw-add"><input type="text" placeholder="Add a title…" data-kw-add-input data-fam="' + esc(fam.id) + '" autocomplete="off"> <button type="button" class="wi-btn" data-kw-add data-fam="' + esc(fam.id) + '">Add</button></span>';
+      h += '</div></div>';
+    });
+    host.innerHTML = h;
+    renderKwResults();
+  }
+  function renderKwResults(){
+    var host = $("kw-results");
+    if(!host) return;
+    var pv = kwPreview();
+    var savedKw = kw;
+    kw = kwCopy(KW_DEF);
+    var pvDef = kwPreview();
+    kw = savedKw;
+    var defCounts = {};
+    pvDef.matched.forEach(function(x){ defCounts[x.r.company] = x.matches.length; });
+    var editChanged = 0, editGained = 0, editLost = 0;
+    pv.matched.forEach(function(x){ var d = x.matches.length - (defCounts[x.r.company] || 0); if(d !== 0){ editChanged++; if(d > 0) editGained += d; else editLost += -d; } });
+    pvDef.matched.forEach(function(x){ var found = false; for(var k=0;k<pv.matched.length;k++){ if(pv.matched[k].r.company === x.r.company){ found = true; break; } } if(!found){ editChanged++; editLost += x.matches.length; } });
+    var ups = 0, downs = 0;
+    pv.changed.forEach(function(c){ if(c.proj > c.cur) ups++; else downs++; });
+    var h = '<p class="wi-note"><b>PREVIEW</b> — projection from contacts already on file, not a new score. <b>' + pv.matchedCompanies + '</b> of ' + RECORDS.length + ' companies have at least one title match under the edited families. <b>' + pv.changed.length + '</b> companies would move readiness buckets if only title-matched contacts counted (' + ups + ' up, ' + downs + ' down — most contacts on file are operations leaders or fallbacks, not training-titled). Your edits vs the default families: <b>' + editChanged + '</b> companies change (' + editGained + ' contacts gained, ' + editLost + ' lost). <b>' + pv.expOnlyContacts + '</b> contacts match only expanded families.</p>';
+    if(pv.changed.length){
+      h += '<div class="outreach-item" style="border-top:0"><b>Companies whose projected readiness moves (top ' + Math.min(25, pv.changed.length) + '):</b></div>';
+      pv.changed.slice(0, 25).forEach(function(c){
+        h += '<div class="outreach-item"><b>' + esc(dispName(c.r)) + '</b> — readiness ' + c.cur + ' → ' + c.proj + ' (canonical score ' + c.r.score + ')<div class="od">' +
+          c.matches.map(function(x){ return esc(x.c.name) + " — " + esc(x.c.title) + " (" + esc(x.m.family) + ")"; }).join("; ") + '</div></div>';
+      });
+    }
+    host.innerHTML = h;
+  }
+
+  /* ----- draft panel ----- */
+  var currentDraft = null;
+  function renderDraft(){
+    var host = $("draft-panel");
+    if(!host) return;
+    if(!currentDraft){ host.innerHTML = '<p class="wi-note">Pick a contact and choose \u201cDraft message\u201d to generate a draft here.</p>'; return; }
+    var c = currentDraft;
+    var evLabel = c.ev === "verified" ? "Current verified" : c.ev === "unconfirmed" ? "Unconfirmed — confirm before use" : "Fallback — not the training owner";
+    host.innerHTML = '<p class="draft-meta">Draft for <b>' + esc(c.name) + '</b> — ' + esc(c.title) + ' · ' + esc(c.company) + ' <span class="badge ' + (c.ev === "verified" ? "green" : c.ev === "unconfirmed" ? "amber" : "grey") + '">' + evLabel + '</span></p>' +
+      '<div class="draft-variants"><button type="button" class="wi-btn" data-wi-variant="A" aria-pressed="' + (c.variant === "A") + '">A — trigger-led</button><button type="button" class="wi-btn" data-wi-variant="B" aria-pressed="' + (c.variant === "B") + '">B — credibility-led</button></div>' +
+      '<textarea class="draft-box" id="draft-text" aria-label="Draft message">' + esc(buildDraft(c, c.variant)) + '</textarea>' +
+      '<div class="wi-row"><button type="button" class="wi-btn primary" data-wi-copy>Copy draft</button><span class="wi-note" style="margin:0">Draft only — this page never sends messages. Edit freely before copying.</span></div>';
+  }
+  function openDraft(btn){
+    if(document.body.getAttribute("data-view") !== "ranking"){
+      var tab = document.getElementById("tab-ranking");
+      if(tab) tab.click();
+    }
+    currentDraft = {
+      company: btn.getAttribute("data-company") || "",
+      name: btn.getAttribute("data-name") || "",
+      title: btn.getAttribute("data-title") || "",
+      ev: btn.getAttribute("data-ev") || "unconfirmed",
+      trigger: btn.getAttribute("data-trigger") || "",
+      variant: "A"
+    };
+    renderDraft();
+    var panel = $("wi-outreach");
+    if(panel && panel.scrollIntoView) panel.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  /* ----- saved views ----- */
+  var LS_VIEWS = "eon.whatif.views";
+  function loadViews(){ try { var v = JSON.parse(lsGet(LS_VIEWS) || "[]"); return Array.isArray(v) ? v : []; } catch(e){ return []; } }
+  function saveViews(v){ lsSet(LS_VIEWS, JSON.stringify(v)); }
+  function viewSummary(v){
+    var parts = [];
+    if(v.w){ parts.push("tier " + v.w.tier + "×, signals " + v.w.signals + "×, contacts " + v.w.contacts + "×, research " + v.w.research + "×, enrichment " + v.w.enrichment + "×"); }
+    parts.push(v.pen ? "penalty on" : "penalty off");
+    return parts.join(" · ");
+  }
+  function renderViews(){
+    var host = $("wi-view-list");
+    if(!host) return;
+    var views = loadViews();
+    if(!views.length){ host.innerHTML = '<p class="wi-note">No saved views yet.</p>'; return; }
+    host.innerHTML = views.map(function(v){
+      return '<div class="wi-view-item"><b>' + esc(v.name) + '</b><span class="wi-canon">' + viewSummary(v) + '</span>' +
+        '<button type="button" class="wi-btn" data-wi-view-load data-name="' + esc(v.name) + '">Load</button>' +
+        '<button type="button" class="wi-btn" data-wi-view-del data-name="' + esc(v.name) + '">Delete</button></div>';
+    }).join("");
+  }
+  function applyView(v){
+    if(v.w) wi.w = {tier:+v.w.tier||0, signals:+v.w.signals||0, contacts:+v.w.contacts||0, research:+v.w.research||0, enrichment:+v.w.enrichment||0};
+    wi.pen = !!v.pen;
+    if(v.kw) kw = kwCopy(v.kw);
+    if(v.filters){
+      state.q = v.filters.q || "";
+      state.tier = v.filters.tier || "all";
+      state.seg = v.filters.seg || "";
+      state.min = v.filters.min || 0;
+      var q = $("q"); if(q) q.value = state.q;
+      var sg = $("seg"); if(sg) sg.value = state.seg;
+      var mn = $("minscore"); if(mn) mn.value = state.min;
+      var mv = $("minscore-val"); if(mv) mv.textContent = state.min;
+      document.querySelectorAll(".tierbtns button").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.tier === state.tier ? "true" : "false"); });
+    }
+    state.showAll = false;
+    syncWiUI();
+    renderKw();
+    render();
+  }
+  function saveCurrentView(){
+    var nameEl = $("wi-view-name");
+    var name = (nameEl ? nameEl.value : "").trim() || ("View " + (loadViews().length + 1));
+    var views = loadViews().filter(function(v){ return v.name !== name; });
+    views.push({name: name, w: {tier:wi.w.tier, signals:wi.w.signals, contacts:wi.w.contacts, research:wi.w.research, enrichment:wi.w.enrichment}, pen: wi.pen, kw: kwCopy(kw), filters: {q: state.q, tier: state.tier, seg: state.seg, min: state.min}});
+    saveViews(views);
+    renderViews();
+    var msg = $("wi-view-msg"); if(msg){ msg.textContent = "Saved view \u201c" + name + "\u201d."; setTimeout(function(){ if(msg.textContent.indexOf(name) !== -1) msg.textContent = ""; }, 3000); }
+    if(nameEl) nameEl.value = "";
+  }
+
 
   var DISPLAY_NAMES = { "bourbon-online.com": "Bourbon" };
   function dispName(r){ return DISPLAY_NAMES[r.company] || r.company; }
@@ -1068,7 +1584,7 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     return RECORDS.filter(function(r){
       if(state.tier !== "all" && r.tier !== parseInt(state.tier,10)) return false;
       if(state.seg && r.segment !== state.seg) return false;
-      if(r.score < state.min) return false;
+      if(effScore(r) < state.min) return false;
       if(state.enr && !r.enriched) return false;
       if(state.need && r.contacts !== 0) return false;
       if(state.recent && !(r.recent_updates && r.recent_updates.length)) return false;
@@ -1084,10 +1600,10 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
   }
 
   /* ----- row rendering ----- */
-  function miniBar(r){
+  function miniBar(r, vals){
     var html = '<span class="minibar" role="img" aria-label="Score breakdown mini bar">';
     PART_META.forEach(function(p){
-      var v = r.parts[p.key];
+      var v = (vals || r.parts)[p.key];
       if(v > 0) html += '<span style="width:' + v + '%;background:' + p.color + '"></span>';
     });
     return html + "</span>";
@@ -1141,6 +1657,14 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     if(r.contacts_status === "unconfirmed") return '<span class="chip unconf">Unconfirmed contact</span>';
     return '<span class="chip sugg">Suggested contacts</span>';
   }
+  function candActionsHTML(r, c, weak){
+    var evCls = weak ? "fallback" : (r.contacts_status === "unconfirmed" || c.evidence === "aggregator" || c.apollo_confirmed ? "unconfirmed" : "verified");
+    var sel = inOutreach(r.company, c.name);
+    return '<div class="wi-cand-actions">' +
+      '<button type="button" class="wi-btn" data-wi-draft data-company="' + esc(r.company) + '" data-name="' + esc(c.name) + '" data-title="' + esc(c.title) + '" data-ev="' + evCls + '" data-trigger="' + esc(triggerText(r)) + '">Draft message</button>' +
+      '<button type="button" class="wi-btn" data-wi-select data-company="' + esc(r.company) + '" data-name="' + esc(c.name) + '" data-title="' + esc(c.title) + '" data-ev="' + evCls + '">' + (sel ? "Selected \u2713 — remove" : "Select for outreach") + '</button>' +
+    '</div>';
+  }
   function suggestedHTML(r){
     if(r.contacts_status !== "found" && r.contacts_status !== "none_found" && r.contacts_status !== "weak" && r.contacts_status !== "not_researched" && r.contacts_status !== "unconfirmed") return "";
     var asOf = (DATA.contacts_research && DATA.contacts_research.as_of) || "2026-10-18";
@@ -1160,6 +1684,7 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
           '<span class="badge ' + esc(b.tone) + '">' + esc(b.label) + '</span>' + (c.apollo_confirmed ? '<span class="apollo-pill">Apollo-confirmed</span>' : '') +
           '<a class="csrc" href="' + esc(c.source_url) + '" target="_blank" rel="noopener noreferrer">Source</a>' +
           (note ? '<p class="cnote' + (warn ? " warn" : "") + '">' + esc(note) + '</p>' : '') +
+          candActionsHTML(r, c, weak) +
         '</div>';
       }).join("");
       if(!weak && r.contacts_note) html += '<p class="sugg-none">' + esc(r.contacts_note) + '</p>';
@@ -1205,6 +1730,7 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
       '<section class="card" aria-label="Why it matters">' +
         '<h3>Why it matters</h3>' +
         breakdownRows(r) +
+        wiBreakdown(r) +
         (sigChips ? '<div class="sigtypes">' + sigChips + "</div>" : "") +
         '<p class="sigstats"><b>' + r.n_events + "</b> signal event" + (r.n_events===1?"":"s") +
           " across <b>" + r.n_types + "</b> type" + (r.n_types===1?"":"s") +
@@ -1227,12 +1753,16 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
       "</section>" +
     "</div>";
   }
-  function rowHTML(r){
+  function rowHTML(r, wiRank){
     var open = !!state.open[r.company];
     var primary = (r.actions && r.actions[0]) ? r.actions[0] : "—";
+    var wActive = wiActive();
+    var wScore = wActive ? wiScore(r) : r.score;
+    var rankShown = wiRank || r._rank;
     return '<article class="row' + (open ? " open" : "") + '" id="row-' + r._rank + '">' +
+      cmpBoxHTML(r) +
       '<button type="button" class="row-head" data-company="' + esc(r.company) + '" aria-expanded="' + open + '">' +
-        '<span class="rank">' + r._rank + "</span>" +
+        '<span class="rank">' + rankShown + "</span>" +
         "<span>" +
           '<span class="co-name">' + esc(dispName(r)) + "</span>" +
           (r.domain ? '<span class="co-domain">' + esc(r.domain) + "</span>" : "") +
@@ -1247,7 +1777,7 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
             (r.profile_review ? '<span class="chip flag">Review flag</span>' : "") +
           "</span>" +
         "</span>" +
-        '<span class="scorebox"><span class="score-num">' + r.score + "<small>/100</small></span>" + miniBar(r) + "</span>" +
+        '<span class="scorebox"><span class="score-num">' + fmtScore(wScore) + "<small>/100</small></span>" + (wActive ? '<span class="wi-canon">canon ' + r.score + ' · #' + r._rank + '</span>' : "") + miniBar(r, wActive ? wiParts(r) : null) + "</span>" +
         '<span class="action-line"><span class="arr">&rarr;</span><span>' + esc(primary) + '</span><span class="chev" aria-hidden="true">&#9662;</span></span>' +
       "</button>" +
       (open ? '<div class="detail">' + detailHTML(r) + "</div>" : "") +
@@ -1347,16 +1877,19 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
   }
 
   function render(){
-    var rows = filtered();
+    var rows = viewRows();
     var shown = state.showAll ? rows : rows.slice(0, PAGE);
     var pend = pendingFiltered();
     var pendSection = $("pending-section");
     pendSection.hidden = pend.length === 0;
     $("pending-list").innerHTML = pend.map(pendingHTML).join("");
-    countEl.innerHTML = "Showing <b>" + shown.length + "</b> of <b>" + rows.length + "</b> matching companies · <b>" + RECORDS.length + "</b> scored in total";
+    countEl.innerHTML = "Showing <b>" + shown.length + "</b> of <b>" + rows.length + "</b> matching companies · <b>" + RECORDS.length + "</b> scored in total" + (wiActive() ? ' <span class="wi-badge">What-if view</span>' : "");
     renderCovStats(rows, pend);
+    syncWiUI();
+    renderCompare();
+    renderOutreach();
     emptyEl.hidden = rows.length !== 0 || pend.length !== 0;
-    listEl.innerHTML = shown.map(rowHTML).join("");
+    listEl.innerHTML = shown.map(function(r,i){ return rowHTML(r, wiActive() ? i+1 : null); }).join("");
     if(!state.showAll && rows.length > PAGE){
       showAllBtn.hidden = false;
       showAllBtn.textContent = "Show all " + rows.length + " matching companies";
@@ -1416,8 +1949,9 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     var s = String(v == null ? "" : v);
     return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
   }
-  function toCSV(records){
+  function toCSV(records, whatif, rankMap){
     var cols = ["Company","Domain","Tier","Segment","Subvertical","Headquarters","Score","Signal types","Signal events","Latest signal","Contacts on file","Contact status","Suggested contact","Contact title","Contact evidence","Revenue","Revenue FY","Employees","Training","Expansion","Safety","Enriched","Profile review"];
+    if(whatif){ cols.splice(7, 0, "What-if score", "What-if rank"); }
     var lines = [cols.map(csvCell).join(",")];
     records.forEach(function(r){
       var cands = r.suggested_contacts || [];
@@ -1428,12 +1962,13 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
         cands.map(function(c){ return c.evidence; }).join("; "),
         r.revenue, r.revenue_fy, r.employees, r.training, r.expansion, r.safety,
         r.enriched ? "Yes" : "No", r.profile_review ? "Yes" : "No"];
+      if(whatif){ row.splice(7, 0, r.score == null ? "" : fmtScore(wiScore(r)), r.score == null ? "" : (rankMap && rankMap[r.company] != null ? rankMap[r.company] : "")); }
       lines.push(row.map(csvCell).join(","));
     });
     return "\uFEFF" + lines.join("\r\n");
   }
-  function downloadCSV(records, filename){
-    var blob = new Blob([toCSV(records)], {type:"text/csv;charset=utf-8"});
+  function downloadCSV(records, filename, whatif, rankMap){
+    var blob = new Blob([toCSV(records, whatif, rankMap)], {type:"text/csv;charset=utf-8"});
     var url = URL.createObjectURL(blob);
     var a = document.createElement("a");
     a.href = url; a.download = filename;
@@ -1445,11 +1980,125 @@ body[data-view="prospects"] .view-ranking,body[data-view="prospects"] .view-ladd
     var stamp = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
     return "eon-focus-finder-" + kind + "-" + stamp + ".csv";
   }
-  $("export-view").addEventListener("click", function(){ downloadCSV(filtered().concat(pendingFiltered()), exportFilename("current-view")); });
+  $("export-view").addEventListener("click", function(){
+    var rows = viewRows();
+    var rankMap = {};
+    rows.forEach(function(r,i){ rankMap[r.company] = i+1; });
+    downloadCSV(rows.concat(pendingFiltered()), exportFilename("current-view"), wiActive(), rankMap);
+  });
   $("export-all").addEventListener("click", function(){ downloadCSV(ALL.slice(), exportFilename("full-portfolio")); });
   showAllBtn.addEventListener("click", function(){ state.showAll = true; render(); });
 
   render();
+
+  /* ----- what-if events ----- */
+  function wireSlider(key){
+    var inp = $("wi-w-" + key);
+    if(!inp) return;
+    inp.addEventListener("input", function(){
+      wi.w[key] = parseFloat(inp.value) || 0;
+      syncWiUI();
+      render();
+    });
+  }
+  WI_KEYS.forEach(wireSlider);
+  var penEl = $("wi-pen");
+  if(penEl) penEl.addEventListener("change", function(){ wi.pen = penEl.checked; syncWiUI(); render(); });
+  var resetEl = $("wi-reset");
+  if(resetEl) resetEl.addEventListener("click", function(){
+    wi.w = {tier:1, signals:1, contacts:1, research:1, enrichment:1};
+    wi.pen = true;
+    syncWiUI();
+    render();
+  });
+  var saveEl = $("wi-view-save");
+  if(saveEl) saveEl.addEventListener("click", saveCurrentView);
+  var kwResetEl = $("kw-reset");
+  if(kwResetEl) kwResetEl.addEventListener("click", function(){ kw = kwCopy(KW_DEF); renderKw(); });
+  var ocEl = $("outreach-clear");
+  if(ocEl) ocEl.addEventListener("click", function(){ outreach = []; saveOutreach(); renderOutreach(); render(); });
+  document.addEventListener("eon:vault-unlocked", function(){ renderOutreach(); });
+  document.addEventListener("click", function(e){
+    var t = e.target && e.target.closest ? e.target.closest("[data-wi-draft],[data-wi-select],[data-wi-o-remove],[data-wi-o-reveal],[data-wi-view-load],[data-wi-view-del],[data-wi-cmp-clear],[data-wi-variant],[data-wi-copy],[data-kw-del],[data-kw-add]") : null;
+    if(!t) return;
+    if(t.hasAttribute("data-wi-draft")){ openDraft(t); return; }
+    if(t.hasAttribute("data-wi-select")){ toggleSelect(t); return; }
+    if(t.hasAttribute("data-wi-o-remove")){
+      var co = t.getAttribute("data-company") || "", nm = t.getAttribute("data-name") || "";
+      outreach = outreach.filter(function(it){ return !(it.company === co && it.name === nm); });
+      saveOutreach(); renderOutreach(); render(); return;
+    }
+    if(t.hasAttribute("data-wi-o-reveal")){
+      if(window.EONVault && window.EONVault.unlocked){ renderOutreach(); }
+      else { promptPinFor(t.getAttribute("data-name") || "this contact"); }
+      return;
+    }
+    if(t.hasAttribute("data-wi-view-load")){
+      var nm2 = t.getAttribute("data-name");
+      var vs = loadViews();
+      for(var i=0;i<vs.length;i++){ if(vs[i].name === nm2){ applyView(vs[i]); break; } }
+      return;
+    }
+    if(t.hasAttribute("data-wi-view-del")){
+      var nm3 = t.getAttribute("data-name");
+      saveViews(loadViews().filter(function(v){ return v.name !== nm3; }));
+      renderViews(); return;
+    }
+    if(t.hasAttribute("data-wi-cmp-clear")){ compareSel = []; renderCompare(); render(); return; }
+    if(t.hasAttribute("data-wi-variant")){
+      if(currentDraft){ currentDraft.variant = t.getAttribute("data-wi-variant"); renderDraft(); }
+      return;
+    }
+    if(t.hasAttribute("data-wi-copy")){
+      var ta = document.getElementById("draft-text");
+      if(ta){
+        var txt = ta.value;
+        if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt); }
+        else { ta.select(); try { document.execCommand("copy"); } catch(err){} }
+        t.textContent = "Copied";
+        setTimeout(function(){ t.textContent = "Copy draft"; }, 2000);
+      }
+      return;
+    }
+    if(t.hasAttribute("data-kw-del")){
+      var fam = t.getAttribute("data-fam"), term = t.getAttribute("data-term");
+      for(var f=0;f<kw.length;f++){ if(kw[f].id === fam){ kw[f].terms = kw[f].terms.filter(function(x){ return x !== term; }); break; } }
+      renderKw(); return;
+    }
+    if(t.hasAttribute("data-kw-add")){
+      var fam2 = t.getAttribute("data-fam");
+      var wrap = t.parentElement;
+      var input = wrap ? wrap.querySelector("input[data-kw-add-input]") : null;
+      var val = input ? input.value.trim() : "";
+      if(val){
+        for(var f2=0;f2<kw.length;f2++){ if(kw[f2].id === fam2){ if(kw[f2].terms.indexOf(val) === -1) kw[f2].terms.push(val); break; } }
+        renderKw();
+      }
+      return;
+    }
+  });
+  document.addEventListener("change", function(e){
+    var t = e.target;
+    if(t && t.classList && t.classList.contains("cmp-box")){
+      var co = t.getAttribute("data-company");
+      if(t.checked){
+        if(compareSel.length >= 3){ t.checked = false; return; }
+        if(compareSel.indexOf(co) === -1) compareSel.push(co);
+      } else {
+        compareSel = compareSel.filter(function(x){ return x !== co; });
+      }
+      renderCompare();
+      render();
+    }
+  });
+  enhanceStaticContacts();
+  renderKw();
+  renderOutreach();
+  renderCompare();
+  renderViews();
+  renderDraft();
+  syncWiUI();
+  window.EONWhatIf = { wiScore: wiScore, wiActive: wiActive, effScore: effScore, fmtScore: fmtScore, wi: wi, getKw: function(){ return kw; }, KW_DEF: KW_DEF, buildDraft: buildDraft, titleMatches: titleMatches, normStr: normStr, readinessBucket: readinessBucket, parseContactLine: parseContactLine, triggerText: triggerText, kwPreview: kwPreview, viewRows: viewRows, RECORDS: RECORDS, toCSV: toCSV, render: render, getOutreach: function(){ return outreach; }, getCompare: function(){ return compareSel; } };
 })();
 </script>
 <script>
